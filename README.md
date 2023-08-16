@@ -25,3 +25,4 @@ Brief project description or introduction here.
 - **Programming Language**: C++
 
 To add: "Getting Started", "Installation", "Usage", etc.
+to be add: "Getting Started", "Installation", "Usage", etc.
