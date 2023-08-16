@@ -15,4 +15,4 @@ A brief overview of the project and its purpose would be helpful here.
 
 - **Programming Language**: C++
 
-Additional sections like "Getting Started", "Installation", "Usage", etc., can be helpful for users and developers. 
+to be add: "Getting Started", "Installation", "Usage", etc.
