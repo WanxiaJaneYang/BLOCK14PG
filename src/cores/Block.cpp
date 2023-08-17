@@ -62,24 +62,27 @@ bool Block::isEmpty() const
 {
     return data.empty();
 }
-//Method to check if the block is filled
-bool Block::isFull(int depth) const
+
+
+// Method to check if the block is filled
+bool Block::isFull(int height) const
 {
-    return !data.empty() && data.back().size() == depth;
+    return !data.empty() && data.back().size() == height;
 }
 
 // Method to fill the block
-void Block::fillBlock(int depth, const std::vector<char> inputData)
+void Block::fillBlock(int height, const std::vector<char> inputData)
 {
-    if (!Block::isFull(depth)){
+    if (!Block::isFull(height))
+    {
         // Add a new slice if necessary
-        if (data.empty() || data.back().size() == depth)
+        if (data.empty() || data.back().size() == height)
         {
             data.push_back(std::vector<std::vector<char>>());
-            data.back().reserve(depth);
+            data.back().reserve(height);
         }
 
         // Fill the data in the current slice
         data.back().push_back(inputData);
-    }   
+    }
 }

@@ -41,7 +41,7 @@ void readInput()
         GlobalVars::tagTable[key] = value;
     }
 
-    // for testing print
+    //for testing print
     // std::cout << big_width << " "
     //           << big_height << " "
     //           << big_depth << " "
@@ -86,18 +86,21 @@ void readInput()
             inputDataTemp.push_back(e);
             row_count++;
 
-            if (row_count % GlobalVars::width == 0)
+            if (inputDataTemp.size() == GlobalVars::width)
+            {
+                int index = getIndex(num_x, num_y, line_count, row_count, z_coord);
+                Block &blockRef = buffer_lst.getFromIndex(index);
+
+                blockRef.fillBlock(GlobalVars::height, inputDataTemp);
+                inputDataTemp.clear();
+            }
+            
+            if (row_count % GlobalVars::width == 1)
             {
                 int x_coord = row_count-1;
-                int y_coord = line_count-1;
+                int y_coord = line_count;
 
-                // calculate index of buffer
-                int block_in_xy_plane = num_x * num_y;
-                int y_offset = line_count / GlobalVars::height;
-                int x_offset = row_count / GlobalVars::width;
-                int index = z_coord * block_in_xy_plane + y_offset * num_x + x_offset;
-
-                // if the block in buffer is empty, save the coordinate into the block
+                int index = getIndex(num_x, num_y, line_count, row_count, z_coord);
                 Block &blockRef = buffer_lst.getFromIndex(index);
 
                 if (blockRef.isEmpty())
@@ -106,8 +109,7 @@ void readInput()
                     blockRef.setY(y_coord);
                     blockRef.setZ(z_coord);
                 }
-                blockRef.fillBlock(GlobalVars::depth, inputDataTemp);
-                inputDataTemp.clear();
+               
             }
         }
 
@@ -117,4 +119,16 @@ void readInput()
     GlobalVars::processTasks = buffer_lst;
 
     file.close();
+}
+
+int getIndex(int num_x, int num_y, int line_count, int row_count, int z_coord)
+{
+    // calculate index of buffer
+    int block_in_xy_plane = num_x * num_y;
+    int y_offset = line_count / GlobalVars::height;
+    int x_offset = row_count / GlobalVars::width;
+    int index = z_coord * block_in_xy_plane + y_offset * num_x + x_offset;
+
+    // if the block in buffer is empty, save the coordinate into the block
+    return index;
 }
