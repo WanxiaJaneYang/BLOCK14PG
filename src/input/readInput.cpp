@@ -9,8 +9,6 @@
 void readInput()
 {
     // Read input file using the file name stored in GlobalVars::inputFileName
-    // and store the data in GlobalVars::processTasks
-
     GlobalVars::inputFileName = "./input/input.txt";
 
     std::ifstream file(GlobalVars::inputFileName);
@@ -56,10 +54,67 @@ void readInput()
     //     std::cout << pair.first << " -> " << pair.second << std::endl;
     // }
 
+
+    int num_x = big_width / GlobalVars::width;
+    int num_y = big_height / GlobalVars::height;
+    int num_z = big_depth / GlobalVars::depth;
+
+    int total_blocks = num_x * num_y * num_z;
+
+    SafeInputTasks buffer_lst;
+
+    // initialize buffer list with blocks
+    buffer_lst.resize(total_blocks);
+
+    int line_count = 0; 
+    int z_coord = 0;
+
     while (std::getline(file, line))
     {
-        std::cout << line << std::endl;
+        if (line.empty()) 
+        {
+            z_coord++;
+            line_count = 0;
+            continue;
+        }
+
+        int row_count = 0;
+        std::vector<char> inputDataTemp;
+
+        for (char e : line)
+        {
+            inputDataTemp.push_back(e);
+            row_count++;
+
+            if (row_count % GlobalVars::width == 0)
+            {
+                int x_coord = row_count-1;
+                int y_coord = line_count-1;
+
+                // calculate index of buffer
+                int block_in_xy_plane = num_x * num_y;
+                int y_offset = line_count / GlobalVars::height;
+                int x_offset = row_count / GlobalVars::width;
+                int index = z_coord * block_in_xy_plane + y_offset * num_x + x_offset;
+
+                // if the block in buffer is empty, save the coordinate into the block
+                Block &blockRef = buffer_lst.getFromIndex(index);
+
+                if (blockRef.isEmpty())
+                {
+                    blockRef.setX(x_coord);
+                    blockRef.setY(y_coord);
+                    blockRef.setZ(z_coord);
+                }
+                blockRef.fillBlock(GlobalVars::depth, inputDataTemp);
+                inputDataTemp.clear();
+            }
+        }
+
+        line_count++;
     }
+    // and store the data in GlobalVars::processTasks
+    GlobalVars::processTasks = buffer_lst;
 
     file.close();
 }

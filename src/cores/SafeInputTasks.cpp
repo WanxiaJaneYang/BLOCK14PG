@@ -33,3 +33,13 @@ bool SafeInputTasks::pop(Block &block)
     tasks.pop_back();
     return true;
 }
+
+void SafeInputTasks::resize(int size)
+{
+    tasks.resize(size, Block());
+}
+
+Block& SafeInputTasks::getFromIndex(int index)
+{
+    return tasks[index];
+}

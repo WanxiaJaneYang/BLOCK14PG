@@ -6,6 +6,7 @@
 class Block
 {
 public:
+    Block();
     Block(int x, int y, int z);
 
     // Accessors and Mutators
@@ -20,6 +21,15 @@ public:
     // Methods to handle the 3D data
     void setData(const std::vector<std::vector<std::vector<char>>> &data);
     std::vector<std::vector<std::vector<char>>> getData() const;
+
+    // Method to check if the block is empty
+    bool isEmpty() const;
+
+    // Method to check if the block is filled
+    bool isFull(int depth) const;
+    
+    // Method to fill the block
+    void fillBlock(int depth, const std::vector<char> inputData);
 
 private:
     int x;

@@ -1,6 +1,8 @@
 #include "Block.h"
 
 // constructor
+Block::Block() : x(0), y(0), z(0) {}
+
 Block::Block(int x, int y, int z)
 {
     this->x=x;
@@ -11,19 +13,19 @@ Block::Block(int x, int y, int z)
 // get x
 int Block::getX() const
 {
-    return this->x;
+    return x;
 }
 
 // get y
 int Block::getY() const
 {
-    return this->y;
+    return y;
 }
 
 // get z
 int Block::getZ() const
 {
-    return this->z;
+    return z;
 }
 
 // set x
@@ -53,5 +55,31 @@ void Block::setData(const std::vector<std::vector<std::vector<char>>> &data)
 // get data
 std::vector<std::vector<std::vector<char>>> Block::getData() const
 {
-    return this->data;
+    return data;
+}
+
+bool Block::isEmpty() const
+{
+    return data.empty();
+}
+//Method to check if the block is filled
+bool Block::isFull(int depth) const
+{
+    return !data.empty() && data.back().size() == depth;
+}
+
+// Method to fill the block
+void Block::fillBlock(int depth, const std::vector<char> inputData)
+{
+    if (!Block::isFull(depth)){
+        // Add a new slice if necessary
+        if (data.empty() || data.back().size() == depth)
+        {
+            data.push_back(std::vector<std::vector<char>>());
+            data.back().reserve(depth);
+        }
+
+        // Fill the data in the current slice
+        data.back().push_back(inputData);
+    }   
 }
