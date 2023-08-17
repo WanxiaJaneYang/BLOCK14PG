@@ -3,3 +3,7 @@
 
 # Ignore Mac compiler config
 .vscode/
+
+./src/Makefile
+
+./src/input/main.cpp
