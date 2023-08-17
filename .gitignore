@@ -4,6 +4,6 @@
 # Ignore Mac compiler config
 .vscode/
 
-./src/Makefile
+src/Makefile
 
-./src/input/main.cpp
+src/input/main.cpp
