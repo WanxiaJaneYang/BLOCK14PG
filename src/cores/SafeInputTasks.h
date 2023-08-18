@@ -17,6 +17,7 @@ public:
     bool pop(Block &block);
     void resize(int size);
     Block& getFromIndex(int index);
+    void printTasks() const;
     virtual ~SafeInputTasks();
 };
 

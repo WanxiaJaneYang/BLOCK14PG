@@ -41,94 +41,104 @@ void readInput()
         GlobalVars::tagTable[key] = value;
     }
 
-    //for testing print
-    // std::cout << big_width << " "
-    //           << big_height << " "
-    //           << big_depth << " "
-    //           << GlobalVars::width << " "
-    //           << GlobalVars::height << " "
-    //           << GlobalVars::depth << std::endl;
-
-    // for (const auto &pair : GlobalVars::tagTable)
-    // {
-    //     std::cout << pair.first << " -> " << pair.second << std::endl;
-    // }
-
-
     int num_x = big_width / GlobalVars::width;
     int num_y = big_height / GlobalVars::height;
     int num_z = big_depth / GlobalVars::depth;
 
     int total_blocks = num_x * num_y * num_z;
-
+    
     SafeInputTasks buffer_lst;
 
     // initialize buffer list with blocks
     buffer_lst.resize(total_blocks);
 
-    int line_count = 0; 
+    int line_count = 0;
+    int row_count = 0;
     int z_coord = 0;
+    int index = -1;
 
     while (std::getline(file, line))
     {
+        // removing \n or \r at the end of line
+        if (!line.empty() && (line.back() == '\n' || line.back() == '\r'))
+        {
+            line.pop_back();
+        }
+
+        if (!line.empty() && line.back() == '\r')
+        {
+            line.pop_back();
+        }
+
+        // if the line is empty, which means new slice
         if (line.empty()) 
         {
             z_coord++;
+
+            if ((z_coord + 1) % GlobalVars::depth == 1)
+            {
+                index++;
+            } 
+            else 
+            {
+                index -= num_x * num_y;
+            }
+
             line_count = 0;
             continue;
         }
-
-        int row_count = 0;
+        
+        // new line
+        row_count = 0;
         std::vector<char> inputDataTemp;
 
         for (char e : line)
         {
+
             inputDataTemp.push_back(e);
+            
             row_count++;
+
+            if (row_count % GlobalVars::width == 1)
+            {
+                index++;
+            }
 
             if (inputDataTemp.size() == GlobalVars::width)
             {
-                int index = getIndex(num_x, num_y, line_count, row_count, z_coord);
+
                 Block &blockRef = buffer_lst.getFromIndex(index);
 
-                blockRef.fillBlock(GlobalVars::height, inputDataTemp);
+                blockRef.fillBlock(GlobalVars::height, GlobalVars::depth, inputDataTemp);
+
                 inputDataTemp.clear();
             }
-            
-            if (row_count % GlobalVars::width == 1)
+
+            Block &blockRef = buffer_lst.getFromIndex(index);
+
+            if (row_count % GlobalVars::width == 1 && blockRef.isEmpty())
             {
+
                 int x_coord = row_count-1;
                 int y_coord = line_count;
 
-                int index = getIndex(num_x, num_y, line_count, row_count, z_coord);
-                Block &blockRef = buffer_lst.getFromIndex(index);
-
-                if (blockRef.isEmpty())
-                {
-                    blockRef.setX(x_coord);
-                    blockRef.setY(y_coord);
-                    blockRef.setZ(z_coord);
-                }
+                blockRef.setX(x_coord);
+                blockRef.setY(y_coord);
+                blockRef.setZ(z_coord);
                
             }
         }
 
         line_count++;
+
+        if ((line_count+1) % GlobalVars::height != 1)
+        {
+            index -= num_x;
+        }
     }
+    
     // and store the data in GlobalVars::processTasks
     GlobalVars::processTasks = buffer_lst;
 
     file.close();
-}
-
-int getIndex(int num_x, int num_y, int line_count, int row_count, int z_coord)
-{
-    // calculate index of buffer
-    int block_in_xy_plane = num_x * num_y;
-    int y_offset = line_count / GlobalVars::height;
-    int x_offset = row_count / GlobalVars::width;
-    int index = z_coord * block_in_xy_plane + y_offset * num_x + x_offset;
-
-    // if the block in buffer is empty, save the coordinate into the block
-    return index;
 }

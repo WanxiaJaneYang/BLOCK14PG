@@ -26,10 +26,12 @@ public:
     bool isEmpty() const;
 
     // Method to check if the block is filled
-    bool isFull(int height) const;
+    bool isFull(int height, int depth) const;
 
     // Method to fill the block
-    void fillBlock(int height, const std::vector<char> inputData);
+    void fillBlock(int height, int depth, const std::vector<char> inputData);
+
+    void printBlock() const;
 
 private:
     int x;

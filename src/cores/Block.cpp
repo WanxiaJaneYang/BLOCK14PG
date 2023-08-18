@@ -1,4 +1,5 @@
 #include "Block.h"
+#include <iostream>
 
 // constructor
 Block::Block() : x(0), y(0), z(0) {}
@@ -65,15 +66,15 @@ bool Block::isEmpty() const
 
 
 // Method to check if the block is filled
-bool Block::isFull(int height) const
+bool Block::isFull(int height, int depth) const
 {
-    return !data.empty() && data.back().size() == height;
+    return !data.empty() && data.back().size() == height && data.size() == depth;
 }
 
 // Method to fill the block
-void Block::fillBlock(int height, const std::vector<char> inputData)
+void Block::fillBlock(int height, int depth, const std::vector<char> inputData)
 {
-    if (!Block::isFull(height))
+    if (!Block::isFull(height, depth))
     {
         // Add a new slice if necessary
         if (data.empty() || data.back().size() == height)
@@ -84,5 +85,23 @@ void Block::fillBlock(int height, const std::vector<char> inputData)
 
         // Fill the data in the current slice
         data.back().push_back(inputData);
+    }
+}
+
+void Block::printBlock() const
+{
+    std::cout << "[" << x << ", " << y << ", " << z << "]" << std::endl;
+
+    for (const auto &outer : data)
+    {
+        for (const auto &inner : outer)
+        {
+            for (char c : inner)
+            {
+                std::cout << c << ' ';
+            }
+            std::cout << '\n';
+        }
+        std::cout << '\n';
     }
 }
