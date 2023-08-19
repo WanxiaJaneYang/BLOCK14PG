@@ -46,7 +46,7 @@ void readInput()
     int total_blocks = num_x * num_y * num_z;
 
     SafeInputTasks buffer_lst;
-
+    
     // Initialize buffer list with blocks
     buffer_lst.resize(total_blocks);
 
@@ -64,23 +64,19 @@ void readInput()
         {
             line.pop_back();
         }
-
+        
         // If the line is empty, which indicates a new slice
         if (line.empty())
         {
             z_coord++;
 
-            // this can indicates if need go to next buffer block
-            if ((z_coord + 1) % GlobalVars::depth == 1)
-            {
-                index++;
-            }
-            else
+            // This can indicates if need go to next buffer block
+            if ((z_coord + 1) % GlobalVars::depth != 1)
             {
                 index -= num_x * num_y;
             }
 
-            // new slice, line counter is reset to 0
+            // New slice, line counter is reset to 0
             line_count = 0;
             continue;
         }
@@ -119,10 +115,17 @@ void readInput()
                 int x_coord = row_count - 1;
                 int y_coord = line_count;
 
-                //save into buffer block
+                // Save into buffer block
                 blockRef.setX(x_coord);
                 blockRef.setY(y_coord);
                 blockRef.setZ(z_coord);
+            }
+
+            // Check if the buffer block is full
+            if (row_count % GlobalVars::width == 0 && (line_count + 1) % GlobalVars::height == 0 && (z_coord + 1) % GlobalVars::depth == 0)
+            {
+                // Store the full bloack of buffer into GlobalVars::processTasks
+                GlobalVars::processTasks.push(blockRef);
             }
         }
 
@@ -134,9 +137,6 @@ void readInput()
             index -= num_x;
         }
     }
-
-    // Store the data in GlobalVars::processTasks
-    GlobalVars::processTasks = buffer_lst;
 
     file.close();
 }
