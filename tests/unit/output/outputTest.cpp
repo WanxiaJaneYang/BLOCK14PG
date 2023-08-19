@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(test_cuboid_label)
 // failure is detedted in this function. 
 BOOST_AUTO_TEST_CASE(test_unknown_tag)
 {
-    // 初始化tagTable
+    // Set up the tagTable with mappings of characters to their respective string representations.
     GlobalVars::tagTable.insert({'o', "sea"});
     GlobalVars::tagTable.insert({'w', "WA"});
     GlobalVars::tagTable.insert({'n', "NT"});
