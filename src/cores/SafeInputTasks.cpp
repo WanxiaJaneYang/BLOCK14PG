@@ -1,4 +1,5 @@
 #include "SafeInputTasks.h"
+#include <iostream>
 
 SafeInputTasks::SafeInputTasks()
 {
@@ -32,4 +33,25 @@ bool SafeInputTasks::pop(Block &block)
     block = tasks.back();
     tasks.pop_back();
     return true;
+}
+
+void SafeInputTasks::resize(int size)
+{
+    tasks.resize(size, Block());
+}
+
+Block& SafeInputTasks::getFromIndex(int index)
+{
+    return tasks[index];
+}
+
+void SafeInputTasks::printTasks() const
+{
+    int count = 0;
+    for (const Block &block: tasks)
+    {
+        count++;
+        std::cout << "Block" << count << std::endl;
+        block.printBlock();
+    }
 }

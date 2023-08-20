@@ -1,5 +1,9 @@
 # Ignore Mac system files
+.DS_Store
 .DS_store
-
 # Ignore Mac compiler config
 .vscode/
+
+src/Makefile
+
+src/input/main.cpp
