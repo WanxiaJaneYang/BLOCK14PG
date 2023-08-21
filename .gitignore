@@ -7,3 +7,5 @@
 src/Makefile
 
 src/input/main.cpp
+
+googleTest/
