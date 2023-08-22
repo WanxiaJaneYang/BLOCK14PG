@@ -7,14 +7,13 @@ project(BLOCK)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Add your project source files
-# add_executable(main src/main.cpp)
+# Add your project source files 
 
 # Gather all source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 # Add executable or library using the source files
-add_executable(main ${SOURCES})
+# add_executable(main ${SOURCES})
 
 # Google Test setup
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest/include)
@@ -23,3 +22,4 @@ add_subdirectory(googletest/googletest)
 # Add test executable
 add_executable(runUnitTests tests/test_main.cpp)
 target_link_libraries(runUnitTests gtest gtest_main)
+

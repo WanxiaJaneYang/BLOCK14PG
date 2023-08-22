@@ -73,15 +73,15 @@ CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o: CMakeFiles/runUnitTests.dir/f
 CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp
 CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o: CMakeFiles/runUnitTests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o -MF CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o.d -o CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o -MF CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o.d -o CMakeFiles/runUnitTests.dir/tests/test_main.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp
 
 CMakeFiles/runUnitTests.dir/tests/test_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/runUnitTests.dir/tests/test_main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp > CMakeFiles/runUnitTests.dir/tests/test_main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp > CMakeFiles/runUnitTests.dir/tests/test_main.cpp.i
 
 CMakeFiles/runUnitTests.dir/tests/test_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/runUnitTests.dir/tests/test_main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp -o CMakeFiles/runUnitTests.dir/tests/test_main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kaini/Documents/SEP/BLOCK14PG/tests/test_main.cpp -o CMakeFiles/runUnitTests.dir/tests/test_main.cpp.s
 
 # Object files for target runUnitTests
 runUnitTests_OBJECTS = \
