@@ -4,7 +4,7 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/kaini/Documents/SEP/BLOCK14PG/src/input -isystem /Users/kaini/Documents/SEP/BLOCK14PG/googletest/googletest/include -isystem /Users/kaini/Documents/SEP/BLOCK14PG/googletest/googletest
+CXX_INCLUDES = -isystem /Users/kaini/Documents/SEP/BLOCK14PG/googletest/googletest/include -isystem /Users/kaini/Documents/SEP/BLOCK14PG/googletest/googletest
 
 CXX_FLAGSarm64 = -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.5
 

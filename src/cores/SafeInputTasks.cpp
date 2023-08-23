@@ -1,5 +1,7 @@
 #include "SafeInputTasks.h"
 #include <iostream>
+#include <sstream>
+#include <string>
 
 SafeInputTasks::SafeInputTasks()
 {
@@ -54,4 +56,21 @@ void SafeInputTasks::printTasks() const
         std::cout << "Block" << count << std::endl;
         block.printBlock();
     }
+}
+
+std::string SafeInputTasks::writeTasks() const
+{
+    std::ostringstream oss;  // Create a string stream
+    int count = 0;
+
+    for (const Block &block: tasks)
+    {   
+        count++;
+        oss << "\n\n"<<"Block" << count;
+
+        // Assuming Block has a method that returns a string representation
+        oss << block.writeBlock();
+    }
+
+    return oss.str();  // Return the string
 }

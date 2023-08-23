@@ -33,6 +33,8 @@ public:
 
     void printBlock() const;
 
+    std::string writeBlock() const;
+
 private:
     int x;
     int y;

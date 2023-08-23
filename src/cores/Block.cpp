@@ -105,3 +105,27 @@ void Block::printBlock() const
         std::cout << '\n';
     }
 }
+#include <sstream>
+#include <string>
+
+std::string Block::writeBlock() const
+{
+    std::ostringstream oss;
+    for (const auto &outer : data)
+    {
+            oss << "\n";
+
+        for (const auto &inner : outer)
+        {
+            oss << "\n";
+
+            for (char c : inner)
+            {
+                oss << c ;
+            }
+
+        }
+    }
+
+    return oss.str();  // Return the string
+}
