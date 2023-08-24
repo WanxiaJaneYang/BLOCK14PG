@@ -5,6 +5,8 @@ class ReadInvalidInputTest : public ::testing::TestWithParam<std::string> {};
 
 // Actual test definition
 TEST_P(ReadInvalidInputTest, HandlesInvalidInput) {
+    
+    // Get the test file path found
     std::string testFilePath = GetParam();
 
     // Check if the function throws an exception for invalid files

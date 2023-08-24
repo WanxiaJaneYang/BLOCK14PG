@@ -18,7 +18,6 @@ public:
     void resize(int size);
     Block& getFromIndex(int index);
     void printTasks() const;
-    std::string writeTasks() const;
     void clearTasks();
     virtual ~SafeInputTasks();
 };
