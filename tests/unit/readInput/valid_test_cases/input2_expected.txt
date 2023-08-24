@@ -1,12 +1,12 @@
 8,8,4
-o, sea
-w, WA
-n, NT
-s, SA
-q, QLD
 e, NSW
-v, VIC
+n, NT
+o, sea
+q, QLD
+s, SA
 t, TAS
+v, VIC
+w, WA
 
 Block1
 

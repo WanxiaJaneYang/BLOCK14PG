@@ -2,6 +2,8 @@
   Input function
   ```  
 cd build  
+// 'cmake ..' if any new file added
+make // update .O files
 ./validInputTests
 ./invalidInputTests
   ``` 

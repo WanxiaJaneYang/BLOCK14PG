@@ -13,8 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o.d"
   "CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o"
   "CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o.d"
-  "CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalid_tests.cpp.o"
-  "CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalid_tests.cpp.o.d"
+  "CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.o"
+  "CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.o.d"
   "invalidInputTests"
   "invalidInputTests.pdb"
 )

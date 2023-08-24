@@ -1,16 +1,17 @@
-#include "input_test.h"
+#include "InputTest.h"
 
 // Utility function to get all input files from a directory
 std::vector<std::string> listInputFiles(const std::string& directory) {
     std::vector<std::string> files;
     for (const auto& entry : std::__fs::filesystem::directory_iterator(directory)) {
         if (entry.path().extension() == ".csv" && entry.path().string().find("_case") != std::string::npos) {
-            std::cout<<entry.path().string()<<std::endl;
+            std::cout << entry.path().string() << std::endl;
             files.push_back(entry.path().string());
         }
     }
     return files;
 }
+
 // Parameterized test class
 class ReadInputTest : public ::testing::TestWithParam<std::string> {};
 
@@ -40,7 +41,7 @@ TEST_P(ReadInputTest, HandlesValidInput) {
     oss << GlobalVars::height << ",";
     oss << GlobalVars::depth ;
 
-    // print labels
+    // write labels into the string
     for (const auto& pair : GlobalVars::tagTable) {
         oss << "\n" << pair.first << "," << pair.second;
     }
@@ -51,6 +52,7 @@ TEST_P(ReadInputTest, HandlesValidInput) {
     producedContent.append(GlobalVars::processTasks.writeTasks());
 
     GlobalVars::processTasks.clearTasks();
+    
     // compare the two files to see if they are the same
     ASSERT_EQ(expectedContent, producedContent) << "The expected and produced contents are not the same!";
 }
