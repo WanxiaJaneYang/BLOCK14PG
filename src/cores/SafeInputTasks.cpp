@@ -58,23 +58,6 @@ void SafeInputTasks::printTasks() const
     }
 }
 
-std::string SafeInputTasks::writeTasks() const
-{
-    std::ostringstream oss;  // Create a string stream
-    int count = 0;
-
-    for (const Block &block: tasks)
-    {   
-        count++;
-        oss << "\n\n"<<"Block" << count;
-
-        // Assuming Block has a method that returns a string representation
-        oss << block.writeBlock();
-    }
-
-    return oss.str();  // Return the string
-}
-
 //clears the tasks vector
 void SafeInputTasks::clearTasks()
 {

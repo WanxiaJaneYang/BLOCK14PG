@@ -357,6 +357,33 @@ src/output/output.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/output/output.cpp.s
 .PHONY : src/output/output.cpp.s
 
+tests/unit/readInput/InputTestHelper.o: tests/unit/readInput/InputTestHelper.cpp.o
+.PHONY : tests/unit/readInput/InputTestHelper.o
+
+# target to build an object file
+tests/unit/readInput/InputTestHelper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o
+.PHONY : tests/unit/readInput/InputTestHelper.cpp.o
+
+tests/unit/readInput/InputTestHelper.i: tests/unit/readInput/InputTestHelper.cpp.i
+.PHONY : tests/unit/readInput/InputTestHelper.i
+
+# target to preprocess a source file
+tests/unit/readInput/InputTestHelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.i
+.PHONY : tests/unit/readInput/InputTestHelper.cpp.i
+
+tests/unit/readInput/InputTestHelper.s: tests/unit/readInput/InputTestHelper.cpp.s
+.PHONY : tests/unit/readInput/InputTestHelper.s
+
+# target to generate assembly for a file
+tests/unit/readInput/InputTestHelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s
+.PHONY : tests/unit/readInput/InputTestHelper.cpp.s
+
 tests/unit/readInput/invalidTests.o: tests/unit/readInput/invalidTests.cpp.o
 .PHONY : tests/unit/readInput/invalidTests.o
 
@@ -438,6 +465,9 @@ help:
 	@echo "... src/output/output.o"
 	@echo "... src/output/output.i"
 	@echo "... src/output/output.s"
+	@echo "... tests/unit/readInput/InputTestHelper.o"
+	@echo "... tests/unit/readInput/InputTestHelper.i"
+	@echo "... tests/unit/readInput/InputTestHelper.s"
 	@echo "... tests/unit/readInput/invalidTests.o"
 	@echo "... tests/unit/readInput/invalidTests.i"
 	@echo "... tests/unit/readInput/invalidTests.s"

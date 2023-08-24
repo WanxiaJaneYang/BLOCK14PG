@@ -1,6 +1,6 @@
 CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.o: \
   /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/invalidTests.cpp \
-  /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/InputTest.h \
+  /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/InputTestHelper.h \
   /Users/kaini/Documents/SEP/BLOCK14PG/googletest/googletest/include/gtest/gtest.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
@@ -481,4 +481,5 @@ CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.o: \
   /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/../../../src/input/../globals/../cores/SafeInputTasks.h \
   /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/../../../src/input/../globals/../cores/SafeOutputTasks.h \
   /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/../../../src/cores/SafeInputTasks.h \
-  /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/../../../src/globals/globals.h
+  /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/../../../src/globals/globals.h \
+  /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/../../../src/cores/Block.h

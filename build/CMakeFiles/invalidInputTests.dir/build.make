@@ -83,10 +83,24 @@ CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.s: cmake_
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/invalidTests.cpp -o CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.s
 
+CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
+CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp
+CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o -MF CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o.d -o CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp
+
+CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp > CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.i
+
+CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kaini/Documents/SEP/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp -o CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s
+
 CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/Block.cpp
 CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/Block.cpp
 
 CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.s: cmake_force
 CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/Cuboid.cpp
 CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/Cuboid.cpp
 
 CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.s: cmake_force
 CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/SafeInputTasks.cpp
 CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/SafeInputTasks.cpp
 
 CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.s: cmake_force
 CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/SafeOutputTasks.cpp
 CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/cores/SafeOutputTasks.cpp
 
 CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.s: cmake_force
 CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/globals/globals.cpp
 CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/globals/globals.cpp
 
 CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.s: cmake_force
 CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/input/readInput.cpp
 CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/input/readInput.cpp
 
 CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.s: cmake_force
 CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o: CMakeFiles/invalidInputTests.dir/flags.make
 CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o: /Users/kaini/Documents/SEP/BLOCK14PG/src/output/output.cpp
 CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o: CMakeFiles/invalidInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o -MF CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o.d -o CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o -c /Users/kaini/Documents/SEP/BLOCK14PG/src/output/output.cpp
 
 CMakeFiles/invalidInputTests.dir/src/output/output.cpp.i: cmake_force
@@ -184,6 +198,7 @@ CMakeFiles/invalidInputTests.dir/src/output/output.cpp.s: cmake_force
 # Object files for target invalidInputTests
 invalidInputTests_OBJECTS = \
 "CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.o" \
+"CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o" \
 "CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o" \
 "CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o" \
 "CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o" \
@@ -196,6 +211,7 @@ invalidInputTests_OBJECTS = \
 invalidInputTests_EXTERNAL_OBJECTS =
 
 invalidInputTests: CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalidTests.cpp.o
+invalidInputTests: CMakeFiles/invalidInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o
 invalidInputTests: CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o
 invalidInputTests: CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o
 invalidInputTests: CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o
@@ -208,7 +224,7 @@ invalidInputTests: lib/libgtest.a
 invalidInputTests: lib/libgtest_main.a
 invalidInputTests: lib/libgtest.a
 invalidInputTests: CMakeFiles/invalidInputTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable invalidInputTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable invalidInputTests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/invalidInputTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
