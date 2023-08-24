@@ -1,0 +1,85 @@
+8,8,4
+o, sea
+w, WA
+n, NT
+s, SA
+q, QLD
+e, NSW
+v, VIC
+t, TAS
+
+Block1
+
+oooooooo
+oosoosoo
+osooooso
+ooossooo
+osoososo
+sosoosss
+osssssss
+oooooooo
+
+oossssoo
+oowoowwo
+ovoooowo
+ooovvooo
+osoososo
+sosoosss
+osssssss
+oonnnooo
+
+owwwwwww
+oosoosoo
+ovoooono
+ooonnnno
+ottttqqo
+qoqooqqq
+ovvvvvvv
+ooooovvv
+
+oowwwwoo
+ooqooqoo
+oqoqqqqo
+ooosswwo
+osoosono
+sosooooo
+ossssvvv
+ooooqqqq
+
+Block2
+
+ooooqqqq
+oosootto
+osoottto
+ottooooo
+otoototo
+sotoonss
+osssttvv
+ooqtvsoo
+
+ooottooo
+oosotqoo
+osttqqqo
+oooqqsso
+osoqqtto
+soqqttss
+ossttqqs
+oooqqsst
+
+oossqqst
+oosoonnt
+osovvstq
+ooonnooo
+osvvvoso
+sosonqts
+osssssss
+ooovvvvo
+
+ootttttt
+oosovvvv
+osoqqqqq
+ttttsooo
+vvvvsoso
+sosqqsss
+osqvtsss
+ooqqqooo

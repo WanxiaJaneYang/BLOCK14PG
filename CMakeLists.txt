@@ -20,6 +20,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest/include)
 add_subdirectory(googletest/googletest) 
 
 # Add test executable
-add_executable(inputUnitTests tests/unit/readInput/test_main.cpp ${SOURCES})
-target_link_libraries(inputUnitTests gtest gtest_main)
+# add_executable(inputUnitTests tests/unit/readInput/test_main.cpp ${SOURCES})
+# target_link_libraries(inputUnitTests gtest gtest_main)
+
+add_executable(validInputTests tests/unit/readInput/valid_tests.cpp ${SOURCES})
+target_link_libraries(validInputTests gtest gtest_main)
+
+add_executable(invalidInputTests tests/unit/readInput/invalid_tests.cpp ${SOURCES})
+target_link_libraries(invalidInputTests gtest gtest_main)
+
 

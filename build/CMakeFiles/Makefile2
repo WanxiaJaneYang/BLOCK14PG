@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /Users/kaini/Documents/SEP/BLOCK14PG/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/inputUnitTests.dir/all
+all: CMakeFiles/validInputTests.dir/all
+all: CMakeFiles/invalidInputTests.dir/all
 all: googletest/googletest/all
 .PHONY : all
 
@@ -72,7 +73,8 @@ preinstall: googletest/googletest/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/inputUnitTests.dir/clean
+clean: CMakeFiles/validInputTests.dir/clean
+clean: CMakeFiles/invalidInputTests.dir/clean
 clean: googletest/googletest/clean
 .PHONY : clean
 
@@ -94,31 +96,58 @@ googletest/googletest/clean: googletest/googletest/CMakeFiles/gtest_main.dir/cle
 .PHONY : googletest/googletest/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/inputUnitTests.dir
+# Target rules for target CMakeFiles/validInputTests.dir
 
 # All Build rule for target.
-CMakeFiles/inputUnitTests.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/inputUnitTests.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13 "Built target inputUnitTests"
-.PHONY : CMakeFiles/inputUnitTests.dir/all
+CMakeFiles/validInputTests.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
+CMakeFiles/validInputTests.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=14,15,16,17,18,19,20,21,22 "Built target validInputTests"
+.PHONY : CMakeFiles/validInputTests.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/inputUnitTests.dir/rule: cmake_check_build_system
+CMakeFiles/validInputTests.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles 13
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/inputUnitTests.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/validInputTests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles 0
-.PHONY : CMakeFiles/inputUnitTests.dir/rule
+.PHONY : CMakeFiles/validInputTests.dir/rule
 
 # Convenience name for target.
-inputUnitTests: CMakeFiles/inputUnitTests.dir/rule
-.PHONY : inputUnitTests
+validInputTests: CMakeFiles/validInputTests.dir/rule
+.PHONY : validInputTests
 
 # clean rule for target.
-CMakeFiles/inputUnitTests.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/clean
-.PHONY : CMakeFiles/inputUnitTests.dir/clean
+CMakeFiles/validInputTests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/clean
+.PHONY : CMakeFiles/validInputTests.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/invalidInputTests.dir
+
+# All Build rule for target.
+CMakeFiles/invalidInputTests.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
+CMakeFiles/invalidInputTests.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13 "Built target invalidInputTests"
+.PHONY : CMakeFiles/invalidInputTests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/invalidInputTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles 13
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/invalidInputTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kaini/Documents/SEP/BLOCK14PG/build/CMakeFiles 0
+.PHONY : CMakeFiles/invalidInputTests.dir/rule
+
+# Convenience name for target.
+invalidInputTests: CMakeFiles/invalidInputTests.dir/rule
+.PHONY : invalidInputTests
+
+# clean rule for target.
+CMakeFiles/invalidInputTests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/clean
+.PHONY : CMakeFiles/invalidInputTests.dir/clean
 
 #=============================================================================
 # Target rules for target googletest/googletest/CMakeFiles/gtest.dir

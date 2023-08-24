@@ -19,6 +19,7 @@ public:
     Block& getFromIndex(int index);
     void printTasks() const;
     std::string writeTasks() const;
+    void clearTasks();
     virtual ~SafeInputTasks();
 };
 

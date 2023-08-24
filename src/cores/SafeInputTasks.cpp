@@ -74,3 +74,9 @@ std::string SafeInputTasks::writeTasks() const
 
     return oss.str();  // Return the string
 }
+
+//clears the tasks vector
+void SafeInputTasks::clearTasks()
+{
+    tasks.clear();
+}

@@ -117,17 +117,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named inputUnitTests
+# Target rules for targets named validInputTests
 
 # Build rule for target.
-inputUnitTests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 inputUnitTests
-.PHONY : inputUnitTests
+validInputTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 validInputTests
+.PHONY : validInputTests
 
 # fast build rule for target.
-inputUnitTests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/build
-.PHONY : inputUnitTests/fast
+validInputTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/build
+.PHONY : validInputTests/fast
+
+#=============================================================================
+# Target rules for targets named invalidInputTests
+
+# Build rule for target.
+invalidInputTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 invalidInputTests
+.PHONY : invalidInputTests
+
+# fast build rule for target.
+invalidInputTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/build
+.PHONY : invalidInputTests/fast
 
 #=============================================================================
 # Target rules for targets named gtest
@@ -160,7 +173,8 @@ src/cores/Block.o: src/cores/Block.cpp.o
 
 # target to build an object file
 src/cores/Block.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/Block.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.o
 .PHONY : src/cores/Block.cpp.o
 
 src/cores/Block.i: src/cores/Block.cpp.i
@@ -168,7 +182,8 @@ src/cores/Block.i: src/cores/Block.cpp.i
 
 # target to preprocess a source file
 src/cores/Block.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/Block.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Block.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.i
 .PHONY : src/cores/Block.cpp.i
 
 src/cores/Block.s: src/cores/Block.cpp.s
@@ -176,7 +191,8 @@ src/cores/Block.s: src/cores/Block.cpp.s
 
 # target to generate assembly for a file
 src/cores/Block.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/Block.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Block.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/Block.cpp.s
 .PHONY : src/cores/Block.cpp.s
 
 src/cores/Cuboid.o: src/cores/Cuboid.cpp.o
@@ -184,7 +200,8 @@ src/cores/Cuboid.o: src/cores/Cuboid.cpp.o
 
 # target to build an object file
 src/cores/Cuboid.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/Cuboid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.o
 .PHONY : src/cores/Cuboid.cpp.o
 
 src/cores/Cuboid.i: src/cores/Cuboid.cpp.i
@@ -192,7 +209,8 @@ src/cores/Cuboid.i: src/cores/Cuboid.cpp.i
 
 # target to preprocess a source file
 src/cores/Cuboid.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/Cuboid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.i
 .PHONY : src/cores/Cuboid.cpp.i
 
 src/cores/Cuboid.s: src/cores/Cuboid.cpp.s
@@ -200,7 +218,8 @@ src/cores/Cuboid.s: src/cores/Cuboid.cpp.s
 
 # target to generate assembly for a file
 src/cores/Cuboid.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/Cuboid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/Cuboid.cpp.s
 .PHONY : src/cores/Cuboid.cpp.s
 
 src/cores/SafeInputTasks.o: src/cores/SafeInputTasks.cpp.o
@@ -208,7 +227,8 @@ src/cores/SafeInputTasks.o: src/cores/SafeInputTasks.cpp.o
 
 # target to build an object file
 src/cores/SafeInputTasks.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/SafeInputTasks.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.o
 .PHONY : src/cores/SafeInputTasks.cpp.o
 
 src/cores/SafeInputTasks.i: src/cores/SafeInputTasks.cpp.i
@@ -216,7 +236,8 @@ src/cores/SafeInputTasks.i: src/cores/SafeInputTasks.cpp.i
 
 # target to preprocess a source file
 src/cores/SafeInputTasks.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/SafeInputTasks.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.i
 .PHONY : src/cores/SafeInputTasks.cpp.i
 
 src/cores/SafeInputTasks.s: src/cores/SafeInputTasks.cpp.s
@@ -224,7 +245,8 @@ src/cores/SafeInputTasks.s: src/cores/SafeInputTasks.cpp.s
 
 # target to generate assembly for a file
 src/cores/SafeInputTasks.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/SafeInputTasks.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/SafeInputTasks.cpp.s
 .PHONY : src/cores/SafeInputTasks.cpp.s
 
 src/cores/SafeOutputTasks.o: src/cores/SafeOutputTasks.cpp.o
@@ -232,7 +254,8 @@ src/cores/SafeOutputTasks.o: src/cores/SafeOutputTasks.cpp.o
 
 # target to build an object file
 src/cores/SafeOutputTasks.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/SafeOutputTasks.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.o
 .PHONY : src/cores/SafeOutputTasks.cpp.o
 
 src/cores/SafeOutputTasks.i: src/cores/SafeOutputTasks.cpp.i
@@ -240,7 +263,8 @@ src/cores/SafeOutputTasks.i: src/cores/SafeOutputTasks.cpp.i
 
 # target to preprocess a source file
 src/cores/SafeOutputTasks.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/SafeOutputTasks.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.i
 .PHONY : src/cores/SafeOutputTasks.cpp.i
 
 src/cores/SafeOutputTasks.s: src/cores/SafeOutputTasks.cpp.s
@@ -248,7 +272,8 @@ src/cores/SafeOutputTasks.s: src/cores/SafeOutputTasks.cpp.s
 
 # target to generate assembly for a file
 src/cores/SafeOutputTasks.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/cores/SafeOutputTasks.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/cores/SafeOutputTasks.cpp.s
 .PHONY : src/cores/SafeOutputTasks.cpp.s
 
 src/globals/globals.o: src/globals/globals.cpp.o
@@ -256,7 +281,8 @@ src/globals/globals.o: src/globals/globals.cpp.o
 
 # target to build an object file
 src/globals/globals.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/globals/globals.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.o
 .PHONY : src/globals/globals.cpp.o
 
 src/globals/globals.i: src/globals/globals.cpp.i
@@ -264,7 +290,8 @@ src/globals/globals.i: src/globals/globals.cpp.i
 
 # target to preprocess a source file
 src/globals/globals.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/globals/globals.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/globals/globals.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.i
 .PHONY : src/globals/globals.cpp.i
 
 src/globals/globals.s: src/globals/globals.cpp.s
@@ -272,7 +299,8 @@ src/globals/globals.s: src/globals/globals.cpp.s
 
 # target to generate assembly for a file
 src/globals/globals.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/globals/globals.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/globals/globals.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/globals/globals.cpp.s
 .PHONY : src/globals/globals.cpp.s
 
 src/input/readInput.o: src/input/readInput.cpp.o
@@ -280,7 +308,8 @@ src/input/readInput.o: src/input/readInput.cpp.o
 
 # target to build an object file
 src/input/readInput.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/input/readInput.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.o
 .PHONY : src/input/readInput.cpp.o
 
 src/input/readInput.i: src/input/readInput.cpp.i
@@ -288,7 +317,8 @@ src/input/readInput.i: src/input/readInput.cpp.i
 
 # target to preprocess a source file
 src/input/readInput.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/input/readInput.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/readInput.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.i
 .PHONY : src/input/readInput.cpp.i
 
 src/input/readInput.s: src/input/readInput.cpp.s
@@ -296,7 +326,8 @@ src/input/readInput.s: src/input/readInput.cpp.s
 
 # target to generate assembly for a file
 src/input/readInput.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/input/readInput.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/readInput.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/input/readInput.cpp.s
 .PHONY : src/input/readInput.cpp.s
 
 src/output/output.o: src/output/output.cpp.o
@@ -304,7 +335,8 @@ src/output/output.o: src/output/output.cpp.o
 
 # target to build an object file
 src/output/output.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/output/output.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/output/output.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/output/output.cpp.o
 .PHONY : src/output/output.cpp.o
 
 src/output/output.i: src/output/output.cpp.i
@@ -312,7 +344,8 @@ src/output/output.i: src/output/output.cpp.i
 
 # target to preprocess a source file
 src/output/output.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/output/output.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/output/output.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/output/output.cpp.i
 .PHONY : src/output/output.cpp.i
 
 src/output/output.s: src/output/output.cpp.s
@@ -320,32 +353,57 @@ src/output/output.s: src/output/output.cpp.s
 
 # target to generate assembly for a file
 src/output/output.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/src/output/output.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/output/output.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/src/output/output.cpp.s
 .PHONY : src/output/output.cpp.s
 
-tests/unit/readInput/test_main.o: tests/unit/readInput/test_main.cpp.o
-.PHONY : tests/unit/readInput/test_main.o
+tests/unit/readInput/invalid_tests.o: tests/unit/readInput/invalid_tests.cpp.o
+.PHONY : tests/unit/readInput/invalid_tests.o
 
 # target to build an object file
-tests/unit/readInput/test_main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/tests/unit/readInput/test_main.cpp.o
-.PHONY : tests/unit/readInput/test_main.cpp.o
+tests/unit/readInput/invalid_tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalid_tests.cpp.o
+.PHONY : tests/unit/readInput/invalid_tests.cpp.o
 
-tests/unit/readInput/test_main.i: tests/unit/readInput/test_main.cpp.i
-.PHONY : tests/unit/readInput/test_main.i
+tests/unit/readInput/invalid_tests.i: tests/unit/readInput/invalid_tests.cpp.i
+.PHONY : tests/unit/readInput/invalid_tests.i
 
 # target to preprocess a source file
-tests/unit/readInput/test_main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/tests/unit/readInput/test_main.cpp.i
-.PHONY : tests/unit/readInput/test_main.cpp.i
+tests/unit/readInput/invalid_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalid_tests.cpp.i
+.PHONY : tests/unit/readInput/invalid_tests.cpp.i
 
-tests/unit/readInput/test_main.s: tests/unit/readInput/test_main.cpp.s
-.PHONY : tests/unit/readInput/test_main.s
+tests/unit/readInput/invalid_tests.s: tests/unit/readInput/invalid_tests.cpp.s
+.PHONY : tests/unit/readInput/invalid_tests.s
 
 # target to generate assembly for a file
-tests/unit/readInput/test_main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/inputUnitTests.dir/build.make CMakeFiles/inputUnitTests.dir/tests/unit/readInput/test_main.cpp.s
-.PHONY : tests/unit/readInput/test_main.cpp.s
+tests/unit/readInput/invalid_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/invalidInputTests.dir/build.make CMakeFiles/invalidInputTests.dir/tests/unit/readInput/invalid_tests.cpp.s
+.PHONY : tests/unit/readInput/invalid_tests.cpp.s
+
+tests/unit/readInput/valid_tests.o: tests/unit/readInput/valid_tests.cpp.o
+.PHONY : tests/unit/readInput/valid_tests.o
+
+# target to build an object file
+tests/unit/readInput/valid_tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/tests/unit/readInput/valid_tests.cpp.o
+.PHONY : tests/unit/readInput/valid_tests.cpp.o
+
+tests/unit/readInput/valid_tests.i: tests/unit/readInput/valid_tests.cpp.i
+.PHONY : tests/unit/readInput/valid_tests.i
+
+# target to preprocess a source file
+tests/unit/readInput/valid_tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/tests/unit/readInput/valid_tests.cpp.i
+.PHONY : tests/unit/readInput/valid_tests.cpp.i
+
+tests/unit/readInput/valid_tests.s: tests/unit/readInput/valid_tests.cpp.s
+.PHONY : tests/unit/readInput/valid_tests.s
+
+# target to generate assembly for a file
+tests/unit/readInput/valid_tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/tests/unit/readInput/valid_tests.cpp.s
+.PHONY : tests/unit/readInput/valid_tests.cpp.s
 
 # Help Target
 help:
@@ -357,7 +415,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... inputUnitTests"
+	@echo "... invalidInputTests"
+	@echo "... validInputTests"
 	@echo "... src/cores/Block.o"
 	@echo "... src/cores/Block.i"
 	@echo "... src/cores/Block.s"
@@ -379,9 +438,12 @@ help:
 	@echo "... src/output/output.o"
 	@echo "... src/output/output.i"
 	@echo "... src/output/output.s"
-	@echo "... tests/unit/readInput/test_main.o"
-	@echo "... tests/unit/readInput/test_main.i"
-	@echo "... tests/unit/readInput/test_main.s"
+	@echo "... tests/unit/readInput/invalid_tests.o"
+	@echo "... tests/unit/readInput/invalid_tests.i"
+	@echo "... tests/unit/readInput/invalid_tests.s"
+	@echo "... tests/unit/readInput/valid_tests.o"
+	@echo "... tests/unit/readInput/valid_tests.i"
+	@echo "... tests/unit/readInput/valid_tests.s"
 .PHONY : help
 
 
