@@ -26,11 +26,10 @@ add_subdirectory(googletest/googletest)
 add_executable(validInputTests tests/unit/readInput/validTests.cpp 
 tests/unit/readInput/InputTestHelper.cpp 
 tests/unit/readInput/InputTestHelper.h ${SOURCES})
+target_compile_definitions(validInputTests PRIVATE TESTING)
 target_link_libraries(validInputTests gtest gtest_main)
 
 add_executable(invalidInputTests tests/unit/readInput/invalidTests.cpp 
 tests/unit/readInput/InputTestHelper.cpp 
 tests/unit/readInput/InputTestHelper.h ${SOURCES})
 target_link_libraries(invalidInputTests gtest gtest_main)
-
-

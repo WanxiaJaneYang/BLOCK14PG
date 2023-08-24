@@ -6,8 +6,13 @@
 
 class SafeInputTasks
 {
+#ifdef TESTING
+public:
+    std::vector<Block> tasks;
+#else
 private:
     std::vector<Block> tasks;
+#endif
     // std::mutex mtx;
 
 public:
@@ -18,7 +23,6 @@ public:
     void resize(int size);
     Block& getFromIndex(int index);
     void printTasks() const;
-    void clearTasks();
     virtual ~SafeInputTasks();
 };
 

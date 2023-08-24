@@ -57,9 +57,3 @@ void SafeInputTasks::printTasks() const
         block.printBlock();
     }
 }
-
-//clears the tasks vector
-void SafeInputTasks::clearTasks()
-{
-    tasks.clear();
-}

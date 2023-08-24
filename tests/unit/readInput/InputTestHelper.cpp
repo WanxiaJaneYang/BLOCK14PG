@@ -4,6 +4,8 @@
 std::vector<std::string> listInputFiles(const std::string& directory) {
     std::vector<std::string> files;
     for (const auto& entry : std::__fs::filesystem::directory_iterator(directory)) {
+        // if (entry.path().extension() == ".txt" && entry.path().string().find("_case.txt") != std::string::npos) {
+
         if (entry.path().extension() == ".csv" && entry.path().string().find("_case.csv") != std::string::npos) {
             std::cout << entry.path().string() << std::endl;
             files.push_back(entry.path().string());
@@ -57,7 +59,15 @@ std::string writeReadContent(){
     // Add blocks in tasks to the string
     oss << writeContentOfTasks(GlobalVars::processTasks);
 
-    GlobalVars::processTasks.clearTasks();// important for bulk tests
+    clearTasks(GlobalVars::processTasks);// important for bulk tests
 
     return oss.str();
+}
+
+//clears the tasks vector
+void clearTasks(SafeInputTasks& tasks)
+{
+    // tasks.tasks.clear();
+    Block dummy;
+    while (tasks.pop(dummy));
 }
