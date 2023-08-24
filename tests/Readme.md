@@ -1,11 +1,14 @@
-  #### For developer to test: run  
+  #### For developer to test: 
+  Input function
   ```  
 cd build  
-./inputUnitTests
+./validInputTests
+./invalidInputTests
   ``` 
-    
-      
-        
+#### For test cases worker:  
+1. put your test case in valid_test_cases folder or invalid_test_cases folder  
+2. keep the name convention  
+3. put your expected result text file in the same folder, keep tag table in alphabetical order, blank line before and after Block title      
           
 #### for unit testor to collaborate:             
 1. brew install cmake  
