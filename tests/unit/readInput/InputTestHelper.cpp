@@ -18,7 +18,7 @@ std::vector<std::string> listInputFiles(const std::string& directory) {
 std::string writeContentOfTasks(SafeInputTasks& tasks) {
     std::ostringstream oss;
     for (int i = 0; i < tasks.size(); ++i) {
-        Block& block = tasks.getFromIndex(i);
+        Block& block = tasks.task(i);
         // Assuming Block has a method that returns a string representation
         oss << "\n\n" << "Block" << (i + 1) << writeContentOfBlock(block);
     }
