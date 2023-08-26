@@ -15,9 +15,6 @@ public:
     int size();
     void push(const Block &block);
     bool pop(Block &block);
-    void resize(int size);
-    Block& getFromIndex(int index);
-    void printTasks() const;
     virtual ~SafeInputTasks();
 };
 

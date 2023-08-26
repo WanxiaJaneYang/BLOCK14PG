@@ -9,7 +9,7 @@
 void readInput()
 {
     // Read input file using the file name stored in GlobalVars::inputFileName
-    GlobalVars::inputFileName = "./input/test case.csv";
+    GlobalVars::inputFileName = "./input/input1.csv";
 
     std::ifstream file(GlobalVars::inputFileName);
 
@@ -44,8 +44,8 @@ void readInput()
     int num_y = big_height / GlobalVars::height;
     int num_z = big_depth / GlobalVars::depth;
     int total_blocks = num_x * num_y * num_z;
-
-    SafeInputTasks buffer_lst;
+    
+    Buffer buffer_lst;
     
     // Initialize buffer list with blocks
     buffer_lst.resize(total_blocks);

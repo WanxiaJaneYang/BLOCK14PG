@@ -87,21 +87,3 @@ void Block::fillBlock(int height, int depth, const std::vector<char> inputData)
         data.back().push_back(inputData);
     }
 }
-
-void Block::printBlock() const
-{
-    std::cout << "[" << x << ", " << y << ", " << z << "]" << std::endl;
-
-    for (const auto &outer : data)
-    {
-        for (const auto &inner : outer)
-        {
-            for (char c : inner)
-            {
-                std::cout << c << ' ';
-            }
-            std::cout << '\n';
-        }
-        std::cout << '\n';
-    }
-}
