@@ -1,5 +1,8 @@
-  #### For developer to test: 
-  Input function
+  #### For developer to test:   
+1. brew install cmake  // different command for windows to install cmake
+2. install VS code extention 'CMake tools' via VScode GUI
+3. git clone https://github.com/google/googletest.git if the folder is still empty after pull  
+4. run:
   ```  
 cd googletest/build  //mkdir build if no 'build' folder
 cmake .. // only needed when first loading and after adding new cpp/h file
@@ -13,9 +16,9 @@ make     // any time after editing existing cpp/h file
 3. put your expected result text file in the same folder, keep tag table in alphabetical order, blank line before and after Block title      
           
 #### for unit testor to collaborate:             
-1. brew install cmake  
-2. install VS code extention 'CMake tools'  
-3. git clone git clone https://github.com/google/googletest.git if folder is empty
+1. brew install cmake  // different command for windows to install cmake
+2. install VS code extention 'CMake tools' via VScode GUI
+3. git clone https://github.com/google/googletest.git if the folder is empty
 4. Add your executeable test file into root->CMakeLists.txt  
 ```  
     # Add test executable
