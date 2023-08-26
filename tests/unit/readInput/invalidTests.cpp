@@ -17,5 +17,5 @@ TEST_P(ReadInvalidInputTest, HandlesInvalidInput) {
 INSTANTIATE_TEST_SUITE_P(
     FileBasedInvalidTests,
     ReadInvalidInputTest,
-    ::testing::ValuesIn(listInputFiles("../tests/unit/readInput/invalid_test_cases/"))
+    ::testing::ValuesIn(listInputFiles("../../tests/unit/readInput/invalid_test_cases/"))
 );

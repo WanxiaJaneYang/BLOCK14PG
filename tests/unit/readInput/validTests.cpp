@@ -13,7 +13,7 @@ TEST_P(ReadInputTest, HandlesValidInput) {
     if (pos != std::string::npos) {
         baseName.erase(pos, 5); // 5 is the length of "_case"
     }
-    std::string expectedFilePath = "../tests/unit/readInput/valid_test_cases/" + baseName + "_expected.txt";
+    std::string expectedFilePath = "../../tests/unit/readInput/valid_test_cases/" + baseName + "_expected.txt";
 
     // read the expected content into a string
     std::ifstream expectedFile(expectedFilePath);
@@ -31,5 +31,5 @@ TEST_P(ReadInputTest, HandlesValidInput) {
 INSTANTIATE_TEST_SUITE_P(
     FileBasedTests,
     ReadInputTest,
-    ::testing::ValuesIn(listInputFiles("../tests/unit/readInput/valid_test_cases/"))
+    ::testing::ValuesIn(listInputFiles("../../tests/unit/readInput/valid_test_cases/"))
 );

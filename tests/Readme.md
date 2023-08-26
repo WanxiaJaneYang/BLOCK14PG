@@ -1,9 +1,9 @@
   #### For developer to test: 
   Input function
   ```  
-cd build  
+cd googletest/build  //mkdir build if no 'build' folder
 cmake .. // only needed when first loading and after adding new cpp/h file
-make // any time after editing existing cpp/h file
+make     // any time after editing existing cpp/h file
 ./validInputTests 
 ./invalidInputTests // optional
   ``` 
