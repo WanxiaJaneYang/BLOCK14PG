@@ -67,7 +67,5 @@ std::string writeReadContent(){
 //clears the tasks vector
 void clearTasks(SafeInputTasks& tasks)
 {
-    // tasks.tasks.clear();
-    Block dummy;
-    while (tasks.pop(dummy));
+    tasks.tasks.clear();
 }

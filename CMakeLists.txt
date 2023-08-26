@@ -19,17 +19,14 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest/include)
 add_subdirectory(googletest/googletest) 
 
-# Add test executable
-# add_executable(inputUnitTests tests/unit/readInput/test_main.cpp ${SOURCES})
-# target_link_libraries(inputUnitTests gtest gtest_main)
-
 add_executable(validInputTests tests/unit/readInput/validTests.cpp 
 tests/unit/readInput/InputTestHelper.cpp 
 tests/unit/readInput/InputTestHelper.h ${SOURCES})
-target_compile_definitions(validInputTests PRIVATE TESTING)
+target_compile_definitions(validInputTests PRIVATE TEST)
 target_link_libraries(validInputTests gtest gtest_main)
 
 add_executable(invalidInputTests tests/unit/readInput/invalidTests.cpp 
 tests/unit/readInput/InputTestHelper.cpp 
 tests/unit/readInput/InputTestHelper.h ${SOURCES})
+target_compile_definitions(invalidInputTests PRIVATE TEST)
 target_link_libraries(invalidInputTests gtest gtest_main)

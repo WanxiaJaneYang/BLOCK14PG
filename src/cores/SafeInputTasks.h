@@ -6,12 +6,10 @@
 
 class SafeInputTasks
 {
-#ifdef TESTING
-public:
-    std::vector<Block> tasks;
+#ifdef TEST
+    public: std::vector<Block> tasks;
 #else
-private:
-    std::vector<Block> tasks;
+    private: std::vector<Block> tasks;
 #endif
     // std::mutex mtx;
 

@@ -2,8 +2,8 @@
   Input function
   ```  
 cd build  
-cmake ..
-make
+cmake .. // only needed when first loading and after adding new cpp/h file
+make // any time after editing existing cpp/h file
 ./validInputTests 
 ./invalidInputTests // optional
   ``` 
