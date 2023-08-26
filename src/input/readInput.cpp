@@ -6,10 +6,10 @@
 #include <string>
 #include <map>
 
-void readInput()
+void readInput(const std::string& inputFileName = "./input/input.txt")
 {
     // Read input file using the file name stored in GlobalVars::inputFileName
-    GlobalVars::inputFileName = "./input/input.txt";
+    GlobalVars::inputFileName = inputFileName;
 
     std::ifstream file(GlobalVars::inputFileName);
 
