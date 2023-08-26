@@ -2,10 +2,10 @@
   Input function
   ```  
 cd build  
-// 'cmake ..' if any new file added
-make // update .O files
-./validInputTests
-./invalidInputTests
+cmake ..
+make
+./validInputTests 
+./invalidInputTests // optional
   ``` 
 #### For test cases worker:  
 1. put your test case in valid_test_cases folder or invalid_test_cases folder  
