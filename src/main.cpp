@@ -10,7 +10,7 @@ int main()
     GlobalVars::outputFileName = "output.txt";
 
     // read the input from iostream and write it to input.txt
-    std::ofstream outFile("input/input.txt");
+    std::ofstream outFile("input.txt");
 
     if (!outFile.is_open())
     {
