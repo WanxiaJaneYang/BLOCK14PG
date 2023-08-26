@@ -1,9 +1,10 @@
 #include "Block.h"
 #include <iostream>
 
-// constructor
+// Default constructor
 Block::Block() : x(0), y(0), z(0) {}
 
+// Overloaded constructor
 Block::Block(int x, int y, int z)
 {
     this->x=x;
@@ -11,54 +12,55 @@ Block::Block(int x, int y, int z)
     this->z=z;
 }
 
-// get x
+// Get x
 int Block::getX() const
 {
     return x;
 }
 
-// get y
+// Get y
 int Block::getY() const
 {
     return y;
 }
 
-// get z
+// Get z
 int Block::getZ() const
 {
     return z;
 }
 
-// set x
+// Set x
 void Block::setX(int x)
 {
     this->x = x;
 }
 
-// set y
+// Set y
 void Block::setY(int y)
 {
     this->y = y;
 }
 
-// set z
+// Set z
 void Block::setZ(int z)
 {
     this->z = z;
 }
 
-// set data
+// Set data
 void Block::setData(const std::vector<std::vector<std::vector<char>>> &data)
 {
     this->data = data;
 }
 
-// get data
+// Get data
 std::vector<std::vector<std::vector<char>>> Block::getData() const
 {
     return data;
 }
 
+// Method to check if the block is empty
 bool Block::isEmpty() const
 {
     return data.empty();
@@ -85,23 +87,5 @@ void Block::fillBlock(int height, int depth, const std::vector<char> inputData)
 
         // Fill the data in the current slice
         data.back().push_back(inputData);
-    }
-}
-
-void Block::printBlock() const
-{
-    std::cout << "[" << x << ", " << y << ", " << z << "]" << std::endl;
-
-    for (const auto &outer : data)
-    {
-        for (const auto &inner : outer)
-        {
-            for (char c : inner)
-            {
-                std::cout << c << ' ';
-            }
-            std::cout << '\n';
-        }
-        std::cout << '\n';
     }
 }
