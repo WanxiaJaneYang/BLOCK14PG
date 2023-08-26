@@ -3,24 +3,27 @@
 
 Buffer::Buffer()
 {
-    // constructor
+    // Constructor
 }
 
 Buffer::~Buffer()
 {
-    // destructor
+    // Destructor
 }
 
+// Method to get size of buffer
 int Buffer::size()
 {
     return tasks.size();
 }
 
+// Method to push block into buffer
 void Buffer::push(const Block &block)
 {
     tasks.push_back(block);
 }
 
+// Method to pop block into buffer
 bool Buffer::pop(Block &block)
 {
     if (tasks.empty())
@@ -32,23 +35,14 @@ bool Buffer::pop(Block &block)
     return true;
 }
 
+// Method to fill empty block into buffer with size
 void Buffer::resize(int size)
 {
     tasks.resize(size, Block());
 }
 
+// Method to get block reference from buffer with index
 Block &Buffer::getFromIndex(int index)
 {
     return tasks[index];
-}
-
-void Buffer::printTasks() const
-{
-    int count = 0;
-    for (const Block &block : tasks)
-    {
-        count++;
-        std::cout << "Block" << count << std::endl;
-        block.printBlock();
-    }
 }

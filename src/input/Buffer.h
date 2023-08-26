@@ -10,12 +10,17 @@ private:
 
 public:
     Buffer();
+    // Method to get size of buffer
     int size();
+    // Method to push block into buffer
     void push(const Block &block);
+    // Method to pop block into buffer
     bool pop(Block &block);
+    // Method to fill empty block into buffer with size
     void resize(int size);
+    // Method to get block reference from buffer with index
     Block &getFromIndex(int index);
-    void printTasks() const;
+    // Destructor
     virtual ~Buffer();
 };
 
