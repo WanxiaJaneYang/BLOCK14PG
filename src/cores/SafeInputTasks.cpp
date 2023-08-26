@@ -1,7 +1,5 @@
 #include "SafeInputTasks.h"
 #include <iostream>
-#include <sstream>
-#include <string>
 
 SafeInputTasks::SafeInputTasks()
 {
