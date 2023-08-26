@@ -2,18 +2,9 @@
 #include "../input/readInput.h"
 #include "../output/output.h"
 #include "../compressor/Compressor.h"
-#include <iostream>
-using namespace std;
+// #include <thread>
 
-MultiThreadsHandler::MultiThreadsHandler(/* args */)
-{
-}
-
-MultiThreadsHandler::~MultiThreadsHandler()
-{
-}
-
-void MultiThreadsHandler::startThreads()
+void startThreads()
 {
     // just a stub, waiting for the implementation of the threads
     // cout << "Reading..." << endl;
@@ -28,14 +19,14 @@ void MultiThreadsHandler::startThreads()
     output();
 }
 
-void MultiThreadsHandler::startReadingThread()
+static void startReadingThread()
 {
 }
 
-void MultiThreadsHandler::startWritingThread()
+static void startWritingThread()
 {
 }
 
-void MultiThreadsHandler::startCompressingThread()
+static void startCompressingThread()
 {
 }
