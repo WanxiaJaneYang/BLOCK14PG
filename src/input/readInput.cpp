@@ -9,7 +9,7 @@
 void readInput()
 {
     // Read input file using the file name stored in GlobalVars::inputFileName
-    GlobalVars::inputFileName = "./input/input.txt";
+    GlobalVars::inputFileName = "./input/test case.csv";
 
     std::ifstream file(GlobalVars::inputFileName);
 
