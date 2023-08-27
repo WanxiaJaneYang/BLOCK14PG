@@ -1,5 +1,6 @@
 #include "output.h"
 #include <fstream>
+#include <iostream>
 
 void output()
 {
@@ -19,6 +20,7 @@ void output()
         int sizeZ = cuboid.depth;
         std::string label = GlobalVars::tagTable.at(cuboid.tag);
         //  Write into output file
+        std::cout << positionX << ", " << positionY << ", " << positionZ << ", " << sizeX << ", " << sizeY << ", " << sizeZ << ", " << label << std::endl;
         outputFile << positionX << "," << positionY << "," << positionZ << "," << sizeX << "," << sizeY << "," << sizeZ << "," << label << std::endl;
         outputCuboid = GlobalVars::outputTasks.pop(cuboid);
     }
