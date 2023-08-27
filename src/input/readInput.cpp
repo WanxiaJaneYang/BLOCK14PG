@@ -1,22 +1,16 @@
 #include "readInput.h"
 #include <vector>
 #include <iostream>
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <map>
 
 void readInput()
 {
-    // Read input file using the file name stored in GlobalVars::inputFileName
-    GlobalVars::inputFileName = "./input/input1.csv";
-
-    std::ifstream file(GlobalVars::inputFileName);
-
     std::string line;
 
     // Get the first line
-    std::getline(file, line);
+    std::getline(std::cin, line);
     std::istringstream iss(line);
     int mapWidth, mapHeight, mapDepth;
     char comma;
@@ -25,7 +19,7 @@ void readInput()
     iss >> mapWidth >> comma >> mapHeight >> comma >> mapDepth >> comma >> GlobalVars::width >> comma >> GlobalVars::height >> comma >> GlobalVars::depth;
 
     // Get label pairs lines and save them into tagTable
-    while (std::getline(file, line))
+    while (std::getline(std::cin, line))
     {
         if (line.find(',') == std::string::npos)
             break;
@@ -57,7 +51,7 @@ void readInput()
     int index = -1;
 
     // Start to read block
-    while (std::getline(file, line))
+    while (std::getline(std::cin, line))
     {
         // Removing any newline or carriage return characters at the end of line
         while (!line.empty() && (line.back() == '\n' || line.back() == '\r'))
@@ -137,6 +131,4 @@ void readInput()
             index -= numX;
         }
     }
-
-    file.close();
 }
