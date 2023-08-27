@@ -1,0 +1,73 @@
+6,6,2
+e, NSW
+n, NT
+o, sea
+q, QLD
+s, SA
+t, TAS
+v, VIC
+w, WA
+
+Block1
+
+ennnnn
+eeennn
+oooooo
+oooooo
+wwwwww
+wwwwww
+
+qqqqqq
+qqqqqq
+vvvvvv
+vvvvvv
+nnnnnn
+nnnnnn
+
+Block2
+
+qqqqqq
+qqqqqq
+ssssss
+ssssss
+vvvvvv
+vvvvvv
+
+oooooo
+oooooo
+eeeeee
+eeeeee
+ssssss
+ssssss
+
+Block3
+
+nnnnnn
+nnnnnn
+oooooo
+oooooo
+tttttt
+tttttt
+
+tttttt
+tttttt
+eeeeee
+eeeeee
+oooooo
+oooooo
+
+Block4
+
+eeeeee
+eeeeee
+oooooo
+oooooo
+wwwwww
+wwwwww
+
+oooooo
+oooooo
+nneeee
+nneeee
+oooooo
+oooooo
