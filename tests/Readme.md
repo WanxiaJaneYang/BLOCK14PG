@@ -4,11 +4,12 @@
 3. git clone https://github.com/google/googletest.git if the folder is still empty after pull  
 4. run:
   ```  
-cd googletest/build  //mkdir build if no 'build' folder
-cmake .. // only needed when first loading and after adding new cpp/h file
-make     // any time after editing existing cpp/h file
+cd googletest/build  // mkdir build if no 'build' folder
+cmake ../..          // only needed when first loading 
+                     // and after adding new cpp/h file
+make                 // any time after editing existing cpp/h file
 ./validInputTests 
-./invalidInputTests // optional
+./invalidInputTests  // optional
   ``` 
 #### For test cases worker:  
 1. put your test case in valid_test_cases folder or invalid_test_cases folder  

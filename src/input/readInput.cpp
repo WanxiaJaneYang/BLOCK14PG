@@ -1,11 +1,6 @@
 #include "readInput.h"
-#include <vector>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <map>
 
-void readInput(std::istream& in = std::cin)
+void readInput(std::istream& in)
 {
     std::string line;
 
