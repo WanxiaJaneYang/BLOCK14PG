@@ -8,6 +8,10 @@ TEST_P(ReadInputTest, HandlesValidInput) {
 
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
+    // read the readInput() produced content into a string
+    readInput(testFilePath); // how to change to use std::istringstream simulatedInput as input parameter
+    std::string producedContent = writeReadContent();
+
     std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
         size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos) {
@@ -18,10 +22,6 @@ TEST_P(ReadInputTest, HandlesValidInput) {
     // read the expected content into a string
     std::ifstream expectedFile(expectedFilePath);
     std::string expectedContent((std::istreambuf_iterator<char>(expectedFile)), std::istreambuf_iterator<char>());
-
-    // read the readInput() produced content into a string
-    readInput(testFilePath);
-    std::string producedContent = writeReadContent();
 
     // compare the two strings to see if they are the same
     ASSERT_EQ(expectedContent, producedContent) << "The expected and produced contents are not the same!";
