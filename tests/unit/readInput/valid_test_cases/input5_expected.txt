@@ -9,7 +9,6 @@ v, VIC
 w, WA
 
 Block1
-
 oo
 oo
 
@@ -17,7 +16,6 @@ eo
 so
 
 Block2
-
 oe
 os
 
@@ -25,7 +23,6 @@ oo
 oo
 
 Block3
-
 oo
 oo
 
@@ -33,7 +30,6 @@ wo
 vo
 
 Block4
-
 ow
 ov
 
