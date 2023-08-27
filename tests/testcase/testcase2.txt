@@ -1,0 +1,19 @@
+4,4,2,2,2,2
+o, sea
+w, WA
+n, NT
+s, SA
+q, QLD
+n, NSW
+v, VIC
+t, TAS
+
+ooto              
+osoo
+wooo
+nooo
+
+otoo              
+oooq
+ooov
+oooo
