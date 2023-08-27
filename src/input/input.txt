@@ -1,4 +1,4 @@
-4,4,2,2,2,2
+8,8,8,4,4,4
 o, sea
 w, WA
 n, NT
@@ -8,13 +8,74 @@ n, NSW
 v, VIC
 t, TAS
 
-ooto              
-osoo
-wooo
-nooo
+oooooooo
+oosoosoo
+osooooso
+ooossooo
+osoososo
+sosoosss
+osssssss
+oooooooo
 
-otoo              
-oooq
-ooov
-oooo
+oossssoo
+oowoowwo
+ovoooowo
+ooovvooo
+osoososo
+sosoosss
+osssssss
+oonnnooo
 
+owwwwwww
+oosoosoo
+ovoooono
+ooonnnno
+ottttqqo
+qoqooqqq
+ovvvvvvv
+ooooovvv
+
+oowwwwoo
+ooqooqoo
+oqoqqqqo
+ooosswwo
+osoosono
+sosooooo
+ossssvvv
+ooooqqqq
+
+ooooqqqq
+oosootto
+osoottto
+ottooooo
+otoototo
+sotoonss
+osssttvv
+ooqtvsoo
+
+ooottooo
+oosotqoo
+osttqqqo
+oooqqsso
+osoqqtto
+soqqttss
+ossttqqs
+oooqqsst
+
+oossqqst
+oosoonnt
+osovvstq
+ooonnooo
+osvvvoso
+sosonqts
+osssssss
+ooovvvvo
+
+ootttttt
+oosovvvv
+osoqqqqq
+ttttsooo
+vvvvsoso
+sosqqsss
+osqvtsss
+ooqqqooo
