@@ -2,5 +2,5 @@
 #include "Buffer.h"
 #ifndef READINPUT_H
 #define READINPUT_H
-void readInput(const std::string &inputFileName);
+void readInput();
 #endif
