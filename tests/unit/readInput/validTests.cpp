@@ -8,8 +8,15 @@ TEST_P(ReadInputTest, HandlesValidInput) {
 
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
+
+    // Read the content of the file into an istringstream
+    std::ifstream inFile(testFilePath);
+    std::stringstream buffer;
+    buffer << inFile.rdbuf();
+    std::istringstream simulatedInput(buffer.str());
+
     // read the readInput() produced content into a string
-    readInput(testFilePath); // how to change to use std::istringstream simulatedInput as input parameter
+    readInput(simulatedInput); // change to use std::istringstream as input type
     std::string producedContent = writeReadContent();
 
     std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
