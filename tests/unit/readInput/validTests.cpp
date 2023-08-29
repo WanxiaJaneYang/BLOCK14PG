@@ -19,6 +19,7 @@ TEST_P(ReadInputTest, HandlesValidInput) {
     readInput(simulatedInput); // change to use std::istringstream as input type
     std::string producedContent = writeReadContent();
 
+    // find the expected result
     std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
         size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos) {
