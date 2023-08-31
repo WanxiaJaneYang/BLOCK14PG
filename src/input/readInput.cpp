@@ -1,31 +1,25 @@
 #include "readInput.h"
 #include <vector>
 #include <iostream>
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <map>
 
-void readInput(const std::string& inputFileName = "./input/input.txt")
+void readInput()
 {
-    // Read input file using the file name stored in GlobalVars::inputFileName
-    GlobalVars::inputFileName = inputFileName;
-
-    std::ifstream file(GlobalVars::inputFileName);
-
     std::string line;
 
     // Get the first line
-    std::getline(file, line);
+    std::getline(std::cin, line);
     std::istringstream iss(line);
-    int big_width, big_height, big_depth;
+    int mapWidth, mapHeight, mapDepth;
     char comma;
 
     // Collect size parameters
-    iss >> big_width >> comma >> big_height >> comma >> big_depth >> comma >> GlobalVars::width >> comma >> GlobalVars::height >> comma >> GlobalVars::depth;
+    iss >> mapWidth >> comma >> mapHeight >> comma >> mapDepth >> comma >> GlobalVars::width >> comma >> GlobalVars::height >> comma >> GlobalVars::depth;
 
     // Get label pairs lines and save them into tagTable
-    while (std::getline(file, line))
+    while (std::getline(std::cin, line))
     {
         if (line.find(',') == std::string::npos)
             break;
@@ -40,24 +34,24 @@ void readInput(const std::string& inputFileName = "./input/input.txt")
     }
 
     // Collecting parent size blocks
-    int num_x = big_width / GlobalVars::width;
-    int num_y = big_height / GlobalVars::height;
-    int num_z = big_depth / GlobalVars::depth;
-    int total_blocks = num_x * num_y * num_z;
-
-    SafeInputTasks buffer_lst;
+    int numX = mapWidth / GlobalVars::width;
+    int numY = mapHeight / GlobalVars::height;
+    int numZ = mapDepth / GlobalVars::depth;
+    int totalBlocks = numX * numY * numZ;
+    
+    Buffer bufferLst;
     
     // Initialize buffer list with blocks
-    buffer_lst.resize(total_blocks);
+    bufferLst.resize(totalBlocks);
 
     // Define counters 
-    int line_count = 0;
-    int row_count = 0;
-    int z_coord = 0;
+    int lineCount = 0;
+    int rowCount = 0;
+    int zCoord = 0;
     int index = -1;
 
     // Start to read block
-    while (std::getline(file, line))
+    while (std::getline(std::cin, line))
     {
         // Removing any newline or carriage return characters at the end of line
         while (!line.empty() && (line.back() == '\n' || line.back() == '\r'))
@@ -68,21 +62,21 @@ void readInput(const std::string& inputFileName = "./input/input.txt")
         // If the line is empty, which indicates a new slice
         if (line.empty())
         {
-            z_coord++;
+            zCoord++;
 
             // This can indicates if need go to next buffer block
-            if ((z_coord + 1) % GlobalVars::depth != 1)
+            if ((zCoord + 1) % GlobalVars::depth != 1 && GlobalVars::depth != 1)
             {
-                index -= num_x * num_y;
+                index -= numX * numY;
             }
 
             // New slice, line counter is reset to 0
-            line_count = 0;
+            lineCount = 0;
             continue;
         }
 
         // Processing a new line
-        row_count = 0;
+        rowCount = 0;
 
         // For collecting one bar (width=parentSize width, height=1, depth=1)
         std::vector<char> inputDataTemp;
@@ -91,15 +85,15 @@ void readInput(const std::string& inputFileName = "./input/input.txt")
         for (char e : line)
         {
             inputDataTemp.push_back(e);
-            row_count++;
+            rowCount++;
 
             // Check if need to change buffer block 
-            if (row_count % GlobalVars::width == 1)
+            if (rowCount % GlobalVars::width == 1)
             {
                 index++;
             }
 
-            Block &blockRef = buffer_lst.getFromIndex(index);
+            Block &blockRef = bufferLst.getFromIndex(index);
 
             // Check if bar is full
             if (inputDataTemp.size() == GlobalVars::width)
@@ -109,34 +103,32 @@ void readInput(const std::string& inputFileName = "./input/input.txt")
             }
 
             // Check if the point is the first point of the buffer block
-            if (row_count % GlobalVars::width == 1 && blockRef.isEmpty())
+            if (rowCount % GlobalVars::width == 1 && blockRef.isEmpty())
             {
                 // get coordinate
-                int x_coord = row_count - 1;
-                int y_coord = line_count;
+                int xCoord = rowCount - 1;
+                int yCoord = lineCount;
 
                 // Save into buffer block
-                blockRef.setX(x_coord);
-                blockRef.setY(y_coord);
-                blockRef.setZ(z_coord);
+                blockRef.setX(xCoord);
+                blockRef.setY(yCoord);
+                blockRef.setZ(zCoord);
             }
 
             // Check if the buffer block is full
-            if (row_count % GlobalVars::width == 0 && (line_count + 1) % GlobalVars::height == 0 && (z_coord + 1) % GlobalVars::depth == 0)
+            if (rowCount % GlobalVars::width == 0 && (lineCount + 1) % GlobalVars::height == 0 && (zCoord + 1) % GlobalVars::depth == 0)
             {
                 // Store the full bloack of buffer into GlobalVars::processTasks
                 GlobalVars::processTasks.push(blockRef);
             }
         }
 
-        line_count++;
+        lineCount++;
 
         // Check if need to change buffer block
-        if ((line_count + 1) % GlobalVars::height != 1)
+        if ((lineCount + 1) % GlobalVars::height != 1)
         {
-            index -= num_x;
+            index -= numX;
         }
     }
-
-    file.close();
 }

@@ -1,16 +1,15 @@
 #include "output.h"
-#include <fstream>
+#include <iostream>
 
+// print the Cuboid information in the required output format
 void output()
 {
-    // create and open file GlobalVars::outputFileName
-    std::ofstream outputFile(GlobalVars::outputFileName);
     // get Cuboid from GlobalVars::outputTasks
     Cuboid cuboid;
     bool outputCuboid = GlobalVars::outputTasks.pop(cuboid);
-    //  get the correct output format
     while (outputCuboid)
     {
+        //  calculate correct block position
         int positionX = cuboid.blockX + cuboid.cuboidX;
         int positionY = cuboid.blockY + cuboid.cuboidY;
         int positionZ = cuboid.blockZ + cuboid.cuboidZ;
@@ -18,9 +17,8 @@ void output()
         int sizeY = cuboid.height;
         int sizeZ = cuboid.depth;
         std::string label = GlobalVars::tagTable.at(cuboid.tag);
-        //  Write into output file
-        outputFile << positionX << "," << positionY << "," << positionZ << "," << sizeX << "," << sizeY << "," << sizeZ << "," << label << std::endl;
+        //  print out the block position, block size and accurate label
+        std::cout << positionX << ", " << positionY << ", " << positionZ << ", " << sizeX << ", " << sizeY << ", " << sizeZ << ", " << label << std::endl;
         outputCuboid = GlobalVars::outputTasks.pop(cuboid);
     }
-    outputFile.close();
 }

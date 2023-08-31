@@ -9,7 +9,6 @@ v, VIC
 w, WA
 
 Block1
-
 oooo
 ooso
 osoo
@@ -30,8 +29,7 @@ ooqo
 oqoq
 ooos
 
-Block 2
-
+Block2
 oooo
 osoo
 ooso
@@ -52,8 +50,7 @@ oqoo
 qqqo
 swwo
 
-Block 3
-
+Block3
 osoo
 soso
 osss
@@ -74,8 +71,7 @@ soso
 osss
 oooo
 
-Block 4
-
+Block4
 soso
 osss
 ssss
@@ -95,91 +91,3 @@ sono
 oooo
 svvv
 qqqq
-
-Block 5
-
-oooo
-ooso
-osoo
-otto
-
-ooot
-ooso
-ostt
-oooq
-
-ooss
-ooso
-osov
-ooon
-
-oott
-ooso
-osoq
-tttt
-
-Block 6
-
-qqqq
-otto
-ttto
-oooo
-
-tooo
-tqoo
-qqqo
-qsso
-
-qqst
-onnt
-vstq
-nooo
-
-tttt
-vvvv
-qqqq
-sooo
-
-Block 7
-
-otoo
-soto
-osss
-ooqt
-
-osoq
-soqq
-osst
-oooq
-
-osvv
-soso
-osss
-ooov
-
-vvvv
-sosq
-osqv
-ooqq
-
-Block 8
-
-toto
-onss
-ttvv
-vsoo
-
-qtto
-ttss
-tqqs
-qsst
-
-voso
-nqts
-ssss
-vvvo
-
-soso
-qsss
-tsss
-qooo
