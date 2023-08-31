@@ -17,7 +17,8 @@ set(SOURCES
     cores/SafeInputTasks.cpp 
     cores/SafeOutputTasks.cpp 
     globals/globals.cpp 
-    input/readInput.cpp 
+    input/readInput.cpp
+    input/Buffer.cpp
     multi-threads-handling/MultiThreadsHandler.cpp 
     output/output.cpp
 )
@@ -31,6 +32,7 @@ set(HEADERS
     cores/SafeOutputTasks.h 
     globals/globals.h 
     input/readInput.h 
+    input/Buffer.h
     multi-threads-handling/MultiThreadsHandler.h 
     output/output.h
 )
