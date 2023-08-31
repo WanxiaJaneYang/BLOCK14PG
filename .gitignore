@@ -10,3 +10,7 @@ src/Makefile
 
 src/input/main.cpp
 
+node_modules/
+
+package-lock.json
+package.json

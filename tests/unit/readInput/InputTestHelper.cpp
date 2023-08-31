@@ -20,7 +20,7 @@ std::string writeContentOfTasks(SafeInputTasks& tasks) {
     for (int i = 0; i < tasks.size(); ++i) {
         Block& block = tasks.tasks[i];
         // Assuming Block has a method that returns a string representation
-        oss << "\n\n" << "Block" << (i + 1) << writeContentOfBlock(block);
+        oss << "\r\n" << "Block" << (i + 1) << writeContentOfBlock(block);
     }
     return oss.str();
 }
@@ -32,13 +32,14 @@ std::string writeContentOfBlock(Block& block)
     auto data = block.getData();  // Fetch the data using the public getData() method
     
     for (const auto &outer : data){
-        oss << "\n";
         for (const auto &inner : outer){
-            oss << "\n";
+            oss << "\r\n";
             for (char c : inner){
                 oss << c;
             }
         }
+                oss << "\r\n";
+
     }
     return oss.str();
 }
@@ -49,11 +50,11 @@ std::string writeReadContent(){
     std::ostringstream oss;
     oss << GlobalVars::width << ",";
     oss << GlobalVars::height << ",";
-    oss << GlobalVars::depth ;
+    oss << GlobalVars::depth << "\r\n";
 
     // write labels into the string
     for (const auto& pair : GlobalVars::tagTable) {
-        oss << "\n" << pair.first << "," << pair.second;
+        oss << pair.first << "," << pair.second << "\n";
     }
 
     // Add blocks in tasks to the string

@@ -31,7 +31,6 @@ public:
     // Method to fill the block
     void fillBlock(int height, int depth, const std::vector<char> inputData);
 
-    void printBlock() const;
 
 private:
     int x;
