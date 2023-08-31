@@ -9,7 +9,6 @@ v, VIC
 w, WA
 
 Block1
-
 oooooo
 oooqoo
 oooeoo
@@ -18,7 +17,6 @@ ooowoo
 ooovoo
 
 Block2
-
 oooooo
 ooonoo
 oooeoo
@@ -27,7 +25,6 @@ ooowoo
 ooovoo
 
 Block3
-
 oooeoo
 ooosoo
 ooowoo

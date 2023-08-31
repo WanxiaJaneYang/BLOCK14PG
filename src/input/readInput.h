@@ -2,5 +2,10 @@
 #include "Buffer.h"
 #ifndef READINPUT_H
 #define READINPUT_H
-void readInput();
+#include <iostream> 
+#include <vector>
+#include <sstream>
+#include <string>
+#include <map>
+void readInput(std::istream& in = std::cin);
 #endif

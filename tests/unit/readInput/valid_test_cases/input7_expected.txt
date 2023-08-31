@@ -9,7 +9,6 @@ v, VIC
 w, WA
 
 Block1
-
 ennnnn
 eeennn
 oooooo
@@ -25,7 +24,6 @@ nnnnnn
 nnnnnn
 
 Block2
-
 qqqqqq
 qqqqqq
 ssssss
@@ -41,7 +39,6 @@ ssssss
 ssssss
 
 Block3
-
 nnnnnn
 nnnnnn
 oooooo
@@ -57,7 +54,6 @@ oooooo
 oooooo
 
 Block4
-
 eeeeee
 eeeeee
 oooooo
