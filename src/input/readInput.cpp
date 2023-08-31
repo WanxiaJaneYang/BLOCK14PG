@@ -5,12 +5,12 @@
 #include <string>
 #include <map>
 
-void readInput()
+void readInput(std::istream& in)
 {
     std::string line;
 
     // Get the first line
-    std::getline(std::cin, line);
+    std::getline(in, line);
     std::istringstream iss(line);
     int mapWidth, mapHeight, mapDepth;
     char comma;
@@ -19,7 +19,7 @@ void readInput()
     iss >> mapWidth >> comma >> mapHeight >> comma >> mapDepth >> comma >> GlobalVars::width >> comma >> GlobalVars::height >> comma >> GlobalVars::depth;
 
     // Get label pairs lines and save them into tagTable
-    while (std::getline(std::cin, line))
+    while (std::getline(in, line))
     {
         if (line.find(',') == std::string::npos)
             break;
@@ -51,7 +51,7 @@ void readInput()
     int index = -1;
 
     // Start to read block
-    while (std::getline(std::cin, line))
+    while (std::getline(in, line))
     {
         // Removing any newline or carriage return characters at the end of line
         while (!line.empty() && (line.back() == '\n' || line.back() == '\r'))
