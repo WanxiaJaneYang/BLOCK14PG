@@ -65,7 +65,7 @@ void readInput()
             zCoord++;
 
             // This can indicates if need go to next buffer block
-            if ((zCoord + 1) % GlobalVars::depth != 1)
+            if ((zCoord + 1) % GlobalVars::depth != 1 && GlobalVars::depth != 1)
             {
                 index -= numX * numY;
             }
