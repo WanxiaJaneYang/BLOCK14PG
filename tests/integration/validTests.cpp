@@ -1,10 +1,10 @@
-#include "InputTestHelper.h"
+#include "IntergrationTestHelper.h"
 
 // Parameterized test class
 class ReadInputTest : public ::testing::TestWithParam<std::string> {};
 
 // Actual test definition
-TEST_P(ReadInputTest, HandlesValidInput) {
+TEST_P(IntergrationTest, HandlesValidInput) {
 
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
@@ -40,6 +40,6 @@ TEST_P(ReadInputTest, HandlesValidInput) {
 // Instantiate the test case with the files in the directory
 INSTANTIATE_TEST_SUITE_P(
     FileBasedTests,
-    ReadInputTest,
+    IntergrationTest,
     ::testing::ValuesIn(listInputFiles("../../tests/unit/readInput/valid_test_cases/"))
 );

@@ -1,5 +1,5 @@
-#ifndef INPUT_TEST_H
-#define INPUT_TEST_H
+#ifndef INTERGRATION_TEST_H
+#define INTERGRATION_TEST_H
 
 #include <gtest/gtest.h>
 #include <iostream>
@@ -14,6 +14,7 @@
 #include "../../../src/cores/Block.h"
 #include "../../../src/cores/Cuboid.h"
 #include "../../../src/compressor/Compressor.h"
+#include "../../../src/output/output.h"
 #include "../../../src/multi-threads-handling/MultiThreadsHandler.h"
 #include <thread>
 
@@ -23,4 +24,4 @@ std::string writeContentOfBlock(Block& block);
 std::string writeReadContent();
 void clearTasks(SafeInputTasks& tasks);
 
-#endif // INPUT_TEST_H
+#endif 
