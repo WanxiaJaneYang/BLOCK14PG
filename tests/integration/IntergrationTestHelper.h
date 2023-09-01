@@ -1,5 +1,5 @@
-#ifndef INTERGRATION_TEST_H
-#define INTERGRATION_TEST_H
+#ifndef INTEGRATION_TEST_H
+#define INTEGRATION_TEST_H
 
 #include <gtest/gtest.h>
 #include <iostream>

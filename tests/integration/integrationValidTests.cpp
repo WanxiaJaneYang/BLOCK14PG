@@ -1,10 +1,10 @@
-#include "IntergrationTestHelper.h"
+#include "IntegrationTestHelper.h"
 
 // Parameterized test class
 class ReadInputTest : public ::testing::TestWithParam<std::string> {};
 
 // Actual test definition
-TEST_P(IntergrationTest, HandlesValidInput) {
+TEST_P(IntegrationTest, HandlesValidInput) {
 
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
@@ -15,11 +15,22 @@ TEST_P(IntergrationTest, HandlesValidInput) {
     buffer << inFile.rdbuf();
     std::istringstream simulatedInput(buffer.str());
 
-    // read the readInput() produced content into a string
+    // startThread()
     readInput(simulatedInput); // change to use std::istringstream as input type
     Compressor::compress();
+
+    // Redirect std::cout to a stringstream
+    std::ostringstream oss;
+    std::streambuf* pbuf = std::cout.rdbuf();
+    std::cout.rdbuf(oss.rdbuf());
+
+    // Call the output function
     output();
-    std::string producedContent = writeReadContent();
+
+    // Restore std::cout
+    std::cout.rdbuf(pbuf);
+    std::istringstream iss(oss.str());
+    std::string producedContent = iss.str();
 
     // find the expected result
     std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
@@ -27,7 +38,7 @@ TEST_P(IntergrationTest, HandlesValidInput) {
     if (pos != std::string::npos) {
         baseName.erase(pos, 5); // 5 is the length of "_case"
     }
-    std::string expectedFilePath = "../../tests/unit/readInput/valid_test_cases/" + baseName + "_expected.txt";
+    std::string expectedFilePath = "../../tests/integration/valid_test_cases/" + baseName + "_expected.txt";
 
     // read the expected content into a string
     std::ifstream expectedFile(expectedFilePath);
@@ -40,6 +51,6 @@ TEST_P(IntergrationTest, HandlesValidInput) {
 // Instantiate the test case with the files in the directory
 INSTANTIATE_TEST_SUITE_P(
     FileBasedTests,
-    IntergrationTest,
-    ::testing::ValuesIn(listInputFiles("../../tests/unit/readInput/valid_test_cases/"))
+    IntegrationTest,
+    ::testing::ValuesIn(listInputFiles("../../tests/integration/valid_test_cases/"))
 );
