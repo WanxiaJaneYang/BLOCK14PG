@@ -1,10 +1,10 @@
 #include "IntegrationTestHelper.h"
 
 // Parameterized test class
-class ReadInputTest : public ::testing::TestWithParam<std::string> {};
+class IntegrationTest : public ::testing::TestWithParam<std::string> {};
 
 // Actual test definition
-TEST_P(IntegrationTest, HandlesValidInput) {
+TEST_P(IntegrationTest, HandlesValidIntegration) {
 
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
