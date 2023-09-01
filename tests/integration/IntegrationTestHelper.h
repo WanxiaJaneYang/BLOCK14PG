@@ -19,9 +19,4 @@
 #include <thread>
 
 std::vector<std::string> listInputFiles(const std::string& directory);
-std::string writeContentOfTasks(SafeInputTasks& tasks);
-std::string writeContentOfBlock(Block& block);
-std::string writeReadContent();
-void clearTasks(SafeInputTasks& tasks);
-
 #endif 
