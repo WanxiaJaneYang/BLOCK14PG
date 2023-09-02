@@ -9,15 +9,24 @@ TEST_P(IntegrationTest, HandlesValidIntegration) {
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
 
+    std::cerr << "Find open file path: " << std::endl;
+
     // Read the content of the file into an istringstream
     std::ifstream inFile(testFilePath);
+
     std::stringstream buffer;
     buffer << inFile.rdbuf();
+
     std::istringstream simulatedInput(buffer.str());
+    std::cerr << "simulated input "<< std::endl;
 
     // startThread()
-    readInput(simulatedInput); // change to use std::istringstream as input type
-    Compressor::compress();
+    readInput(simulatedInput); 
+    std::cerr << "input finished" << std::endl;
+
+    Compressor::compress(); 
+
+    std::cerr << "compression finished" << std::endl;
 
     // Redirect std::cout to a stringstream
     std::ostringstream oss;
@@ -26,6 +35,7 @@ TEST_P(IntegrationTest, HandlesValidIntegration) {
 
     // Call the output function
     output();
+    std::cerr << "output finished" << std::endl;
 
     // Restore std::cout
     std::cout.rdbuf(pbuf);
