@@ -7,5 +7,5 @@
 #include <sstream>
 #include <string>
 #include <map>
-void readInput();
+void readInput(std::istream& in=std::cin);
 #endif

@@ -14,3 +14,32 @@ std::vector<std::string> listInputFiles(const std::string& directory) {
     return files;
 }
 
+std::istringstream simulateInputStream(const std::string& filePath) {
+    // Read the content of the file into an istringstream
+    std::ifstream inFile(filePath);
+
+    // simulate input stream
+    std::stringstream buffer;
+    buffer << inFile.rdbuf();
+    return std::istringstream(buffer.str());
+}
+
+std::vector<std::string> sortedLinesFromStream(std::istream& stream) {
+    std::vector<std::string> lines;
+    std::string line;
+
+    while (std::getline(stream, line)) {
+        line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
+        lines.push_back(line);
+    }
+
+    std::sort(lines.begin(), lines.end());
+    
+    return lines;
+}
+
+
+
+
+
+

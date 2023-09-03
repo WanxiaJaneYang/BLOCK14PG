@@ -17,6 +17,21 @@
 #include "../../../src/output/output.h"
 #include "../../../src/multi-threads-handling/MultiThreadsHandler.h"
 #include <thread>
+#include <algorithm>
+#include <ostream>
 
 std::vector<std::string> listInputFiles(const std::string& directory);
+
+std::istringstream simulateInputStream(const std::string& filePath);
+
+class StreamRedirector {
+    std::ostream& stream_;
+    std::streambuf* oldBuf_;
+public:
+    inline StreamRedirector(std::ostream& stream, std::streambuf* newBuf) : stream_(stream), oldBuf_(stream.rdbuf(newBuf)) {}
+    inline ~StreamRedirector() { stream_.rdbuf(oldBuf_); }
+};
+
+std::vector<std::string> sortedLinesFromStream(std::istream& stream);
+
 #endif 
