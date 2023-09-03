@@ -4,6 +4,8 @@
 # Ignore Mac compiler and debuger config
 .vscode/
 
+src/build/
+
 src/Makefile
 
 src/input/main.cpp
