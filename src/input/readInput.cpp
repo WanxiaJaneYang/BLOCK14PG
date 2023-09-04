@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-void readInput(std::istream& in)
+void readInput(std::istream &in)
 {
     std::string line;
 
@@ -38,13 +38,12 @@ void readInput(std::istream& in)
     int numY = mapHeight / GlobalVars::height;
     int numZ = mapDepth / GlobalVars::depth;
     int totalBlocks = numX * numY * numZ;
-    
+
     Buffer bufferLst;
-    
     // Initialize buffer list with blocks
     bufferLst.resize(totalBlocks);
 
-    // Define counters 
+    // Define counters
     int lineCount = 0;
     int rowCount = 0;
     int zCoord = 0;
@@ -58,7 +57,7 @@ void readInput(std::istream& in)
         {
             line.pop_back();
         }
-        
+
         // If the line is empty, which indicates a new slice
         if (line.empty())
         {
@@ -87,23 +86,16 @@ void readInput(std::istream& in)
             inputDataTemp.push_back(e);
             rowCount++;
 
-            // Check if need to change buffer block 
-            if (rowCount % GlobalVars::width == 1)
+            // Check if need to change buffer block
+            if (rowCount % GlobalVars::width == 1 || GlobalVars::width == 1)
             {
                 index++;
             }
 
             Block &blockRef = bufferLst.getFromIndex(index);
 
-            // Check if bar is full
-            if (inputDataTemp.size() == GlobalVars::width)
-            {
-                blockRef.fillBlock(GlobalVars::height, GlobalVars::depth, inputDataTemp);
-                inputDataTemp.clear();
-            }
-
             // Check if the point is the first point of the buffer block
-            if (rowCount % GlobalVars::width == 1 && blockRef.isEmpty())
+            if (blockRef.isEmpty() && ((rowCount % GlobalVars::width == 1 && GlobalVars::width != 1) || GlobalVars::width == 1))
             {
                 // get coordinate
                 int xCoord = rowCount - 1;
@@ -113,6 +105,14 @@ void readInput(std::istream& in)
                 blockRef.setX(xCoord);
                 blockRef.setY(yCoord);
                 blockRef.setZ(zCoord);
+            }
+
+            // Check if bar is full
+            if (inputDataTemp.size() == GlobalVars::width)
+            {
+
+                blockRef.fillBlock(GlobalVars::height, GlobalVars::depth, inputDataTemp);
+                inputDataTemp.clear();
             }
 
             // Check if the buffer block is full
@@ -126,7 +126,7 @@ void readInput(std::istream& in)
         lineCount++;
 
         // Check if need to change buffer block
-        if ((lineCount + 1) % GlobalVars::height != 1)
+        if ((lineCount + 1) % GlobalVars::height != 1 && GlobalVars::height != 1)
         {
             index -= numX;
         }
