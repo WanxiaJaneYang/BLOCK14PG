@@ -23,8 +23,15 @@ jobs:
 
     - name: Run Cppcheck for src/ with C++11 standard
       run: |
-        cppcheck --enable=all --error-exitcode=1 --std=c++11 src/ || echo "Cppcheck found issues in src/"
+        cppcheck --enable=all --std=c++11 src/ > src_cppcheck.txt 2>&1
         
     - name: Run Cppcheck for tests/ with C++17 standard
       run: |
-        cppcheck --enable=all --error-exitcode=1 --std=c++17 tests/ || echo "Cppcheck found issues in tests/"
+        cppcheck --enable=all --std=c++17 tests/ > tests_cppcheck.txt 2>&1
+
+    - name: Fail if issues were found
+      run: |
+        if grep -q "(error)" src_cppcheck.txt || grep -q "(error)" tests_cppcheck.txt; then
+          echo "Cppcheck found errors"
+          exit 1
+        fi
