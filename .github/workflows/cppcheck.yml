@@ -23,8 +23,8 @@ jobs:
 
     - name: Run Cppcheck for src/ with C++11 standard
       run: |
-        cppcheck --enable=all --error-exitcode=1 --std=c++11 src/
+        cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 --std=c++11 src/
 
     - name: Run Cppcheck for tests/ with C++17 standard
       run: |
-        cppcheck --enable=all --error-exitcode=1 --std=c++17 tests/
+        cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 --std=c++17 tests/
