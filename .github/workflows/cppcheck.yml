@@ -22,9 +22,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Cppcheck
+    - name: Download Cppcheck
       run: |
-        choco install cppcheck
+        Invoke-WebRequest -Uri https://path-to-cppcheck-binary.zip -OutFile cppcheck.zip
+        Expand-Archive -Path cppcheck.zip -DestinationPath ./cppcheck-bin
+
+    - name: Run Cppcheck
+      run: |
+        ./cppcheck-bin/cppcheck.exe --enable=all --error-exitcode=1 --suppress=missingIncludeSystem ./
+
 
     - name: Run Cppcheck (src/ with C++11 standard)
       run: |
