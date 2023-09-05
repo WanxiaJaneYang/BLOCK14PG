@@ -49,10 +49,10 @@ void Block::setZ(int z)
 }
 
 // Set data
-// void Block::setData(const std::vector<std::vector<std::vector<char>>> &data)
-// {
-//     this->data = data;
-// }
+void Block::setData(const std::vector<std::vector<std::vector<char>>> &data)
+{
+    this->data = data;
+}
 
 // Get data
 std::vector<std::vector<std::vector<char>>> Block::getData() const
