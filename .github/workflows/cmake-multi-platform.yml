@@ -1,0 +1,51 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os-compiler: [macos-latest-clang++, windows-latest-g++]
+    
+    runs-on: ${{ matrix.os-compiler }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Extract OS and Compiler from matrix
+      id: set_env
+      run: |
+        echo "OS=${{ matrix.os-compiler }}" | awk -F- '{print $1}' >> $GITHUB_ENV
+        echo "COMPILER=${{ matrix.os-compiler }}" | awk -F- '{print $3}' >> $GITHUB_ENV
+    
+    - name: Set compiler
+      run: |
+        echo "CC=${{ env.COMPILER }}" >> $GITHUB_ENV
+        echo "CXX=${{ env.COMPILER }}" >> $GITHUB_ENV
+
+    - name: Setup MinGW (only for windows with g++)
+      if: env.OS == 'windows' && env.COMPILER == 'g++'
+      run: |
+        choco install mingw
+        echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
+    
+    - name: Create build directories
+      run: |
+        mkdir build-main
+        mkdir build-tests
+
+    - name: Configure and build main application
+      run: |
+        cd build-main
+        cmake src/
+        cmake --build .
+
+    - name: Configure, build, and run tests
+      run: |
+        cd build-tests
+        cmake .
+        cmake --build .
+        ./validInputTests
+        ./integrationValidTests
