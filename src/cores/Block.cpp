@@ -7,9 +7,9 @@ Block::Block() : x(0), y(0), z(0) {}
 // Overloaded constructor
 Block::Block(int x, int y, int z)
 {
-    this->x=x;
-    this->y=y;
-    this->z=z;
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
 // Get x
@@ -65,7 +65,6 @@ bool Block::isEmpty() const
 {
     return data.empty();
 }
-
 
 // Method to check if the block is filled
 bool Block::isFull(int height, int depth) const
