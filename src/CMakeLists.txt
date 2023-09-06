@@ -40,8 +40,7 @@ set(HEADERS
 # Add executable target
 add_executable(BLOCK ${SOURCES} ${HEADERS})
 
-# Compiler and linker flags for MinGW
-if(MINGW)
-    target_compile_options(BLOCK PRIVATE -m64)
-    target_link_options(BLOCK PRIVATE -static -m64)
-endif()
+# Compiler and linker flags
+target_compile_options(BLOCK PRIVATE -m64)
+target_link_options(BLOCK PRIVATE -static -m64)
+
