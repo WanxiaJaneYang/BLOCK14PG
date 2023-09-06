@@ -41,10 +41,11 @@ jobs:
         cd src
         mkdir -p build
         cd build
-        cmake -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX ..
         if [ "${{ matrix.config.os }}" == "windows-latest" ]; then
+          cmake --verbose -G "MinGW Makefiles" ..
           mingw32-make
         else
+          cmake
           make
         fi
 
