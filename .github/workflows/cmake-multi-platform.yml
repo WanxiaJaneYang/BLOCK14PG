@@ -27,6 +27,7 @@ jobs:
         echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
 
     - name: Configure and build main application
+      shell: bash
       run: |
         cd src
         mkdir -p build
@@ -38,6 +39,7 @@ jobs:
           cmake ..
           make
         fi
+
 
     - name: Setup Google Test
       run: |
