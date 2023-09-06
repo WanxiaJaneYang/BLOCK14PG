@@ -6,8 +6,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
-        compiler: [clang++, g++]
+        config:
+          - {os: macos-latest, compiler: clang++}
+          - {os: windows-latest, compiler: g++}
+
     
     runs-on: ${{ matrix.os }}
 
@@ -39,6 +41,7 @@ jobs:
           cmake ..
           make
         fi
+
 
 
     - name: Setup Google Test
