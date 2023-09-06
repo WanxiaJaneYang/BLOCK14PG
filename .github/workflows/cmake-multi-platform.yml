@@ -19,11 +19,11 @@ jobs:
 
     - name: Set compiler
       run: |
-        echo "CC=${{ matrix.compiler }}" >> $GITHUB_ENV
-        echo "CXX=${{ matrix.compiler }}" >> $GITHUB_ENV
+        echo "CC=${{ matrix.config.compiler }}" >> $GITHUB_ENV
+        echo "CXX=${{ matrix.config.compiler }}" >> $GITHUB_ENV
 
     - name: Setup MinGW (only for windows with g++)
-      if: ${{ matrix.os == 'windows-latest' && matrix.compiler == 'g++' }}
+      if: ${{ matrix.config.os == 'windows-latest' && matrix.cnfig.compiler == 'g++' }}
       run: |
         choco install mingw
         echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
@@ -34,7 +34,7 @@ jobs:
         cd src
         mkdir -p build
         cd build
-        if [ "${{ matrix.os }}" == "windows-latest" ] && [ "${{ matrix.compiler }}" == "g++" ]; then
+        if [ "${{ matrix.config.os }}" == "windows-latest" ] && [ "${{ matrix.config.compiler }}" == "g++" ]; then
           cmake .. -G "MinGW Makefiles" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           mingw32-make
         else
