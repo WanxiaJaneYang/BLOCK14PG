@@ -41,6 +41,9 @@ set(HEADERS
 add_executable(BLOCK ${SOURCES} ${HEADERS})
 
 # Compiler and linker flags
-target_compile_options(BLOCK PRIVATE -m64)
-target_link_options(BLOCK PRIVATE -static -m64)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU") # For GCC
+    target_compile_options(BLOCK PRIVATE -m64)
+    target_link_options(BLOCK PRIVATE -static -m64)
+endif()
+
 
