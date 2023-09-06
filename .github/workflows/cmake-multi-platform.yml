@@ -6,31 +6,31 @@ jobs:
   build:
     strategy:
       matrix:
-        os-compiler: [macos-latest-clang++, windows-latest-g++]
+        os: [macos-latest, windows-latest]
+        compiler: [clang++, g++]
     
-    runs-on: ${{ matrix.os-compiler }}
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Extract OS and Compiler from matrix
-      id: set_env
+    - name: Set OS and Compiler as env
       run: |
-        echo "OS=${{ matrix.os-compiler }}" | awk -F- '{print $1}' >> $GITHUB_ENV
-        echo "COMPILER=${{ matrix.os-compiler }}" | awk -F- '{print $3}' >> $GITHUB_ENV
-    
+        echo "OS=${{ matrix.os }}" >> $GITHUB_ENV
+        echo "COMPILER=${{ matrix.compiler }}" >> $GITHUB_ENV
+
     - name: Set compiler
       run: |
         echo "CC=${{ env.COMPILER }}" >> $GITHUB_ENV
         echo "CXX=${{ env.COMPILER }}" >> $GITHUB_ENV
 
     - name: Setup MinGW (only for windows with g++)
-      if: env.OS == 'windows' && env.COMPILER == 'g++'
+      if: matrix.os == 'windows-latest' && matrix.compiler == 'g++'
       run: |
         choco install mingw
         echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
-    
+
     - name: Create build directories
       run: |
         mkdir build-main
