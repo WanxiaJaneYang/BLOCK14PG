@@ -41,13 +41,8 @@ jobs:
         cd src
         mkdir -p build
         cd build
-        if [ "${{ matrix.config.os }}" == "windows-latest" ] && [ "${{ matrix.config.compiler }}" == "g++" ]; then
-          cmake .. -DCMAKE_CXX_COMPILER=g++
-          make
-        else
-          cmake ..
-          make
-        fi
+        cmake ..
+        make
 
 
 
