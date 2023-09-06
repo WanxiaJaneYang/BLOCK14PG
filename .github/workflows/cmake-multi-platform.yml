@@ -25,7 +25,7 @@ jobs:
           echo "CXX=clang++" >> $GITHUB_ENV
         else
           # Your other compiler configurations here
-          echo "CC=${{ matrix.config.compiler }}" >> $GITHUB_ENV
+          echo "CC=gcc" >> $GITHUB_ENV
           echo "CXX=${{ matrix.config.compiler }}" >> $GITHUB_ENV
         fi
 
