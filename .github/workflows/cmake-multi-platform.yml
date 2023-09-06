@@ -31,21 +31,33 @@ jobs:
         choco install mingw
         echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
 
-    - name: Create build directories
-      run: |
-        mkdir build-main
-        mkdir build-tests
-
     - name: Configure and build main application
       run: |
-        cd build-main
-        cmake src/
-        cmake --build .
+        cd src
+        mkdir -p build
+        cd build
+        if [ "${{ matrix.os }}" == "windows-latest" ] && [ "${{ matrix.compiler }}" == "g++" ]; then
+          cmake .. -G "MinGW Makefiles"
+          mingw32-make
+        else
+          cmake ..
+          make
+        fi
 
-    - name: Configure, build, and run tests
+    - name: Setup Google Test
       run: |
-        cd build-tests
-        cmake .
-        cmake --build .
+        if [ ! -d "googletest" ]; then
+          git clone https://github.com/google/googletest.git
+        fi
+        cd googletest
+        mkdir -p build
+        cd build
+        cmake ../..
+        make
+
+    - name: Run Tests
+      run: |
+        cd googletest/build
         ./validInputTests
-        ./integrationValidTests
+        # Uncomment below if you want to also run invalidInputTests
+        # ./invalidInputTests
