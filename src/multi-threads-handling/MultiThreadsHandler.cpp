@@ -8,7 +8,7 @@ void startThreads()
 {
     // just a stub, waiting for the implementation of the threads
     readInput();
-    Compressor::compress();
+    compress();
     output();
 }
 
