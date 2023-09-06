@@ -15,15 +15,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set OS and Compiler as env
-      run: |
-        echo "OS=${{ matrix.os }}" >> $GITHUB_ENV
-        echo "COMPILER=${{ matrix.compiler }}" >> $GITHUB_ENV
-
     - name: Set compiler
       run: |
-        echo "CC=${{ env.COMPILER }}" >> $GITHUB_ENV
-        echo "CXX=${{ env.COMPILER }}" >> $GITHUB_ENV
+        echo "CC=${{ matrix.compiler }}" >> $GITHUB_ENV
+        echo "CXX=${{ matrix.compiler }}" >> $GITHUB_ENV
 
     - name: Setup MinGW (only for windows with g++)
       if: matrix.os == 'windows-latest' && matrix.compiler == 'g++'
