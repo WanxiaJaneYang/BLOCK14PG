@@ -23,7 +23,7 @@ jobs:
         echo "CXX=${{ matrix.compiler }}" >> $GITHUB_ENV
 
     - name: Setup MinGW (only for windows with g++)
-      if: matrix.os == 'windows-latest' && matrix.compiler == 'g++'
+      if: ${{ matrix.os == 'windows-latest' && matrix.compiler == 'g++' }}
       run: |
         choco install mingw
         echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
