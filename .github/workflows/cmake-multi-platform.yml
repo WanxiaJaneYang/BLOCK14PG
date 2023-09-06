@@ -19,8 +19,15 @@ jobs:
 
     - name: Set compiler
       run: |
-        echo "CC=${{ matrix.config.compiler }}" >> $GITHUB_ENV
-        echo "CXX=${{ matrix.config.compiler }}" >> $GITHUB_ENV
+        if [ "${{ matrix.config.compiler }}" == "clang++" ]; then
+          echo "CC=clang" >> $GITHUB_ENV
+          echo "CXX=clang++" >> $GITHUB_ENV
+        else
+          # Your other compiler configurations here
+          echo "CC=${{ matrix.config.compiler }}" >> $GITHUB_ENV
+          echo "CXX=${{ matrix.config.compiler }}" >> $GITHUB_ENV
+        fi
+
 
     - name: Setup MinGW (only for windows with g++)
       if: ${{ matrix.config.os == 'windows-latest' && matrix.config.compiler == 'g++' }}
