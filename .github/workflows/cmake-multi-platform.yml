@@ -26,7 +26,7 @@ jobs:
         else
           # Your other compiler configurations here
           echo "CC=gcc" >> $GITHUB_ENV
-          echo "CXX=${{ matrix.config.compiler }}" >> $GITHUB_ENV
+          echo "CXX=g++" >> $GITHUB_ENV
         fi
 
 
@@ -42,8 +42,8 @@ jobs:
         mkdir -p build
         cd build
         if [ "${{ matrix.config.os }}" == "windows-latest" ] && [ "${{ matrix.config.compiler }}" == "g++" ]; then
-          cmake .. -G "MinGW Makefiles" -DCMAKE_CXX_COMPILER=g++
-          mingw32-make
+          cmake .. -DCMAKE_CXX_COMPILER=g++
+          make
         else
           cmake ..
           make
