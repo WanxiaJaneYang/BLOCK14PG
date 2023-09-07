@@ -1,4 +1,4 @@
-#include "blockCompressTestHelper.h"
+#include "planeCompressTestHelper.h"
 
 // Parameterized test class
 class BlockCompressTest : public ::testing::TestWithParam<std::string>
