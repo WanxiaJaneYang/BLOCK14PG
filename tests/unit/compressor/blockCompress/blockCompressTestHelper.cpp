@@ -15,6 +15,66 @@ std::vector<std::string> listInputFiles(const std::string &directory)
     return files;
 }
 
+// Method to convert string to std::deque<std::deque<Cuboid>> as parameter of block compressor
+std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fileContent)
+{
+    std::deque<std::deque<Cuboid>> planes;
+    std::deque<Cuboid> currentPlane;
+
+    std::istringstream iss(fileContent);
+    std::string line;
+
+    while (std::getline(iss, line))
+    {
+        // If the line is blank, it indicates the end of the current plane.
+        if (line.empty())
+        {
+            if (!currentPlane.empty())
+            {
+                planes.push_back(currentPlane);
+                currentPlane.clear();
+            }
+            continue;
+        }
+
+        std::istringstream lineStream(line);
+        std::string token;
+        Cuboid cuboid;
+
+        std::getline(lineStream, token, ',');
+        cuboid.blockX = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.blockY = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.blockZ = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.cuboidX = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.cuboidY = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.cuboidZ = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.width = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.height = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.depth = std::stoi(token);
+        std::getline(lineStream, token, ',');
+        cuboid.tag = std::stoi(token);
+
+        // Add Cuboid to currentPlane
+        currentPlane.push_back(cuboid);
+    }
+
+    // Add the last plane if it's not empty
+    if (!currentPlane.empty())
+    {
+        planes.push_back(currentPlane);
+    }
+
+    return planes;
+}
+
 // Utility function to write tasks into a string
 std::string writeContentOfTasks(SafeInputTasks& tasks) {
     std::ostringstream oss;
