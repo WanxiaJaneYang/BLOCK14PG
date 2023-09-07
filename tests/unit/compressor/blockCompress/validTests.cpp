@@ -18,10 +18,10 @@ TEST_P(BlockCompressTest, HandlesValidInput)
     std::string fileContent = buffer.str();
 
     // Convert file content to the required data structure
-    //std::deque<std::deque<Cuboid>> planes = convertFileContentToPlanes(fileContent);
+    std::deque<std::deque<Cuboid>> planes = convertFileContentToPlanes(fileContent);
 
     // Read the blockCompress() produced content into a string
-    //blockCompress(planes);
+    blockCompress(planes);
 
     std::string producedContent = writeReadContent(); // method to generate output to string
 
