@@ -108,29 +108,23 @@ std::string writeContentOfCuboid(Cuboid &cuboid)
     return oss.str();
 }
 
-std::string writeReadContent(){
+// Method to write outcome of block compress
+std::string writeReadContent()
+{
 
     // Convert the data stored into a string
     std::ostringstream oss;
-    oss << GlobalVars::width << ",";
-    oss << GlobalVars::height << ",";
-    oss << GlobalVars::depth << "\r\n";
-
-    // write labels into the string
-    for (const auto& pair : GlobalVars::tagTable) {
-        oss << pair.first << "," << pair.second << "\n";
-    }
 
     // Add blocks in tasks to the string
-    oss << writeContentOfTasks(GlobalVars::processTasks);
+    oss << writeContentOfTasks(GlobalVars::outputTasks);
 
-    clearTasks(GlobalVars::processTasks);// important for bulk tests
+    clearTasks(GlobalVars::outputTasks); // important for bulk tests
 
     return oss.str();
 }
 
-//clears the tasks vector
-void clearTasks(SafeInputTasks& tasks)
+// clears the tasks vector
+void clearTasks(SafeOutputTasks &tasks)
 {
     tasks.tasks.clear();
 }
