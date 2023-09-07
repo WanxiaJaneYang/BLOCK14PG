@@ -1,4 +1,4 @@
-#include "InputTestHelper.h"
+#include "blockCompressTestHelper.h"
 
 // Utility function to get all input files from a directory
 std::vector<std::string> listInputFiles(const std::string& directory) {
