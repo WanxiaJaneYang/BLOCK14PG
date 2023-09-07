@@ -76,32 +76,35 @@ std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fil
 }
 
 // Utility function to write tasks into a string
-std::string writeContentOfTasks(SafeInputTasks& tasks) {
+std::string writeContentOfTasks(SafeOutputTasks &tasks)
+{
     std::ostringstream oss;
-    for (int i = 0; i < tasks.size(); ++i) {
-        Block& block = tasks.tasks[i];
+    for (int i = 0; i < tasks.size(); ++i)
+    {
+        Cuboid &cuboid = tasks.tasks[i];
         // Assuming Block has a method that returns a string representation
-        oss << "\r\n" << "Block" << (i + 1) << writeContentOfBlock(block);
+        oss << "\r\n"
+            << "Cuboid" << (i + 1) << writeContentOfCuboid(cuboid);
     }
     return oss.str();
 }
 
 // Utility function to write the block into a string
-std::string writeContentOfBlock(Block& block)
+std::string writeContentOfCuboid(Cuboid &cuboid)
 {
     std::ostringstream oss;
-    auto data = block.getData();  // Fetch the data using the public getData() method
-    
-    for (const auto &outer : data){
-        for (const auto &inner : outer){
-            oss << "\r\n";
-            for (char c : inner){
-                oss << c;
-            }
-        }
-                oss << "\r\n";
 
-    }
+    oss << cuboid.blockX << ",";
+    oss << cuboid.blockY << ",";
+    oss << cuboid.blockZ << ",";
+    oss << cuboid.cuboidX << ",";
+    oss << cuboid.cuboidY << ",";
+    oss << cuboid.cuboidZ << ",";
+    oss << cuboid.width << ",";
+    oss << cuboid.height << ",";
+    oss << cuboid.depth << ",";
+    oss << cuboid.tag << "\r\n";
+
     return oss.str();
 }
 
