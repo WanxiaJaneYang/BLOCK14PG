@@ -30,7 +30,7 @@ TEST_P(BlockCompressTest, HandlesValidInput)
     size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos)
     {
-        baseName.erase(pos, 6); // 5 is the length of "_case"
+        baseName.erase(pos, 5); // 5 is the length of "_case"
     }
 
     std::string expectedFilePath = "../../tests/unit/compressor/blockCompress/valid_test_cases/" + baseName + "_expected.txt";
