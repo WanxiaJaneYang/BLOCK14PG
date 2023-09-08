@@ -2,6 +2,22 @@
 
 Brief project description or introduction here.
 
+## Table of Contents
+
+- [File Structure](#file-structure)
+- [Tech Stack](#tech-stack)
+- [BLOCK14PG Project: Build and Test](#block14pg-project-build-and-test)
+    - [Prerequisites](#prerequisites)
+    - [Building the Main Project](#building-the-main-project)
+    - [Setting Up and Running Unit Tests](#setting-up-and-running-unit-tests)
+- [Static Code Analysis - Cppcheck](#static-code-analysis---cppcheck)
+    - [How to run Cppcheck locally](#how-to-run-cppcheck-locally)
+- [Continuous Integration (CI) and Testing](#continuous-integration-ci-and-testing)
+    - [CI Configuration](#ci-configuration)
+    - [Collaborator Guidelines](#collaborator-guidelines)
+    - [Feedback and Troubleshooting](#feedback-and-troubleshooting)
+
+
 ## File Structure
 
 - **/src/**: 
@@ -23,6 +39,7 @@ Brief project description or introduction here.
 ## Tech Stack
 
 - **Programming Language**: C++
+
 
 ## BLOCK14PG Project: Build and Test
 
