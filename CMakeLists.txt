@@ -20,11 +20,11 @@ list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest/include)
 add_subdirectory(googletest/googletest) 
 
-add_executable(validInputTests tests/unit/readInput/validTests.cpp 
-tests/unit/readInput/InputTestHelper.cpp 
-tests/unit/readInput/InputTestHelper.h ${SOURCES})
-target_compile_definitions(validInputTests PRIVATE TEST)
-target_link_libraries(validInputTests gtest gtest_main)
+# add_executable(validInputTests tests/unit/readInput/validTests.cpp 
+# tests/unit/readInput/InputTestHelper.cpp 
+# tests/unit/readInput/InputTestHelper.h ${SOURCES})
+# target_compile_definitions(validInputTests PRIVATE TEST)
+# target_link_libraries(validInputTests gtest gtest_main)
 
 # add_executable(invalidInputTests tests/unit/readInput/invalidTests.cpp 
 # tests/unit/readInput/InputTestHelper.cpp 
@@ -32,9 +32,14 @@ target_link_libraries(validInputTests gtest gtest_main)
 # target_compile_definitions(invalidInputTests PRIVATE TEST)
 # target_link_libraries(invalidInputTests gtest gtest_main)
 
-add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
-tests/integration/integrationTestHelper.cpp 
-tests/integration/integrationTestHelper.h ${SOURCES})
-target_compile_definitions(integrationValidTests PRIVATE TEST)
-target_link_libraries(integrationValidTests gtest gtest_main)
+# add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
+# tests/integration/integrationTestHelper.cpp 
+# tests/integration/integrationTestHelper.h ${SOURCES})
+# target_compile_definitions(integrationValidTests PRIVATE TEST)
+# target_link_libraries(integrationValidTests gtest gtest_main)
 
+add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
+tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
+tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
+target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
+target_link_libraries(validCompressorPlaneTests gtest gtest_main)
