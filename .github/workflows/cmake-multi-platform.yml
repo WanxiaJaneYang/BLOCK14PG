@@ -52,6 +52,7 @@ jobs:
 
 
     - name: Setup Google Test
+      shell: bash
       run: |
         if [ ! -d "googletest" ]; then
           mkdir googletest
