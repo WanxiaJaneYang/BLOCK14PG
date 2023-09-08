@@ -36,6 +36,7 @@ Brief project description or introduction here.
     ... (continue mirroring the `src/` structure)
   - **integration/**: Integration tests for the project.
 
+
 ## Tech Stack
 
 - **Programming Language**: C++
@@ -67,6 +68,7 @@ Welcome to the **BLOCK14PG** project repository. This document provides instruct
     ```
     - If the folder is empty after a pull, ensure to run the above command.
     - Add "${workspaceFolder}/googletest/googletest/include" to your environment configuration.
+
 
 ### Building the Main Project
 
@@ -132,6 +134,7 @@ Welcome to the **BLOCK14PG** project repository. This document provides instruct
         ./runUnitTests
         ```
 
+
 ## Static Code Analysis - Cppcheck
 
 We've integrated Cppcheck for static code analysis to maintain code quality. Before committing any changes, it's recommended to run Cppcheck locally to spot any potential issues.
@@ -159,6 +162,7 @@ Make sure you've resolved any warnings or errors flagged by Cppcheck before maki
 - If you're a first-time user, the tool might report some false positives or suggest micro-optimizations. Focus on genuine issues or bugs it highlights.
 
 - In case you encounter a lot of "missing include" notifications, you can add `--suppress=missingIncludeSystem` to the command to suppress them. However, these are typically informational and can be ignored.
+
 
 ## Continuous Integration (CI) and Testing
 
