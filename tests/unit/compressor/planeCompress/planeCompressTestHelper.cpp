@@ -18,25 +18,33 @@ std::vector<std::string> listInputFiles(const std::string &directory)
 // Method to convert string to std::deque<std::deque<Cuboid>> as parameter of block compressor
 std::deque<std::deque<std::deque<Cuboid>>> convertFileContentToLines(const std::string &fileContent)
 {
-    std::deque<std::deque<Cuboid>> planes;
-    std::deque<Cuboid> currentPlane;
+    std::deque<std::deque<std::deque<Cuboid>>> lines;
+    std::deque<std::deque<Cuboid>> currentPlane;
+    std::deque<Cuboid> currentLine;
 
     std::istringstream iss(fileContent);
     std::string line;
 
     while (std::getline(iss, line))
     {
-        // If the line is blank, it indicates the end of the current plane.
+        // If the line is blank, it indicates the end of the current line and possibly the plane.
         if (line.empty())
         {
+            if (!currentLine.empty())
+            {
+                currentPlane.push_back(currentLine);
+                currentLine.clear();
+            }
+
             if (!currentPlane.empty())
             {
-                planes.push_back(currentPlane);
+                lines.push_back(currentPlane);
                 currentPlane.clear();
             }
             continue;
         }
 
+        // Handle line to populate a Cuboid object
         std::istringstream lineStream(line);
         std::string token;
         Cuboid cuboid;
@@ -62,35 +70,25 @@ std::deque<std::deque<std::deque<Cuboid>>> convertFileContentToLines(const std::
         std::getline(lineStream, token, ',');
         cuboid.tag = std::stoi(token);
 
-        // Add Cuboid to currentPlane
-        currentPlane.push_back(cuboid);
+        // Add Cuboid to currentLine
+        currentLine.push_back(cuboid);
     }
 
-    // Add the last plane if it's not empty
+    // Add the last line and plane if they're not empty
+    if (!currentLine.empty())
+    {
+        currentPlane.push_back(currentLine);
+    }
     if (!currentPlane.empty())
     {
-        planes.push_back(currentPlane);
+        lines.push_back(currentPlane);
     }
 
-    return planes;
-}
-
-// Utility function to write tasks into a string
-std::string writeContentOfTasks(SafeOutputTasks &tasks)
-{
-    std::ostringstream oss;
-    for (int i = 0; i < tasks.size(); ++i)
-    {
-        Cuboid &cuboid = tasks.tasks[i];
-        // Assuming Block has a method that returns a string representation
-        oss << "\r\n"
-            << "Cuboid" << (i + 1) << writeContentOfCuboid(cuboid);
-    }
-    return oss.str();
+    return lines;
 }
 
 // Utility function to write the block into a string
-std::string writeContentOfCuboid(Cuboid &cuboid)
+std::string writeContentOfCuboid(const Cuboid &cuboid)
 {
     std::ostringstream oss;
 
@@ -109,22 +107,19 @@ std::string writeContentOfCuboid(Cuboid &cuboid)
 }
 
 // Method to write outcome of block compress
-std::string writeReadContent()
+std::string writeReadContent(const std::deque<std::deque<Cuboid>> &planes)
 {
-
-    // Convert the data stored into a string
     std::ostringstream oss;
 
-    // Add blocks in tasks to the string
-    oss << writeContentOfTasks(GlobalVars::outputTasks);
-
-    clearTasks(GlobalVars::outputTasks); // important for bulk tests
+    for (const auto &plane : planes)
+    {
+        for (const auto &cuboid : plane)
+        {
+            oss << writeContentOfCuboid(cuboid);
+        }
+        // Append a blank line to separate planes
+        oss << "\r\n";
+    }
 
     return oss.str();
-}
-
-// clears the tasks vector
-void clearTasks(SafeOutputTasks &tasks)
-{
-    tasks.tasks.clear();
 }

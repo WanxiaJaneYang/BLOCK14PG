@@ -20,10 +20,10 @@ TEST_P(PlaneCompressTest, HandlesValidInput)
     // Convert file content to the required data structure
     std::deque<std::deque<std::deque<Cuboid>>> lines = convertFileContentToLines(fileContent);
 
-    // Read the blockCompress() produced content into a string
-    planeCompress(lines);
+    // Read the planeCompress() produced content into a string
+    std::deque<std::deque<Cuboid>> plane = planeCompress(lines);
 
-    std::string producedContent = writeReadContent(); // method to generate output to string
+    std::string producedContent = writeReadContent(plane); // method to generate output to string
 
     // find the expected result
     std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
