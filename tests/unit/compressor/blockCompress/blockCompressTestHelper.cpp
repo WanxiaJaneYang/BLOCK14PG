@@ -90,7 +90,7 @@ std::string writeContentOfTasks(SafeOutputTasks &tasks)
 }
 
 // Utility function to write the block into a string
-std::string writeContentOfCuboid(Cuboid &cuboid)
+std::string writeContentOfCuboid(const Cuboid &cuboid)
 {
     std::ostringstream oss;
 
