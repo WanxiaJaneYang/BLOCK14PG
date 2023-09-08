@@ -1,0 +1,71 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        config:
+          - {os: macos-latest, compiler: clang++}
+          - {os: windows-latest, compiler: g++}
+
+    
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set compiler
+      shell: bash
+      run: |
+        if [ "${{ matrix.config.compiler }}" == "clang++" ]; then
+          echo "CC=clang" >> $GITHUB_ENV
+          echo "CXX=clang++" >> $GITHUB_ENV
+        else
+          # Your other compiler configurations here
+          echo "CC=gcc" >> $GITHUB_ENV
+          echo "CXX=g++" >> $GITHUB_ENV
+        fi
+
+
+    - name: Setup MinGW (only for windows with g++)
+      if: ${{ matrix.config.os == 'windows-latest' && matrix.config.compiler == 'g++' }}
+      run: |
+        echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
+
+    - name: Configure and build main application
+      shell: bash
+      run: |
+        cd src
+        mkdir -p build
+        cd build
+        if [ "${{ matrix.config.os }}" == "windows-latest" ]; then
+          cmake -G "MinGW Makefiles" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ ..
+          mingw32-make
+        else
+          cmake ..
+          make
+        fi
+
+
+
+    - name: Setup Google Test
+      shell: bash
+      run: |
+        if [ ! -d "googletest" ]; then
+          mkdir googletest
+          cd googletest
+          git clone https://github.com/google/googletest.git
+        fi
+        cd googletest
+        mkdir -p build
+        cd build
+        if [ "${{ matrix.config.os }}" == "windows-latest" ]; then
+          cmake -G "MinGW Makefiles" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ ../..
+          mingw32-make
+        else
+          cmake ..
+          make
+        fi
