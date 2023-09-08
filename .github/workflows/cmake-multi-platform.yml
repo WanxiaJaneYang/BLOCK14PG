@@ -62,5 +62,10 @@ jobs:
         cd googletest
         mkdir -p build
         cd build
-        cmake ../..
-        make
+        if [ "${{ matrix.config.os }}" == "windows-latest" ]; then
+          cmake -G "MinGW Makefiles" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ ../..
+          mingw32-make
+        else
+          cmake ..
+          make
+        fi
