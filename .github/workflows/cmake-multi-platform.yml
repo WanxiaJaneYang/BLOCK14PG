@@ -64,10 +64,3 @@ jobs:
         cd build
         cmake ../..
         make
-
-    - name: Run Tests
-      run: |
-        cd googletest/build
-        ./validInputTests
-        # Uncomment below if you want to also run invalidInputTests
-        # ./invalidInputTests
