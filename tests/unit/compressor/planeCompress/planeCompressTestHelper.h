@@ -13,7 +13,7 @@
 #include "../../../src/globals/globals.h"
 
 std::vector<std::string> listInputFiles(const std::string &directory);
-std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fileContent);
+std::deque<std::deque<std::deque<Cuboid>>> convertFileContentToLines(const std::string &fileContent);
 std::string writeContentOfTasks(SafeInputTasks &tasks);
 std::string writeContentOfCuboid(Cuboid &cuboid);
 std::string writeReadContent();

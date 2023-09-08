@@ -1,4 +1,4 @@
-#include "blockCompressTestHelper.h"
+#include "planeCompressTestHelper.h"
 
 // Utility function to get all input files from a directory
 std::vector<std::string> listInputFiles(const std::string &directory)
@@ -16,7 +16,7 @@ std::vector<std::string> listInputFiles(const std::string &directory)
 }
 
 // Method to convert string to std::deque<std::deque<Cuboid>> as parameter of block compressor
-std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fileContent)
+std::deque<std::deque<std::deque<Cuboid>>> convertFileContentToLines(const std::string &fileContent)
 {
     std::deque<std::deque<Cuboid>> planes;
     std::deque<Cuboid> currentPlane;

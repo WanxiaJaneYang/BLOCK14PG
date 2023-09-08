@@ -1,12 +1,12 @@
 #include "planeCompressTestHelper.h"
 
 // Parameterized test class
-class BlockCompressTest : public ::testing::TestWithParam<std::string>
+class PlaneCompressTest : public ::testing::TestWithParam<std::string>
 {
 };
 
 // Actual test definition
-TEST_P(BlockCompressTest, HandlesValidInput)
+TEST_P(PlaneCompressTest, HandlesValidInput)
 {
     // Get the expected file path according to the name convention
     std::string testFilePath = GetParam();
@@ -18,10 +18,10 @@ TEST_P(BlockCompressTest, HandlesValidInput)
     std::string fileContent = buffer.str();
 
     // Convert file content to the required data structure
-    std::deque<std::deque<Cuboid>> planes = convertFileContentToPlanes(fileContent);
+    std::deque<std::deque<std::deque<Cuboid>>> lines = convertFileContentToLines(fileContent);
 
     // Read the blockCompress() produced content into a string
-    blockCompress(planes);
+    planeCompress(lines);
 
     std::string producedContent = writeReadContent(); // method to generate output to string
 
@@ -30,10 +30,10 @@ TEST_P(BlockCompressTest, HandlesValidInput)
     size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos)
     {
-        baseName.erase(pos, 6); // 5 is the length of "_case"
+        baseName.erase(pos, 5); // 5 is the length of "_case"
     }
 
-    std::string expectedFilePath = "../../tests/unit/compressor/blockCompress/valid_test_cases/" + baseName + "_expected.txt";
+    std::string expectedFilePath = "../../tests/unit/compressor/planeCompress/valid_test_cases/" + baseName + "_expected.txt";
 
     // read the expected content into a string
     std::ifstream expectedFile(expectedFilePath);
@@ -46,5 +46,5 @@ TEST_P(BlockCompressTest, HandlesValidInput)
 // Instantiate the test case with the files in the directory
 INSTANTIATE_TEST_SUITE_P(
     FileBasedTests,
-    BlockCompressTest,
-    ::testing::ValuesIn(listInputFiles("../../tests/unit/compressor/blockCompress/valid_test_cases/")));
+    PlaneCompressTest,
+    ::testing::ValuesIn(listInputFiles("../../tests/unit/compressor/planeCompress/valid_test_cases/")));
