@@ -16,6 +16,14 @@ public:
     int height;
     int depth;
     char tag;
+
+    int getCuboidX() const { return cuboidX; }
+    int getCuboidY() const { return cuboidY; }
+    int getCuboidZ() const { return cuboidZ; }
+    int getWidth() const { return width; }
+    int getHeight() const { return height; }
+    int getDepth() const { return depth; }
+    char getTag() const { return tag; }
 };
 
 #endif
