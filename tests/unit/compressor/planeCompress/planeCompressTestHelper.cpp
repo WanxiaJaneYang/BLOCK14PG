@@ -34,6 +34,12 @@ std::deque<std::deque<std::deque<Cuboid>>> convertFileContentToLines(const std::
     blockStream >> blockY;
     blockStream.ignore();
     blockStream >> blockZ;
+    blockStream.ignore();
+    blockStream >> GlobalVars::width;
+    blockStream.ignore();
+    blockStream >> GlobalVars::height;
+    blockStream.ignore();
+    blockStream >> GlobalVars::depth;
 
     int emptyLineCount = 0;
 
@@ -105,6 +111,9 @@ std::string writeContentOfCuboid(const Cuboid &cuboid)
 {
     std::ostringstream oss;
 
+    oss << cuboid.blockX << ",";
+    oss << cuboid.blockY << ",";
+    oss << cuboid.blockZ << ",";
     oss << cuboid.cuboidX << ",";
     oss << cuboid.cuboidY << ",";
     oss << cuboid.cuboidZ << ",";
