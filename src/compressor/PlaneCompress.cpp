@@ -8,7 +8,7 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
     // basic idea: read the matrix line by line,
     // if start point and end point of two lines are the same, plus the color is the same, then merge them into a rectangle
     // else if the either the start point or the end point is the same, plus the color is the same,
-    // and the one below is longer than the one above, then split the one below into two rectangles, merge the one above with the first one
+    // and the one below is longer than the one above, then split the one below into two rectangles, merge the one above with the overlap part
     // else push the cuboid
 
     // first read the plane by plane
@@ -29,11 +29,12 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
             // initialize the rectanglesToBeMerged if this is the first line
             if (y == 0)
             {
+                rectanglesToBeMerged = plane[y];
             }
             // if this is not the first line, compare the rectangles to see if they can be merged
             else
             {
-                // hint: currently, the cuiboids are pushed in order
+                // hint: currently, the cuboids are pushed in order
                 // consider using while loop to merge the rectangles until the last one in the line is dealt
                 std::deque<Cuboid> currentLine = plane[y];
                 // scheme:
@@ -42,19 +43,81 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                     Cuboid rectangleToBeMerged = rectanglesToBeMerged.front();
                     Cuboid current = currentLine.front();
 
-                    // check the coordinates of the two cuboid
-                    // consider if we are to merge or not
+                    // rectangleToBeMerged start point and end point
+                    int rectangleStart = rectangleToBeMerged.cuboidX;
+                    int rectangleEnd = rectangleStart + rectangleToBeMerged.width;
 
-                    // choose to pop the rectanglesToBeMerged or the currentLine
+                    // current cuboid start point and end point
+                    int currentStart = current.cuboidX;
+                    int currentEnd = currentStart + current.width;
 
-                    // push the merged cuboid into the compressedPlane
+                    // check the coordinates of the two cuboids rectangleToBeMerged and current
+                    // consider if we can merge them or not
+                    if (rectangleStart == currentStart && rectangleToBeMerged.tag == current.tag)
+                    {
+                        // if the current cuboid's width is equal or greater than rectangleToBeMerged
+                        if (current.width >= rectangleToBeMerged.width)
+                        {
+                            currentLine.pop_front();
+                            rectanglesToBeMerged.pop_front();
+                            // merge the two cuboids' overlap part
+                            // push the merged cuboid into rectanglesToBeMerged queue
+                            rectangleToBeMerged.height += current.height;
+                            rectanglesToBeMerged.push_back(rectangleToBeMerged);
 
-                    // reassign the rectanglesToBeMerged
+                            // check if the current cuboid has extra part
+                            int currentExtra = current.width - rectangleToBeMerged.width;
+                            if (currentExtra > 0)
+                            {
+                                // change the coordinates of current cuboid extra part
+                                current.cuboidX += rectangleToBeMerged.width;
+                                current.width = currentExtra;
+
+                                // push current cuboid's extra part into rectanglesToBeMerged
+                                rectanglesToBeMerged.push_back(current);
+                            }
+                        }
+                    }
+                    // if the two cuboids have same end points and tags
+                    else if (rectangleEnd == currentEnd && rectangleToBeMerged.tag == current.tag)
+                    {
+                        // if the current cuboid's width is greater than rectangleToBeMerged
+                        if (current.width > rectangleToBeMerged.width)
+                        {
+                            currentLine.pop_front();
+                            rectanglesToBeMerged.pop_front();
+                            // merge the two cuboids' overlap part
+                            // push the merged cuboid into rectanglesToBeMerged queue
+                            rectangleToBeMerged.height += current.height;
+                            rectanglesToBeMerged.push_back(rectangleToBeMerged);
+
+                            // change the width of current cuboid as extra part's width
+                            current.width = current.width - rectangleToBeMerged.width;
+
+                            // push current cuboid's extra part into rectanglesToBeMerged
+                            rectanglesToBeMerged.push_back(current);
+                        }
+                    }
+                    else
+                    {
+                        // when these two cuboids cannot be merged
+                        // pop and push the rectangleToBeMerged cuboid into the compressedPlane
+                        rectanglesToBeMerged.pop_front();
+                        compressedPlane.push_back(rectangleToBeMerged);
+                        // pop and push the current cuboid into the rectanglesToBeMerged
+                        currentLine.pop_front();
+                        rectanglesToBeMerged.push_back(current);
+                    }
                 }
-                // check if the rectanglesToBeMerged is empty or currentLine is empty,
-                // deal with the remaining cuboids
             }
         }
+        // push all remaining rectangles into the compressedPlane
+        while (rectanglesToBeMerged.size() > 0)
+        {
+            compressedPlane.push_back(rectanglesToBeMerged.front());
+            rectanglesToBeMerged.pop_front();
+        }
+        result.push_back(compressedPlane);
     }
     return result;
 }
