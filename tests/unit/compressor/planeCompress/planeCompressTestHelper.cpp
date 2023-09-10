@@ -18,73 +18,86 @@ std::vector<std::string> listInputFiles(const std::string &directory)
 // Method to convert string to std::deque<std::deque<Cuboid>> as parameter of block compressor
 std::deque<std::deque<std::deque<Cuboid>>> convertFileContentToLines(const std::string &fileContent)
 {
-    std::deque<std::deque<std::deque<Cuboid>>> lines;
-    std::deque<std::deque<Cuboid>> currentPlane;
-    std::deque<Cuboid> currentLine;
+    std::deque<std::deque<std::deque<Cuboid>>> blocks;
+    std::deque<std::deque<Cuboid>> lines;
+    std::deque<Cuboid> cuboids;
 
     std::istringstream iss(fileContent);
     std::string line;
+    std::getline(iss, line);
+
+    // get block coordinate
+    int blockX, blockY, blockZ;
+    std::istringstream blockStream(line);
+    blockStream >> blockX;
+    blockStream.ignore();
+    blockStream >> blockY;
+    blockStream.ignore();
+    blockStream >> blockZ;
+
+    int emptyLineCount = 0;
 
     while (std::getline(iss, line))
     {
-        // If the line is blank, it indicates the end of the current line and possibly the plane.
         if (line.empty())
         {
-            if (!currentLine.empty())
-            {
-                currentPlane.push_back(currentLine);
-                currentLine.clear();
-            }
+            emptyLineCount++;
 
-            if (!currentPlane.empty())
+            // if there is only one black line, means change line
+            if (emptyLineCount == 1 && !cuboids.empty())
             {
-                lines.push_back(currentPlane);
-                currentPlane.clear();
+                lines.push_back(cuboids);
+                cuboids.clear();
             }
-            continue;
+            // if there is two black line, means change layer
+            else if (emptyLineCount == 2)
+            {
+                if (!lines.empty())
+                {
+                    blocks.push_back(lines);
+                    lines.clear();
+                }
+                emptyLineCount = 0;
+            }
         }
+        else
+        {
+            emptyLineCount = 0;
 
-        // Handle line to populate a Cuboid object
-        std::istringstream lineStream(line);
-        std::string token;
-        Cuboid cuboid;
+            std::istringstream cuboidStream(line);
+            int cuboidX, cuboidY, cuboidZ, width, height, depth;
+            char tag;
 
-        std::getline(lineStream, token, ',');
-        cuboid.blockX = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.blockY = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.blockZ = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.cuboidX = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.cuboidY = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.cuboidZ = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.width = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.height = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.depth = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.tag = std::stoi(token);
+            cuboidStream >> cuboidX;
+            cuboidStream.ignore();
+            cuboidStream >> cuboidY;
+            cuboidStream.ignore();
+            cuboidStream >> cuboidZ;
+            cuboidStream.ignore();
+            cuboidStream >> width;
+            cuboidStream.ignore();
+            cuboidStream >> height;
+            cuboidStream.ignore();
+            cuboidStream >> depth;
+            cuboidStream.ignore();
+            cuboidStream >> tag;
 
-        // Add Cuboid to currentLine
-        currentLine.push_back(cuboid);
+            // instance a  cuboid
+            Cuboid cuboid(blockX, blockY, blockZ, cuboidX, cuboidY, cuboidZ, width, height, depth, tag);
+            cuboids.push_back(cuboid);
+        }
     }
 
-    // Add the last line and plane if they're not empty
-    if (!currentLine.empty())
+    if (!cuboids.empty())
     {
-        currentPlane.push_back(currentLine);
+        lines.push_back(cuboids);
     }
-    if (!currentPlane.empty())
+    if (!lines.empty())
     {
-        lines.push_back(currentPlane);
+        blocks.push_back(lines);
     }
 
-    return lines;
+    return blocks;
 }
 
 // Utility function to write the block into a string
