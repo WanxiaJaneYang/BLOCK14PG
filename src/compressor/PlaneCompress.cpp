@@ -5,8 +5,6 @@
 std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 {
     std::deque<std::deque<Cuboid>> result;
-    GlobalVars::depth = 2;
-    GlobalVars::height = 2;
     // basic idea: read the matrix line by line,
     // if start point and end point of two lines are the same, plus the color is the same, then merge them into a rectangle
     // else if the either the start point or the end point is the same, plus the color is the same,
