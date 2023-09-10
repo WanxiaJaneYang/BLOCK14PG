@@ -105,16 +105,13 @@ std::string writeContentOfCuboid(const Cuboid &cuboid)
 {
     std::ostringstream oss;
 
-    oss << cuboid.blockX << ",";
-    oss << cuboid.blockY << ",";
-    oss << cuboid.blockZ << ",";
     oss << cuboid.cuboidX << ",";
     oss << cuboid.cuboidY << ",";
     oss << cuboid.cuboidZ << ",";
     oss << cuboid.width << ",";
     oss << cuboid.height << ",";
     oss << cuboid.depth << ",";
-    oss << cuboid.tag << "\r\n";
+    oss << cuboid.tag << "\n";
 
     return oss.str();
 }
@@ -131,7 +128,7 @@ std::string writeReadContent(const std::deque<std::deque<Cuboid>> &planes)
             oss << writeContentOfCuboid(cuboid);
         }
         // Append a blank line to separate planes
-        oss << "\r\n";
+        oss << "\n";
     }
 
     return oss.str();
