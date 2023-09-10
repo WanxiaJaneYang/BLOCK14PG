@@ -23,6 +23,16 @@ std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fil
 
     std::istringstream iss(fileContent);
     std::string line;
+    std::getline(iss, line);
+
+    // get block coordinate
+    int blockX, blockY, blockZ;
+    std::istringstream blockStream(line);
+    blockStream >> blockX;
+    blockStream.ignore();
+    blockStream >> blockY;
+    blockStream.ignore();
+    blockStream >> blockZ;
 
     while (std::getline(iss, line))
     {
@@ -37,32 +47,26 @@ std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fil
             continue;
         }
 
-        std::istringstream lineStream(line);
-        std::string token;
-        Cuboid cuboid;
+        std::istringstream cuboidStream(line);
+        int cuboidX, cuboidY, cuboidZ, width, height, depth;
+        char tag;
 
-        std::getline(lineStream, token, ',');
-        cuboid.blockX = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.blockY = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.blockZ = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.cuboidX = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.cuboidY = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.cuboidZ = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.width = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.height = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.depth = std::stoi(token);
-        std::getline(lineStream, token, ',');
-        cuboid.tag = std::stoi(token);
+        cuboidStream >> cuboidX;
+        cuboidStream.ignore();
+        cuboidStream >> cuboidY;
+        cuboidStream.ignore();
+        cuboidStream >> cuboidZ;
+        cuboidStream.ignore();
+        cuboidStream >> width;
+        cuboidStream.ignore();
+        cuboidStream >> height;
+        cuboidStream.ignore();
+        cuboidStream >> depth;
+        cuboidStream.ignore();
+        cuboidStream >> tag;
 
-        // Add Cuboid to currentPlane
+        // instance a  cuboid
+        Cuboid cuboid(blockX, blockY, blockZ, cuboidX, cuboidY, cuboidZ, width, height, depth, tag);
         currentPlane.push_back(cuboid);
     }
 
@@ -83,8 +87,7 @@ std::string writeContentOfTasks(SafeOutputTasks &tasks)
     {
         Cuboid &cuboid = tasks.tasks[i];
         // Assuming Block has a method that returns a string representation
-        oss << "\r\n"
-            << "Cuboid" << (i + 1) << writeContentOfCuboid(cuboid);
+        oss << writeContentOfCuboid(cuboid);
     }
     return oss.str();
 }
@@ -94,16 +97,13 @@ std::string writeContentOfCuboid(const Cuboid &cuboid)
 {
     std::ostringstream oss;
 
-    oss << cuboid.blockX << ",";
-    oss << cuboid.blockY << ",";
-    oss << cuboid.blockZ << ",";
     oss << cuboid.cuboidX << ",";
     oss << cuboid.cuboidY << ",";
     oss << cuboid.cuboidZ << ",";
     oss << cuboid.width << ",";
     oss << cuboid.height << ",";
     oss << cuboid.depth << ",";
-    oss << cuboid.tag << "\r\n";
+    oss << cuboid.tag << "\n";
 
     return oss.str();
 }
