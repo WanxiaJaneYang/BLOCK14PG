@@ -19,10 +19,27 @@ TEST_P(PlaneCompressTest, HandlesValidInput)
 
     // Convert file content to the required data structure
     std::deque<std::deque<std::deque<Cuboid>>> lines = convertFileContentToLines(fileContent);
-
+    // for (const auto &line : lines)
+    // {
+    //     for (const auto &column : line)
+    //     {
+    //         for (const auto &cuboid : column)
+    //         {
+    //             std::cout << cuboid.cuboidX << ",";
+    //             std::cout << cuboid.cuboidY << ",";
+    //             std::cout << cuboid.cuboidZ << ",";
+    //             std::cout << cuboid.width << ",";
+    //             std::cout << cuboid.height << ",";
+    //             std::cout << cuboid.depth << ",";
+    //             std::cout << cuboid.tag << "\n";
+    //         }
+    //         std::cout << "\n";
+    //     }
+    //     std::cout << "\n";
+    // }
     // Read the planeCompress() produced content into a string
     std::deque<std::deque<Cuboid>> plane = planeCompress(lines);
-
+    
     std::string producedContent = writeReadContent(plane); // method to generate output to string
 
     // find the expected result
