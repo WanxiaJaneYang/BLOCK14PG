@@ -97,6 +97,9 @@ std::string writeContentOfCuboid(const Cuboid &cuboid)
 {
     std::ostringstream oss;
 
+    oss << cuboid.blockX << ",";
+    oss << cuboid.blockY << ",";
+    oss << cuboid.blockZ << ",";
     oss << cuboid.cuboidX << ",";
     oss << cuboid.cuboidY << ",";
     oss << cuboid.cuboidZ << ",";
