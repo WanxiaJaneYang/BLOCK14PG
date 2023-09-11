@@ -77,6 +77,17 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                                 rectanglesToBeMerged.push_back(current);
                             }
                         }
+                        else
+                        {
+                            // when current is shorter, we do not merge them
+                            // pop and push the rectangleToBeMerged cuboid into the compressedPlane
+                            rectanglesToBeMerged.pop_front();
+                            compressedPlane.push_back(rectangleToBeMerged);
+
+                            // pop and push the current cuboid into the rectanglesToBeMerged
+                            currentLine.pop_front();
+                            rectanglesToBeMerged.push_back(current);
+                        }
                     }
                     // if the two cuboids have same end points and tags
                     else if (rectangleEnd == currentEnd && rectangleToBeMerged.tag == current.tag)
@@ -95,6 +106,17 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             current.width = current.width - rectangleToBeMerged.width;
 
                             // push current cuboid's extra part into rectanglesToBeMerged
+                            rectanglesToBeMerged.push_back(current);
+                        }
+                        else if (current.width < rectangleToBeMerged.width)
+                        {
+                            // when current is shorter
+                            // pop and push the rectangleToBeMerged cuboid into the compressedPlane
+                            rectanglesToBeMerged.pop_front();
+                            compressedPlane.push_back(rectangleToBeMerged);
+
+                            // pop and push the current cuboid into the rectanglesToBeMerged
+                            currentLine.pop_front();
                             rectanglesToBeMerged.push_back(current);
                         }
                     }
