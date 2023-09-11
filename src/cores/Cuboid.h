@@ -17,6 +17,9 @@ public:
     int depth;
     char tag;
 
+    int getBlockX() const { return blockX; }
+    int getBlockY() const { return blockY; }
+    int getBlockZ() const { return blockZ; }
     int getCuboidX() const { return cuboidX; }
     int getCuboidY() const { return cuboidY; }
     int getCuboidZ() const { return cuboidZ; }
