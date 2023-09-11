@@ -4,7 +4,7 @@
 std::vector<std::string> listInputFiles(const std::string &directory)
 {
     std::vector<std::string> files;
-    for (const auto &entry : std::__fs::filesystem::directory_iterator(directory))
+    for (const auto &entry : std::filesystem::directory_iterator(directory))
     {
         if (entry.path().extension() == ".txt" && entry.path().string().find("_case.txt") != std::string::npos)
         {

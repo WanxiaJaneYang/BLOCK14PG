@@ -59,7 +59,7 @@ TEST_P(PlaneCompressTest, HandlesValidInput)
     std::string producedContent = writeReadContent(plane); // method to generate output to string
 
     // find the expected result
-    std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
+    std::string baseName = std::filesystem::path(testFilePath).stem().string();
     size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos)
     {
