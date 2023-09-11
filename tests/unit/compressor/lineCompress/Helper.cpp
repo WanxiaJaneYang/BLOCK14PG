@@ -82,16 +82,16 @@ std::string writeCompressedResult(const std::deque<std::deque<std::deque<Cuboid>
             for (const auto &cuboid : line)
             {
                 // Print each Cuboid's details in the format:
-                output << cuboid.getBlockX() << ", ";
-                output << cuboid.getBlockY() << ", ";
-                output << cuboid.getBlockZ() << ", ";
-                output << cuboid.getCuboidX() << ", ";
-                output << cuboid.getCuboidY() << ", ";
-                output << cuboid.getCuboidZ() << ", ";
-                output << cuboid.getWidth() << ", ";
-                output << cuboid.getHeight() << ", ";
-                output << cuboid.getDepth() << ", ";
-                output << cuboid.getTag();
+                output << cuboid.blockX << ", ";
+                output << cuboid.blockY << ", ";
+                output << cuboid.blockZ << ", ";
+                output << cuboid.cuboidX << ", ";
+                output << cuboid.cuboidY << ", ";
+                output << cuboid.cuboidZ << ", ";
+                output << cuboid.width << ", ";
+                output << cuboid.height << ", ";
+                output << cuboid.depth << ", ";
+                output << cuboid.tag;
                 output << "\n"; // Newline after each Cuboid
             }
         }

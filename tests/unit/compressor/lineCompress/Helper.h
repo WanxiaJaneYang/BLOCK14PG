@@ -1,5 +1,5 @@
-#ifndef INPUT_TEST_H
-#define INPUT_TEST_H
+#ifndef LINECOMPRESS_TEST_H
+#define LINECOMPRESS_TEST_H
 
 #include <gtest/gtest.h>
 #include <iostream>
