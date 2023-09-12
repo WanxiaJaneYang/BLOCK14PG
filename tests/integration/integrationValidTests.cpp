@@ -13,7 +13,7 @@ TEST_P(IntegrationTest, HandlesValidIntegration) {
     std::istringstream simulatedInput = simulateInputStream(testFilePath);
 
     readInput(simulatedInput); 
-    Compressor::compress(); 
+    compress(); 
 
     // Redirect std::cout to oss
     std::ostringstream oss;

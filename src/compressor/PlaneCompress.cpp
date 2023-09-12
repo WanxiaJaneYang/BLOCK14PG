@@ -2,9 +2,10 @@
 #include <deque>
 #include "../globals/globals.h"
 
-std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
+// std::deque<std::deque<Cuboid>> 
+void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 {
-    std::deque<std::deque<Cuboid>> result;
+    // std::deque<std::deque<Cuboid>> result;
     // basic idea: read the matrix line by line,
     // if start point and end point of two lines are the same, plus the color is the same, then merge them into a rectangle
     // else if the either the start point or the end point is the same, plus the color is the same,
@@ -19,7 +20,7 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
         std::deque<std::deque<Cuboid>> plane = compressedLines[z];
 
         // this is var for compressed rectangles
-        std::deque<Cuboid> compressedPlane;
+        // std::deque<Cuboid> compressedPlane;
 
         // this is var declared out of the loop
         std::deque<Cuboid> rectanglesToBeMerged;
@@ -82,8 +83,8 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             // when current is shorter, we do not merge them
                             // pop and push the rectangleToBeMerged cuboid into the compressedPlane
                             rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
-
+                            // compressedPlane.push_back(rectangleToBeMerged);
+                            SafeOutputTasks::push(rectangleToBeMerged)
                             // pop and push the current cuboid into the rectanglesToBeMerged
                             currentLine.pop_front();
                             rectanglesToBeMerged.push_back(current);
@@ -113,7 +114,8 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             // when current is shorter
                             // pop and push the rectangleToBeMerged cuboid into the compressedPlane
                             rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
+                            // compressedPlane.push_back(rectangleToBeMerged);
+                            SafeOutputTasks::push(rectangleToBeMerged)
 
                             // pop and push the current cuboid into the rectanglesToBeMerged
                             currentLine.pop_front();
@@ -128,7 +130,9 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                         if (currentEnd >= rectangleEnd)
                         {
                             rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
+                            // compressedPlane.push_back(rectangleToBeMerged);
+                            SafeOutputTasks::push(rectangleToBeMerged)
+
                         }
 
                         // pop and push the current cuboid into the rectanglesToBeMerged
@@ -151,10 +155,12 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
         // push all remaining rectangles into the compressedPlane
         while (rectanglesToBeMerged.size() > 0)
         {
-            compressedPlane.push_back(rectanglesToBeMerged.front());
+            // compressedPlane.push_back(rectanglesToBeMerged.front());
+            SafeOutputTasks::push(rectanglesToBeMerged.front())
+
             rectanglesToBeMerged.pop_front();
         }
-        result.push_back(compressedPlane);
+        // result.push_back(compressedPlane);
     }
-    return result;
+    // return result;
 }

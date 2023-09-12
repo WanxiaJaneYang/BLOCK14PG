@@ -32,14 +32,14 @@ add_subdirectory(googletest/googletest)
 # target_compile_definitions(invalidInputTests PRIVATE TEST)
 # target_link_libraries(invalidInputTests gtest gtest_main)
 
-# add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
-# tests/integration/integrationTestHelper.cpp 
-# tests/integration/integrationTestHelper.h ${SOURCES})
-# target_compile_definitions(integrationValidTests PRIVATE TEST)
-# target_link_libraries(integrationValidTests gtest gtest_main)
+add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
+tests/integration/integrationTestHelper.cpp 
+tests/integration/integrationTestHelper.h ${SOURCES})
+target_compile_definitions(integrationValidTests PRIVATE TEST)
+target_link_libraries(integrationValidTests gtest gtest_main)
 
-add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
-tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
-tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
-target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
-target_link_libraries(validCompressorPlaneTests gtest gtest_main)
+# add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
+# tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
+# tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
+# target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
+# target_link_libraries(validCompressorPlaneTests gtest gtest_main)
