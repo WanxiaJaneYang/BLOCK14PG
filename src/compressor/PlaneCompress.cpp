@@ -97,16 +97,16 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                         {
                             currentLine.pop_front();
                             rectanglesToBeMerged.pop_front();
-                            // merge the two cuboids' overlap part
-                            // push the merged cuboid into rectanglesToBeMerged queue
-                            rectangleToBeMerged.height += current.height;
-                            rectanglesToBeMerged.push_back(rectangleToBeMerged);
-
                             // change the width of current cuboid as extra part's width
                             current.width = current.width - rectangleToBeMerged.width;
 
                             // push current cuboid's extra part into rectanglesToBeMerged
                             rectanglesToBeMerged.push_back(current);
+
+                            // merge the two cuboids' overlap part
+                            // push the merged cuboid into rectanglesToBeMerged queue
+                            rectangleToBeMerged.height += current.height;
+                            rectanglesToBeMerged.push_back(rectangleToBeMerged);
                         }
                         else if (current.width < rectangleToBeMerged.width)
                         {
