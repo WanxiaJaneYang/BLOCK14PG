@@ -122,16 +122,18 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                     }
                     else
                     {
-                        // when these two cuboids cannot be merged
+                        // when these two cuboids have different start points, end points or tags
+                        // if current cuboid endpoint is after the rectangleToBeMerged
                         // pop and push the rectangleToBeMerged cuboid into the compressedPlane
-                        if (current.width >= rectangleToBeMerged.width)
+                        if (currentEnd >= rectangleEnd)
                         {
                             rectanglesToBeMerged.pop_front();
                             compressedPlane.push_back(rectangleToBeMerged);
                         }
 
                         // pop and push the current cuboid into the rectanglesToBeMerged
-                        if (current.width <= rectangleToBeMerged.width)
+                        // if the rectangleToBeMerged endpoint is after current cuboid
+                        if (currentEnd <= rectangleEnd)
                         {
                             currentLine.pop_front();
                             rectanglesToBeMerged.push_back(current);
