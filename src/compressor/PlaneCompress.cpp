@@ -65,7 +65,7 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             rectangleToBeMerged.height += current.height;
                             rectanglesToBeMerged.push_back(rectangleToBeMerged);
 
-                            // check if the current cuboid has extra part
+                            // check if the current cuboid has extra part after merge
                             int currentExtra = current.width - rectangleToBeMerged.width;
                             if (currentExtra > 0)
                             {
@@ -73,8 +73,8 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                                 current.cuboidX += rectangleToBeMerged.width;
                                 current.width = currentExtra;
 
-                                // push current cuboid's extra part into rectanglesToBeMerged
-                                rectanglesToBeMerged.push_back(current);
+                                // the currentline front would be the cuboid's extra part after merge
+                                currentLine.push_front(current);
                             }
                         }
                         else
