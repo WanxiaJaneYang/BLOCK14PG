@@ -84,7 +84,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                             // pop and push the rectangleToBeMerged cuboid into the compressedPlane
                             rectanglesToBeMerged.pop_front();
                             // compressedPlane.push_back(rectangleToBeMerged);
-                            SafeOutputTasks::push(rectangleToBeMerged)
+                            GlobalVars::outputTasks.push(rectangleToBeMerged);
                             // pop and push the current cuboid into the rectanglesToBeMerged
                             currentLine.pop_front();
                             rectanglesToBeMerged.push_back(current);
@@ -115,7 +115,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                             // pop and push the rectangleToBeMerged cuboid into the compressedPlane
                             rectanglesToBeMerged.pop_front();
                             // compressedPlane.push_back(rectangleToBeMerged);
-                            SafeOutputTasks::push(rectangleToBeMerged)
+                            GlobalVars::outputTasks.push(rectangleToBeMerged);
 
                             // pop and push the current cuboid into the rectanglesToBeMerged
                             currentLine.pop_front();
@@ -131,7 +131,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                         {
                             rectanglesToBeMerged.pop_front();
                             // compressedPlane.push_back(rectangleToBeMerged);
-                            SafeOutputTasks::push(rectangleToBeMerged)
+                            GlobalVars::outputTasks.push(rectangleToBeMerged);
 
                         }
 
@@ -156,7 +156,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
         while (rectanglesToBeMerged.size() > 0)
         {
             // compressedPlane.push_back(rectanglesToBeMerged.front());
-            SafeOutputTasks::push(rectanglesToBeMerged.front())
+            GlobalVars::outputTasks.push(rectanglesToBeMerged.front());
 
             rectanglesToBeMerged.pop_front();
         }
