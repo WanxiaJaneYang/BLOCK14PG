@@ -1,42 +1,4 @@
-#include "Compressor.h"
-#include <deque>
-#include <map>
-#include "../globals/globals.h"
-#include "../cores/SafeOutputTasks.h"
-#include <algorithm>
-
-struct Point
-{
-    int x;
-    int y;
-    Point(int x, int y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-};
-
-struct CuboidKey
-{
-    Point topLeft;
-    Point bottomRight;
-
-    // overload the < operator, so that the map can be sorted
-    bool operator<(const CuboidKey &other) const
-    {
-        if (topLeft.y != other.topLeft.y)
-            return topLeft.y < other.topLeft.y;
-        return topLeft.x < other.topLeft.x;
-    }
-};
-
-struct RemainingCuboid
-{
-    Cuboid upper;
-    Cuboid left;
-    Cuboid right;
-    Cuboid lower;
-};
+#include "BlockCompress.h"
 
 /*compress the planes into cuboid and push them into output tasks*/
 void blockCompress(std::deque<std::deque<Cuboid>> &planes)
@@ -50,13 +12,13 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
         if (z == 0)
         {
             // this is the first plane
-            tranformToMap(planes[z], prevPlane);
+            transformToMap(planes[z], prevPlane);
         }
         else
         {
             // from the second plane
             std::map<CuboidKey, Cuboid> currentPlane;
-            tranformToMap(planes[z], currentPlane);
+            transformToMap(planes[z], currentPlane);
 
             // this is the merged plane which will be later reassigned to prevPlane
             std::map<CuboidKey, Cuboid> mergedPlane;
@@ -113,10 +75,10 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
                     // case that the current cuboid contains the prev cuboid and there is nextplane
                     else
                     {
-                        // calculate the remain part of the cuboid in the current plane minus the cuboid in the prev plane
-                        RemainingCuboid remain = minus(currentPlane.begin()->second, it->second);
+                        // calculate the remain part of the cuboid in the current plane minusCuboid the cuboid in the prev plane
+                        RemainingCuboid remain = minusCuboid(currentPlane.begin()->second, it->second);
                         std::map<CuboidKey, Cuboid> nextPlane;
-                        tranformToMap(planes[z + 1], nextPlane);
+                        transformToMap(planes[z + 1], nextPlane);
                         // then we find if there are exact cuboids in the next plane matching the remain part
                         // examine the remainCuboid, see if there are cuboids in the next plane matching the remain part
                         if (findAllMatched(remain, nextPlane))
@@ -165,7 +127,7 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
     }
 }
 
-RemainingCuboid minus(const Cuboid &currentCuboid, const Cuboid &prevCuboid)
+RemainingCuboid minusCuboid(const Cuboid &currentCuboid, const Cuboid &prevCuboid)
 {
     RemainingCuboid result;
     // Define uninitialized Cuboids with an invalid tag
@@ -315,7 +277,7 @@ void pushRemainIntoMerge(RemainingCuboid &remain, std::map<CuboidKey, Cuboid> &m
     }
 }
 
-void tranformToMap(std::deque<Cuboid> &plane, std::map<CuboidKey, Cuboid> &cuboids)
+void transformToMap(std::deque<Cuboid> &plane, std::map<CuboidKey, Cuboid> &cuboids)
 {
     for (size_t i = 0; i < plane.size(); i++)
     {
@@ -324,4 +286,27 @@ void tranformToMap(std::deque<Cuboid> &plane, std::map<CuboidKey, Cuboid> &cuboi
             Point(plane[i].cuboidX + plane[i].width - 1, plane[i].cuboidY + plane[i].height - 1)};
         cuboids[key] = plane[i];
     }
+}
+
+Point::Point(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}
+
+bool Point::operator==(const Point &other) const
+{
+    return x == other.x && y == other.y;
+}
+
+bool CuboidKey::operator<(const CuboidKey &other) const
+{
+    if (topLeft.y != other.topLeft.y)
+        return topLeft.y < other.topLeft.y;
+    return topLeft.x < other.topLeft.x;
+}
+
+bool CuboidKey::operator==(const CuboidKey &other) const
+{
+    return topLeft == other.topLeft && bottomRight == other.bottomRight;
 }
