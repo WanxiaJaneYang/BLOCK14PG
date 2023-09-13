@@ -16,8 +16,8 @@ TEST(TransformToMapTest, BasicTest)
     plane.push_back(Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B'));
 
     std::map<CuboidKey, Cuboid> expectedCuboids;
-    expectedCuboids[CuboidKey{Point(0, 0), Point(0, 0)}] = Cuboid(0, 0, 0, 0, 0, 0, 1, 1, 1, 'A');
-    expectedCuboids[CuboidKey{Point(0, 1), Point(1, 2)}] = Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B');
+    expectedCuboids[CuboidKey{'A', Point(0, 0), Point(0, 0)}] = Cuboid(0, 0, 0, 0, 0, 0, 1, 1, 1, 'A');
+    expectedCuboids[CuboidKey{'B', Point(0, 1), Point(1, 2)}] = Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B');
 
     std::map<CuboidKey, Cuboid> actualCuboids;
 
@@ -51,9 +51,9 @@ TEST(TransformToMapTest, MoreCuboids)
     plane.push_back(Cuboid(0, 0, 0, 0, 4, 0, 5, 2, 1, 'C'));
 
     std::map<CuboidKey, Cuboid> expectedCuboids;
-    expectedCuboids[CuboidKey{Point(0, 0), Point(2, 3)}] = Cuboid(0, 0, 0, 0, 0, 0, 3, 4, 1, 'A');
-    expectedCuboids[CuboidKey{Point(3, 0), Point(6, 3)}] = Cuboid(0, 0, 0, 3, 0, 0, 4, 4, 1, 'B');
-    expectedCuboids[CuboidKey{Point(0, 4), Point(4, 5)}] = Cuboid(0, 0, 0, 0, 4, 0, 5, 2, 1, 'C');
+    expectedCuboids[CuboidKey{'A', Point(0, 0), Point(2, 3)}] = Cuboid(0, 0, 0, 0, 0, 0, 3, 4, 1, 'A');
+    expectedCuboids[CuboidKey{'B', Point(3, 0), Point(6, 3)}] = Cuboid(0, 0, 0, 3, 0, 0, 4, 4, 1, 'B');
+    expectedCuboids[CuboidKey{'C', Point(0, 4), Point(4, 5)}] = Cuboid(0, 0, 0, 0, 4, 0, 5, 2, 1, 'C');
     std::map<CuboidKey, Cuboid> actualCuboids;
 
     // Act

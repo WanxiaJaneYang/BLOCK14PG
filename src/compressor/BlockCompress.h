@@ -17,6 +17,7 @@ struct Point
 
 struct CuboidKey
 {
+    char tag;
     Point topLeft;
     Point bottomRight;
     bool operator<(const CuboidKey &other) const;
