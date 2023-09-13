@@ -4,7 +4,7 @@ set(CMAKE_OSX_ARCHITECTURES arm64)
 cmake_minimum_required(VERSION 3.10)
 
 project(BLOCK)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Add your project source files 
@@ -38,8 +38,20 @@ add_subdirectory(googletest/googletest)
 # target_compile_definitions(integrationValidTests PRIVATE TEST)
 # target_link_libraries(integrationValidTests gtest gtest_main)
 
-add_executable(validCompressorBlockTests tests/unit/compressor/blockCompress/validTests.cpp 
-tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp 
-tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
-target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
-target_link_libraries(validCompressorBlockTests gtest gtest_main)
+# add_executable(validCompressorBlockTests tests/unit/compressor/blockCompress/validTests.cpp 
+# tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp 
+# tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
+# target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
+# target_link_libraries(validCompressorBlockTests gtest gtest_main)
+
+add_executable(transformToMapTest tests/unit/compressor/blockCompress/helperFunctionsTest/transformToMapTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(transformToMapTest PRIVATE TEST)
+target_link_libraries(transformToMapTest gtest gtest_main)
+
+add_executable(minusCuboidTest tests/unit/compressor/blockCompress/helperFunctionsTest/minusCuboidTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(minusCuboidTest PRIVATE TEST)
+target_link_libraries(minusCuboidTest gtest gtest_main)

@@ -1,30 +1,28 @@
-#define TESTING
-
 #include "../../../../../src/compressor/Compressor.h"
+#include "../../../../../src/compressor/BlockCompress.h"
 #include <gtest/gtest.h>
 #include <iostream>
+#include <map>
+#include <deque>
 #include "unitTestHelpers.h"
-
-#define TRANSFORM_TO_MAP_TEST_CPP
 
 // Make sure to include the other required headers and definitions...
 
 TEST(TransformToMapTest, BasicTest)
 {
     // Arrange
-    std::deque<Cuboid> plane = {
-        Cuboid(0, 0, 0, 0, 0, 0, 1, 1, 1, 'A'),
-        Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B'),
-    };
+    std::deque<Cuboid> plane;
+    plane.push_back(Cuboid(0, 0, 0, 0, 0, 0, 1, 1, 1, 'A'));
+    plane.push_back(Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B'));
 
     std::map<CuboidKey, Cuboid> expectedCuboids;
-    expectedCuboids[CuboidKey{Point(0, 0), Point(1, 1)}] = Cuboid(0, 0, 0, 0, 0, 0, 1, 1, 1, 'A');
-    expectedCuboids[CuboidKey{Point(0, 1), Point(1, 2)}] = Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B');
+    expectedCuboids[CuboidKey{'A', Point(0, 0), Point(0, 0)}] = Cuboid(0, 0, 0, 0, 0, 0, 1, 1, 1, 'A');
+    expectedCuboids[CuboidKey{'B', Point(0, 1), Point(1, 2)}] = Cuboid(0, 0, 0, 0, 1, 0, 2, 2, 1, 'B');
 
     std::map<CuboidKey, Cuboid> actualCuboids;
 
     // Act
-    tranformToMap(plane, actualCuboids);
+    transformToMap(plane, actualCuboids);
 
     // Assert
     EXPECT_TRUE(areMapsEqual(expectedCuboids, actualCuboids));
@@ -38,16 +36,29 @@ TEST(TransformToMapTest, EmptyInput)
     std::map<CuboidKey, Cuboid> actualCuboids;
 
     // Act
-    tranformToMap(plane, actualCuboids);
+    transformToMap(plane, actualCuboids);
 
     // Assert
     EXPECT_TRUE(areMapsEqual(expectedCuboids, actualCuboids));
 }
 
-// ... Add more tests as needed ...
-
-int main(int argc, char **argv)
+TEST(TransformToMapTest, MoreCuboids)
 {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    // Arrange
+    std::deque<Cuboid> plane;
+    plane.push_back(Cuboid(0, 0, 0, 0, 0, 0, 3, 4, 1, 'A'));
+    plane.push_back(Cuboid(0, 0, 0, 3, 0, 0, 4, 4, 1, 'B'));
+    plane.push_back(Cuboid(0, 0, 0, 0, 4, 0, 5, 2, 1, 'C'));
+
+    std::map<CuboidKey, Cuboid> expectedCuboids;
+    expectedCuboids[CuboidKey{'A', Point(0, 0), Point(2, 3)}] = Cuboid(0, 0, 0, 0, 0, 0, 3, 4, 1, 'A');
+    expectedCuboids[CuboidKey{'B', Point(3, 0), Point(6, 3)}] = Cuboid(0, 0, 0, 3, 0, 0, 4, 4, 1, 'B');
+    expectedCuboids[CuboidKey{'C', Point(0, 4), Point(4, 5)}] = Cuboid(0, 0, 0, 0, 4, 0, 5, 2, 1, 'C');
+    std::map<CuboidKey, Cuboid> actualCuboids;
+
+    // Act
+    transformToMap(plane, actualCuboids);
+
+    // Assert
+    EXPECT_TRUE(areMapsEqual(expectedCuboids, actualCuboids));
 }
