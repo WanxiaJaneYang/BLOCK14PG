@@ -80,10 +80,7 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                         else
                         {
                             // when current is shorter, we do not merge them
-                            // pop and push the rectangleToBeMerged cuboid into the compressedPlane
-                            rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
-
+                            // the rectangleToBeMerged endpoint is after current cuboid
                             // pop and push the current cuboid into the rectanglesToBeMerged
                             currentLine.pop_front();
                             rectanglesToBeMerged.push_back(current);
@@ -139,12 +136,6 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             rectanglesToBeMerged.push_back(current);
                         }
                     }
-                }
-                // push all remaining current cuboid into the rectanglesToBeMerged
-                while (currentLine.size() > 0)
-                {
-                    rectanglesToBeMerged.push_back(currentLine.front());
-                    currentLine.pop_front();
                 }
             }
         }
