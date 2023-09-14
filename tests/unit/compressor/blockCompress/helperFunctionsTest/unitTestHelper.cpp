@@ -101,3 +101,13 @@ std::string cuboidToString(const Cuboid &cuboid)
 
     return cuboidString;
 }
+
+std::string cuboidKeyToString(const CuboidKey &cuboidKey)
+{
+    std::string cuboidKeyString = "";
+
+    cuboidKeyString += "tag: " + std::to_string(cuboidKey.tag) + ",";
+    cuboidKeyString += "topLeft: (" + std::to_string(cuboidKey.topLeft.x) + "," + std::to_string(cuboidKey.topLeft.y) + "),";
+    cuboidKeyString += "bottomRight: (" + std::to_string(cuboidKey.bottomRight.x) + "," + std::to_string(cuboidKey.bottomRight.y) + ")";
+    return cuboidKeyString;
+}

@@ -296,7 +296,17 @@ bool CuboidKey::operator<(const CuboidKey &other) const
 {
     if (topLeft.y != other.topLeft.y)
         return topLeft.y < other.topLeft.y;
-    return topLeft.x < other.topLeft.x;
+
+    if (topLeft.x != other.topLeft.x)
+        return topLeft.x < other.topLeft.x;
+
+    if (bottomRight.y != other.bottomRight.y)
+        return bottomRight.y < other.bottomRight.y;
+
+    if (bottomRight.x != other.bottomRight.x)
+        return bottomRight.x < other.bottomRight.x;
+
+    return tag < other.tag;
 }
 
 bool CuboidKey::operator==(const CuboidKey &other) const

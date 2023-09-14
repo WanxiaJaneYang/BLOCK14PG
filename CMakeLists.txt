@@ -55,3 +55,9 @@ tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
 target_compile_definitions(minusCuboidTest PRIVATE TEST)
 target_link_libraries(minusCuboidTest gtest gtest_main)
+
+add_executable(findAllMatchedTest tests/unit/compressor/blockCompress/helperFunctionsTest/findAllMatchedTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(findAllMatchedTest PRIVATE TEST)
+target_link_libraries(findAllMatchedTest gtest gtest_main)
