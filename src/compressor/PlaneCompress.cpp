@@ -66,7 +66,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                             rectangleToBeMerged.height += current.height;
                             rectanglesToBeMerged.push_back(rectangleToBeMerged);
 
-                            // check if the current cuboid has extra part
+                            // check if the current cuboid has extra part after merge
                             int currentExtra = current.width - rectangleToBeMerged.width;
                             if (currentExtra > 0)
                             {
@@ -74,17 +74,14 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                                 current.cuboidX += rectangleToBeMerged.width;
                                 current.width = currentExtra;
 
-                                // push current cuboid's extra part into rectanglesToBeMerged
-                                rectanglesToBeMerged.push_back(current);
+                                // the currentline front would be the cuboid's extra part after merge
+                                currentLine.push_front(current);
                             }
                         }
                         else
                         {
                             // when current is shorter, we do not merge them
-                            // pop and push the rectangleToBeMerged cuboid into the compressedPlane
-                            rectanglesToBeMerged.pop_front();
-                            // compressedPlane.push_back(rectangleToBeMerged);
-                            GlobalVars::outputTasks.push(rectangleToBeMerged);
+                            // the rectangleToBeMerged endpoint is after current cuboid
                             // pop and push the current cuboid into the rectanglesToBeMerged
                             currentLine.pop_front();
                             rectanglesToBeMerged.push_back(current);
@@ -98,16 +95,16 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                         {
                             currentLine.pop_front();
                             rectanglesToBeMerged.pop_front();
-                            // merge the two cuboids' overlap part
-                            // push the merged cuboid into rectanglesToBeMerged queue
-                            rectangleToBeMerged.height += current.height;
-                            rectanglesToBeMerged.push_back(rectangleToBeMerged);
-
                             // change the width of current cuboid as extra part's width
                             current.width = current.width - rectangleToBeMerged.width;
 
                             // push current cuboid's extra part into rectanglesToBeMerged
                             rectanglesToBeMerged.push_back(current);
+
+                            // merge the two cuboids' overlap part
+                            // push the merged cuboid into rectanglesToBeMerged queue
+                            rectangleToBeMerged.height += current.height;
+                            rectanglesToBeMerged.push_back(rectangleToBeMerged);
                         }
                         else if (current.width < rectangleToBeMerged.width)
                         {
@@ -144,12 +141,6 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                         }
                     }
                 }
-                // push all remaining current cuboid into the rectanglesToBeMerged
-                while (currentLine.size() > 0)
-                {
-                    rectanglesToBeMerged.push_back(currentLine.front());
-                    currentLine.pop_front();
-                }
             }
         }
         // push all remaining rectangles into the compressedPlane
@@ -157,10 +148,10 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
         {
             // compressedPlane.push_back(rectanglesToBeMerged.front());
             GlobalVars::outputTasks.push(rectanglesToBeMerged.front());
-
             rectanglesToBeMerged.pop_front();
         }
         // result.push_back(compressedPlane);
     }
     // return result;
+
 }
