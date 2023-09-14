@@ -8,7 +8,7 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
     // or might not be. the key is the x and y of the top left corner of the cuboid
     std::map<CuboidKey, Cuboid> prevPlane;
     // read plane by plane
-    for (size_t z = 0; z < GlobalVars::depth; z++)
+    for (size_t z = 0; z < planes.size(); z++)
     {
         if (z == 0)
         {
