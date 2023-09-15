@@ -29,7 +29,7 @@ public:
     bool isFull(int height, int depth) const;
 
     // Method to fill the block
-    void fillBlock(int height, int depth, const std::vector<char> inputData);
+    void fillBlock(int height, int depth, const std::vector<char> &inputData);
 
 
 private:

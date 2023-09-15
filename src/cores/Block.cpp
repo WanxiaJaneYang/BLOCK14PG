@@ -73,7 +73,7 @@ bool Block::isFull(int height, int depth) const
 }
 
 // Method to fill the block
-void Block::fillBlock(int height, int depth, const std::vector<char> inputData)
+void Block::fillBlock(int height, int depth, const std::vector<char> &inputData)
 {
     if (!Block::isFull(height, depth))
     {

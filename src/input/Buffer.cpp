@@ -35,14 +35,13 @@ bool Buffer::pop(Block &block)
     return true;
 }
 
-// Method to fill empty block into buffer with size
-void Buffer::resize(int size)
-{
-    tasks.resize(size, Block());
-}
-
 // Method to get block reference from buffer with index
 Block &Buffer::getFromIndex(int index)
 {
-    return tasks[index];
+    if (tasks.size() < (index+1))
+    {
+        tasks.push_back(Block());
+    }
+
+        return tasks[index];
 }
