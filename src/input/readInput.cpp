@@ -36,8 +36,6 @@ void readInput(std::istream &in)
     // Collecting parent size blocks
     int numX = mapWidth / GlobalVars::width;
     int numY = mapHeight / GlobalVars::height;
-    int numZ = mapDepth / GlobalVars::depth;
-    int totalBlocks = numX * numY * numZ;
 
     Buffer bufferLst;
 
