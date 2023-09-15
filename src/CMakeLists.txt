@@ -14,7 +14,6 @@ set(SOURCES
     compressor/Compressor.cpp
     compressor/LineCompress.cpp
     compressor/PlaneCompress.cpp
-    compressor/BlockCompress.cpp
     cores/Block.cpp 
     cores/Cuboid.cpp 
     cores/SafeInputTasks.cpp 
