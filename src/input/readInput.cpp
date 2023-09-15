@@ -40,8 +40,6 @@ void readInput(std::istream &in)
     int totalBlocks = numX * numY * numZ;
 
     Buffer bufferLst;
-    // Initialize buffer list with blocks
-    bufferLst.resize(totalBlocks);
 
     // Define counters
     int lineCount = 0;
@@ -120,6 +118,10 @@ void readInput(std::istream &in)
             {
                 // Store the full bloack of buffer into GlobalVars::processTasks
                 GlobalVars::processTasks.push(blockRef);
+
+                // Pop full block from buffer list and decrease index by 1
+                bufferLst.tasks.erase(bufferLst.tasks.begin() + index);
+                index--;
             }
         }
 

@@ -5,7 +5,7 @@
 
 class Buffer
 {
-private:
+public:
     std::vector<Block> tasks;
 
 public:
@@ -16,8 +16,6 @@ public:
     void push(const Block &block);
     // Method to pop block into buffer
     bool pop(Block &block);
-    // Method to fill empty block into buffer with size
-    void resize(int size);
     // Method to get block reference from buffer with index
     Block &getFromIndex(int index);
     // Destructor
