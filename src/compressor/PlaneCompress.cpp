@@ -34,7 +34,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                 // consider using while loop to merge the rectangles until the last one in the line is dealt
                 std::deque<Cuboid> currentLine = plane[y];
                 // scheme:
-                while (rectanglesToBeMerged.size() > 0 && currentLine.size() > 0)
+                while (rectanglesToBeMerged.front().cuboidY < y && currentLine.size() > 0)
                 {
                     Cuboid rectangleToBeMerged = rectanglesToBeMerged.front();
                     Cuboid current = currentLine.front();
@@ -76,10 +76,25 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                         else
                         {
                             // when current is shorter, we do not merge them
-                            // the rectangleToBeMerged endpoint is after current cuboid
-                            // pop and push the current cuboid into the rectanglesToBeMerged
-                            currentLine.pop_front();
-                            rectanglesToBeMerged.push_back(current);
+                            // while the rectangleToBeMerged endpoint is after current cuboid
+                            while (currentEnd <= rectangleEnd)
+                            {
+                                // pop and push the current cuboid into the rectanglesToBeMerged
+                                rectanglesToBeMerged.push_back(currentLine.front());
+                                currentLine.pop_front();
+                                if (currentLine.size() > 0)
+                                {
+                                    currentEnd = currentLine.front().cuboidX + currentLine.front().width;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+
+                            // pop and push the rectangleToBeMerged into compressedplane
+                            rectanglesToBeMerged.pop_front();
+                            GlobalVars::outputTasks.push(rectangleToBeMerged);
                         }
                     }
                     // if the two cuboids have same end points and tags
