@@ -27,7 +27,7 @@ TEST_P(IntegrationTest, HandlesValidIntegration) {
     std::vector<std::string> ProducedLines = sortedLinesFromStream(iss);
 
     // find the expected result
-    std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
+    std::string baseName = std::filesystem::path(testFilePath).stem().string();
         size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos) {
         baseName.erase(pos, 5); // 5 is the length of "_case"
