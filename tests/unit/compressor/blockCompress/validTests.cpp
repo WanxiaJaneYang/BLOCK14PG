@@ -19,24 +19,10 @@ TEST_P(BlockCompressTest, HandlesValidInput)
 
     // Convert file content to the required data structure
     std::deque<std::deque<Cuboid>> planes = convertFileContentToPlanes(fileContent);
-    // for (const auto &column : planes)
-    // {
-    //     for (const auto &cuboid : column)
-    //     {
-    //         std::cout << cuboid.cuboidX << ",";
-    //         std::cout << cuboid.cuboidY << ",";
-    //         std::cout << cuboid.cuboidZ << ",";
-    //         std::cout << cuboid.width << ",";
-    //         std::cout << cuboid.height << ",";
-    //         std::cout << cuboid.depth << ",";
-    //         std::cout << cuboid.tag << "\n";
-    //     }
-    //     std::cout << "\n";
-    // }
+
     // Read the blockCompress() produced content into a string
     blockCompress(planes);
 
-    // std::cout << GlobalVars::outputTasks.tasks.size() << std::endl;
     std::string producedContent = writeReadContent(); // method to generate output to string
 
     // find the expected result
