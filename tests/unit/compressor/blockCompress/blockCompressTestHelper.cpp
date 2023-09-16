@@ -4,7 +4,7 @@
 std::vector<std::string> listInputFiles(const std::string &directory)
 {
     std::vector<std::string> files;
-    for (const auto &entry : std::__fs::filesystem::directory_iterator(directory))
+    for (const auto &entry : std::filesystem::directory_iterator(directory))
     {
         if (entry.path().extension() == ".txt" && entry.path().string().find("_case.txt") != std::string::npos)
         {
@@ -83,12 +83,28 @@ std::deque<std::deque<Cuboid>> convertFileContentToPlanes(const std::string &fil
 std::string writeContentOfTasks(SafeOutputTasks &tasks)
 {
     std::ostringstream oss;
-    for (int i = 0; i < tasks.size(); ++i)
+    // new cotainer for cuboids
+    std::vector<Cuboid> sortedCuboids = tasks.tasks;
+
+    // sort cuboids in the plane
+    std::sort(sortedCuboids.begin(), sortedCuboids.end(), [](const Cuboid &a, const Cuboid &b)
+              {
+            if (a.cuboidX != b.cuboidX) return a.cuboidX < b.cuboidX;
+            if (a.cuboidY != b.cuboidY) return a.cuboidY < b.cuboidY;
+            if (a.cuboidZ != b.cuboidZ) return a.cuboidZ < b.cuboidZ;
+            if (a.width != b.width) return a.width < b.width;
+            if (a.height != b.height) return a.height < b.height;
+            if (a.depth != b.depth) return a.depth < b.depth;
+            return a.tag < b.tag; });
+
+    // write into oss
+    for (const auto &cuboid : sortedCuboids)
     {
-        Cuboid &cuboid = tasks.tasks[i];
-        // Assuming Block has a method that returns a string representation
         oss << writeContentOfCuboid(cuboid);
     }
+
+    // black line
+    oss << "\n";
     return oss.str();
 }
 
@@ -114,7 +130,6 @@ std::string writeContentOfCuboid(const Cuboid &cuboid)
 // Method to write outcome of block compress
 std::string writeReadContent()
 {
-
     // Convert the data stored into a string
     std::ostringstream oss;
 

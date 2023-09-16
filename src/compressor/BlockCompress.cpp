@@ -128,6 +128,16 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
             // reassign the merged plane to the prev plane
             prevPlane = mergedPlane;
         }
+
+        // if this is the last plane, push all cuboids in the prev plane into the output tasks
+        if (z == planes.size() - 1)
+        {
+            for (auto it = prevPlane.begin(); it != prevPlane.end();)
+            {
+                GlobalVars::outputTasks.push(it->second);
+                it = prevPlane.erase(it);
+            }
+        }
     }
 }
 
