@@ -8,7 +8,7 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
     // or might not be. the key is the x and y of the top left corner of the cuboid
     std::map<CuboidKey, Cuboid> prevPlane;
     // read plane by plane
-    for (size_t z = 0; z < GlobalVars::depth; z++)
+    for (size_t z = 0; z < planes.size(); z++)
     {
         if (z == 0)
         {
@@ -127,6 +127,16 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
 
             // reassign the merged plane to the prev plane
             prevPlane = mergedPlane;
+        }
+
+        // if this is the last plane, push all cuboids in the prev plane into the output tasks
+        if (z == planes.size() - 1)
+        {
+            for (auto it = prevPlane.begin(); it != prevPlane.end();)
+            {
+                GlobalVars::outputTasks.push(it->second);
+                it = prevPlane.erase(it);
+            }
         }
     }
 }

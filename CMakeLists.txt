@@ -38,11 +38,11 @@ add_subdirectory(googletest/googletest)
 # target_compile_definitions(integrationValidTests PRIVATE TEST)
 # target_link_libraries(integrationValidTests gtest gtest_main)
 
-# add_executable(validCompressorBlockTests tests/unit/compressor/blockCompress/validTests.cpp 
-# tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp 
-# tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
-# target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
-# target_link_libraries(validCompressorBlockTests gtest gtest_main)
+add_executable(validCompressorBlockTests tests/unit/compressor/blockCompress/validTests.cpp 
+tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp 
+tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
+target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
+target_link_libraries(validCompressorBlockTests gtest gtest_main)
 
 add_executable(transformToMapTest tests/unit/compressor/blockCompress/helperFunctionsTest/transformToMapTest.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
@@ -61,3 +61,9 @@ tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
 target_compile_definitions(findAllMatchedTest PRIVATE TEST)
 target_link_libraries(findAllMatchedTest gtest gtest_main)
+
+add_executable(blockCompressTest tests/unit/compressor/blockCompress/integrationSelfDebugging/BlockCompressTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(blockCompressTest PRIVATE TEST)
+target_link_libraries(blockCompressTest gtest gtest_main)

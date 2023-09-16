@@ -87,17 +87,10 @@ bool areMapsEqual(const std::map<CuboidKey, Cuboid> &expected, const std::map<Cu
 
 std::string cuboidToString(const Cuboid &cuboid)
 {
-    std::string cuboidString = "";
-    cuboidString += "blockX: " + std::to_string(cuboid.blockX) + ",";
-    cuboidString += "blockY: " + std::to_string(cuboid.blockY) + ",";
-    cuboidString += "blockZ: " + std::to_string(cuboid.blockZ) + ",";
-    cuboidString += "cuboidX: " + std::to_string(cuboid.cuboidX) + ",";
-    cuboidString += "cuboidY: " + std::to_string(cuboid.cuboidY) + ",";
-    cuboidString += "cuboidZ: " + std::to_string(cuboid.cuboidZ) + ",";
-    cuboidString += "width: " + std::to_string(cuboid.width) + ",";
-    cuboidString += "height: " + std::to_string(cuboid.height) + ",";
-    cuboidString += "depth: " + std::to_string(cuboid.depth) + ",";
-    cuboidString += "tag: " + std::to_string(cuboid.tag) + ",";
+    std::string cuboidString = "(" + std::to_string(cuboid.blockX) + "," + std::to_string(cuboid.blockY) + "," + std::to_string(cuboid.blockZ) + "),";
+    cuboidString += "(" + std::to_string(cuboid.cuboidX) + "," + std::to_string(cuboid.cuboidY) + "," + std::to_string(cuboid.cuboidZ) + "),";
+    cuboidString += "(" + std::to_string(cuboid.width) + "," + std::to_string(cuboid.height) + "," + std::to_string(cuboid.depth) + "),";
+    cuboidString += cuboid.tag;
 
     return cuboidString;
 }
