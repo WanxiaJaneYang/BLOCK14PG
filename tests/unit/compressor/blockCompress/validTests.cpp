@@ -26,7 +26,7 @@ TEST_P(BlockCompressTest, HandlesValidInput)
     std::string producedContent = writeReadContent(); // method to generate output to string
 
     // find the expected result
-    std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
+    std::string baseName = std::filesystem::path(testFilePath).stem().string();
     size_t pos = baseName.rfind("_case");
     if (pos != std::string::npos)
     {
