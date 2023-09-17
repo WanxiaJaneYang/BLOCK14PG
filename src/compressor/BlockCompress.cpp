@@ -1,5 +1,7 @@
 #include "BlockCompress.h"
 #include <stdexcept>
+#include "BlockCompress.h"
+#include <stdexcept>
 
 /*compress the planes into cuboid and push them into output tasks*/
 void blockCompress(std::deque<std::deque<Cuboid>> &planes)

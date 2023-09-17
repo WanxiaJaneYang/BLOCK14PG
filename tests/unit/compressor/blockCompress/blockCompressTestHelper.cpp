@@ -103,8 +103,6 @@ std::string writeContentOfTasks(SafeOutputTasks &tasks)
         oss << writeContentOfCuboid(cuboid);
     }
 
-    // black line
-    oss << "\n";
     return oss.str();
 }
 
