@@ -43,3 +43,15 @@ tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp
 tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
 target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
 target_link_libraries(validCompressorBlockTests gtest gtest_main)
+
+add_executable(lineCompressTests tests/unit/compressor/lineCompress/validTests.cpp
+tests/unit/compressor/lineCompress/Helper.cpp
+tests/unit/compressor/lineCompress/Helper.h ${SOURCES})
+target_compile_definitions(lineCompressTests PRIVATE TEST)
+target_link_libraries(lineCompressTests gtest gtest_main)
+
+add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
+tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
+tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
+target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
+target_link_libraries(validCompressorPlaneTests gtest gtest_main)
