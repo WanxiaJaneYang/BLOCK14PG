@@ -1,10 +1,6 @@
 name: Cppcheck
 
 on:
-  push:
-    paths:
-    - '**.cpp'
-    - '**.h'
   pull_request:
     paths:
     - '**.cpp'
