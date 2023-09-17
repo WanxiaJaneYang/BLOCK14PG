@@ -2,155 +2,34 @@
 #include <stdexcept>
 #include "BlockCompress.h"
 #include <stdexcept>
-
-/*compress the planes into cuboid and push them into output tasks*/
-void blockCompress(std::deque<std::deque<Cuboid>> &planes)
+/*
+function to check if the two cuboids from different planes are overlapped
+*/
+bool isOverLapped(const CuboidKey &cuboid1, const CuboidKey &cuboid2)
 {
-    // declare a map to store the previous plane, basically plane might be able to be further merged
-    // or might not be. the key is the x and y of the top left corner of the cuboid
-    std::map<CuboidKey, Cuboid> prevPlane;
-    transformToMap(planes[0], prevPlane);
-    // read plane by plane
-    for (size_t z = 1; z < planes.size(); z++)
+    // if the two cuboids are overlapped, return true
+    // if the bottom right corner of cuboid1 is to the left of the top left corner of cuboid2, return false
+    if (cuboid1.bottomRight.x < cuboid2.topLeft.x)
     {
-        // from the second plane
-        std::map<CuboidKey, Cuboid> currentPlane;
-        transformToMap(planes[z], currentPlane);
-
-        // this is the merged plane which will be later reassigned to prevPlane
-        std::map<CuboidKey, Cuboid> mergedPlane;
-
-        // iterate through the prev plane
-        for (auto it = prevPlane.begin(); it != prevPlane.end();)
-        {
-            // if the current plane is empty, push the cuboid into the output tasks
-            if (currentPlane.empty())
-            {
-                pushPlaneIntoOutputTasks(prevPlane);
-            }
-
-            // if there is a cuboid has the same key in the current plane, merge the cuboid
-            auto key = it->first;
-            if (currentPlane.find(key) != currentPlane.end())
-            {
-                // merge the cuboid
-                Cuboid cuboid = it->second;
-                cuboid.depth++;
-                // remove the cuboid from the current plane
-                currentPlane.erase(key);
-                // push the merged cuboid into the merged plane
-                mergedPlane[key] = cuboid;
-                // remove the cuboid from the prev plane
-                it = prevPlane.erase(it);
-            }
-            // if there is no cuboid has the same key in the current plane, and this is the last plane
-            else if (z == planes.size() - 1)
-            {
-                GlobalVars::outputTasks.push(it->second);
-                // remove the cuboid from the prev plane
-                it = prevPlane.erase(it);
-            }
-
-            // there is more planes to go and there is no cuboid has the same key in the current plane
-            else
-            {
-                // if the two front cuboids do not overlap
-                // push the cuboid in the prev plane into the output tasks
-                if (!isOverLapped(key, currentPlane.begin()->first))
-                {
-                    // remove the cuboid with the smaller index
-                    if (key < currentPlane.begin()->first)
-                    {
-                        GlobalVars::outputTasks.push(it->second);
-                        // remove the cuboid from the prev plane
-                        it = prevPlane.erase(it);
-                    }
-                    else
-                    {
-                        // push the cuboid in the current plane into the merged plane
-                        mergedPlane[currentPlane.begin()->first] = currentPlane.begin()->second;
-                        // remove the cuboid from the current plane
-                        currentPlane.erase(currentPlane.begin());
-                    }
-                }
-
-                // if the two front cuboids overlap
-                // find the case where the cuboid in the current plane (and of the same tag)
-                // contains the cuboid in the prev plane
-
-                // case that the current cuboid does not contain the prev cuboid
-                else if (key.tag != currentPlane.begin()->first.tag || key.topLeft.x < currentPlane.begin()->first.topLeft.x || key.topLeft.y < currentPlane.begin()->first.topLeft.y || key.bottomRight.x > currentPlane.rbegin()->first.bottomRight.x || key.bottomRight.y > currentPlane.rbegin()->first.bottomRight.y)
-                {
-                    // push the cuboid into the output tasks
-                    GlobalVars::outputTasks.push(it->second);
-                    // remove the cuboid from the prev plane
-                    it = prevPlane.erase(it);
-
-                    // move the current cuboid to the merged plane
-                    mergedPlane[currentPlane.begin()->first] = currentPlane.begin()->second;
-                    // remove the cuboid from the current plane
-                    currentPlane.erase(currentPlane.begin());
-                }
-
-                // case that the current cuboid contains the prev cuboid
-
-                else
-                {
-                    // calculate the remain part of the cuboid in the current plane minusCuboid the cuboid in the prev plane
-                    RemainingCuboid remain = minusCuboid(currentPlane.begin()->second, it->second);
-                    std::map<CuboidKey, Cuboid> nextPlane;
-                    transformToMap(planes[z + 1], nextPlane);
-                    // then we find if there are exact cuboids in the next plane matching the remain part
-                    // examine the remainCuboid, see if there are cuboids in the next plane matching the remain part
-                    if (findAllMatched(remain, nextPlane))
-                    {
-                        // if all matched, merge the cuboid in the prev plane with the cuboid in the current plane
-                        // and push the merged cuboid into the merged plane
-                        Cuboid merged = it->second;
-                        merged.depth++;
-                        mergedPlane[key] = merged;
-                        // remove the cuboid from the prev plane
-                        it = prevPlane.erase(it);
-
-                        // get the cuboid in the remain and push it into the merged plane
-                        pushRemainIntoMerge(remain, mergedPlane);
-
-                        // remove the cuboid from the current plane
-                        currentPlane.erase(currentPlane.begin());
-                    }
-                    else
-                    {
-                        // if not all matched, push the cuboid in the prev plane into the output tasks
-                        GlobalVars::outputTasks.push(it->second);
-                        // remove the cuboid from the prev plane
-                        it = prevPlane.erase(it);
-
-                        // and push the cuboid in the current plane into the merged plane
-                        mergedPlane[currentPlane.begin()->first] = currentPlane.begin()->second;
-                        // remove the cuboid from the current plane
-                        currentPlane.erase(currentPlane.begin());
-                    }
-                }
-            }
-            // mergedPlane is the current plane
-        }
-
-        // if there are cuboids left in the current plane, push them into the merged plane
-        for (auto it = currentPlane.begin(); it != currentPlane.end();)
-        {
-            mergedPlane[it->first] = it->second;
-            it = currentPlane.erase(it);
-        }
-
-        // reassign the merged plane to the prev plane
-        prevPlane = mergedPlane;
+        return false;
+    }
+    // if the top left corner of cuboid1 is to the right of the bottom right corner of cuboid2, return false
+    if (cuboid1.topLeft.x > cuboid2.bottomRight.x)
+    {
+        return false;
+    }
+    // if the bottom right corner of cuboid1 is above the top left corner of cuboid2, return false
+    if (cuboid1.bottomRight.y < cuboid2.topLeft.y)
+    {
+        return false;
+    }
+    // if the top left corner of cuboid1 is below the bottom right corner of cuboid2, return false
+    if (cuboid1.topLeft.y > cuboid2.bottomRight.y)
+    {
+        return false;
     }
 
-    for (auto it = prevPlane.begin(); it != prevPlane.end();)
-    {
-        GlobalVars::outputTasks.push(it->second);
-        it = prevPlane.erase(it);
-    }
+    return true;
 }
 
 /*calculate the remain part of the cuboid in the current plane minusCuboid the cuboid in the prev plane*/
@@ -355,32 +234,152 @@ void pushPlaneIntoOutputTasks(std::map<CuboidKey, Cuboid> &prevPlane)
     }
 }
 
-/*
-function to check if the two cuboids from different planes are overlapped
-*/
-bool isOverLapped(const CuboidKey &cuboid1, const CuboidKey &cuboid2)
+/*compress the planes into cuboid and push them into output tasks*/
+void blockCompress(std::deque<std::deque<Cuboid>> &planes)
 {
-    // if the two cuboids are overlapped, return true
-    // if the bottom right corner of cuboid1 is to the left of the top left corner of cuboid2, return false
-    if (cuboid1.bottomRight.x < cuboid2.topLeft.x)
+    // declare a map to store the previous plane, basically plane might be able to be further merged
+    // or might not be. the key is the x and y of the top left corner of the cuboid
+    std::map<CuboidKey, Cuboid> prevPlane;
+    transformToMap(planes[0], prevPlane);
+    // read plane by plane
+    for (size_t z = 1; z < planes.size(); z++)
     {
-        return false;
-    }
-    // if the top left corner of cuboid1 is to the right of the bottom right corner of cuboid2, return false
-    if (cuboid1.topLeft.x > cuboid2.bottomRight.x)
-    {
-        return false;
-    }
-    // if the bottom right corner of cuboid1 is above the top left corner of cuboid2, return false
-    if (cuboid1.bottomRight.y < cuboid2.topLeft.y)
-    {
-        return false;
-    }
-    // if the top left corner of cuboid1 is below the bottom right corner of cuboid2, return false
-    if (cuboid1.topLeft.y > cuboid2.bottomRight.y)
-    {
-        return false;
+        // from the second plane
+        std::map<CuboidKey, Cuboid> currentPlane;
+        transformToMap(planes[z], currentPlane);
+
+        // this is the merged plane which will be later reassigned to prevPlane
+        std::map<CuboidKey, Cuboid> mergedPlane;
+
+        // iterate through the prev plane
+        for (auto it = prevPlane.begin(); it != prevPlane.end();)
+        {
+            // if the current plane is empty, push the cuboid into the output tasks
+            if (currentPlane.empty())
+            {
+                pushPlaneIntoOutputTasks(prevPlane);
+            }
+
+            // if there is a cuboid has the same key in the current plane, merge the cuboid
+            auto key = it->first;
+            if (currentPlane.find(key) != currentPlane.end())
+            {
+                // merge the cuboid
+                Cuboid cuboid = it->second;
+                cuboid.depth++;
+                // remove the cuboid from the current plane
+                currentPlane.erase(key);
+                // push the merged cuboid into the merged plane
+                mergedPlane[key] = cuboid;
+                // remove the cuboid from the prev plane
+                it = prevPlane.erase(it);
+            }
+            // if there is no cuboid has the same key in the current plane, and this is the last plane
+            else if (z == planes.size() - 1)
+            {
+                GlobalVars::outputTasks.push(it->second);
+                // remove the cuboid from the prev plane
+                it = prevPlane.erase(it);
+            }
+
+            // there is more planes to go and there is no cuboid has the same key in the current plane
+            else
+            {
+                // if the two front cuboids do not overlap
+                // push the cuboid in the prev plane into the output tasks
+                if (!isOverLapped(key, currentPlane.begin()->first))
+                {
+                    // remove the cuboid with the smaller index
+                    if (key < currentPlane.begin()->first)
+                    {
+                        GlobalVars::outputTasks.push(it->second);
+                        // remove the cuboid from the prev plane
+                        it = prevPlane.erase(it);
+                    }
+                    else
+                    {
+                        // push the cuboid in the current plane into the merged plane
+                        mergedPlane[currentPlane.begin()->first] = currentPlane.begin()->second;
+                        // remove the cuboid from the current plane
+                        currentPlane.erase(currentPlane.begin());
+                    }
+                }
+
+                // if the two front cuboids overlap
+                // find the case where the cuboid in the current plane (and of the same tag)
+                // contains the cuboid in the prev plane
+
+                // case that the current cuboid does not contain the prev cuboid
+                else if (key.tag != currentPlane.begin()->first.tag || key.topLeft.x < currentPlane.begin()->first.topLeft.x || key.topLeft.y < currentPlane.begin()->first.topLeft.y || key.bottomRight.x > currentPlane.rbegin()->first.bottomRight.x || key.bottomRight.y > currentPlane.rbegin()->first.bottomRight.y)
+                {
+                    // push the cuboid into the output tasks
+                    GlobalVars::outputTasks.push(it->second);
+                    // remove the cuboid from the prev plane
+                    it = prevPlane.erase(it);
+
+                    // move the current cuboid to the merged plane
+                    mergedPlane[currentPlane.begin()->first] = currentPlane.begin()->second;
+                    // remove the cuboid from the current plane
+                    currentPlane.erase(currentPlane.begin());
+                }
+
+                // case that the current cuboid contains the prev cuboid
+
+                else
+                {
+                    // calculate the remain part of the cuboid in the current plane minusCuboid the cuboid in the prev plane
+                    RemainingCuboid remain = minusCuboid(currentPlane.begin()->second, it->second);
+                    std::map<CuboidKey, Cuboid> nextPlane;
+                    transformToMap(planes[z + 1], nextPlane);
+                    // then we find if there are exact cuboids in the next plane matching the remain part
+                    // examine the remainCuboid, see if there are cuboids in the next plane matching the remain part
+                    if (findAllMatched(remain, nextPlane))
+                    {
+                        // if all matched, merge the cuboid in the prev plane with the cuboid in the current plane
+                        // and push the merged cuboid into the merged plane
+                        Cuboid merged = it->second;
+                        merged.depth++;
+                        mergedPlane[key] = merged;
+                        // remove the cuboid from the prev plane
+                        it = prevPlane.erase(it);
+
+                        // get the cuboid in the remain and push it into the merged plane
+                        pushRemainIntoMerge(remain, mergedPlane);
+
+                        // remove the cuboid from the current plane
+                        currentPlane.erase(currentPlane.begin());
+                    }
+                    else
+                    {
+                        // if not all matched, push the cuboid in the prev plane into the output tasks
+                        GlobalVars::outputTasks.push(it->second);
+                        // remove the cuboid from the prev plane
+                        it = prevPlane.erase(it);
+
+                        // and push the cuboid in the current plane into the merged plane
+                        mergedPlane[currentPlane.begin()->first] = currentPlane.begin()->second;
+                        // remove the cuboid from the current plane
+                        currentPlane.erase(currentPlane.begin());
+                    }
+                }
+            }
+            // mergedPlane is the current plane
+        }
+
+        // if there are cuboids left in the current plane, push them into the merged plane
+        for (auto it = currentPlane.begin(); it != currentPlane.end();)
+        {
+            mergedPlane[it->first] = it->second;
+            it = currentPlane.erase(it);
+        }
+
+        // reassign the merged plane to the prev plane
+        prevPlane = mergedPlane;
     }
 
-    return true;
+    for (auto it = prevPlane.begin(); it != prevPlane.end();)
+    {
+        GlobalVars::outputTasks.push(it->second);
+        it = prevPlane.erase(it);
+    }
 }

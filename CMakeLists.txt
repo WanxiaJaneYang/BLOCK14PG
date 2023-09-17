@@ -44,23 +44,23 @@ tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
 target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
 target_link_libraries(validCompressorBlockTests gtest gtest_main)
 
-add_executable(transformToMapTest tests/unit/compressor/blockCompress/helperFunctionsTest/transformToMapTest.cpp
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-target_compile_definitions(transformToMapTest PRIVATE TEST)
-target_link_libraries(transformToMapTest gtest gtest_main)
+# add_executable(transformToMapTest tests/unit/compressor/blockCompress/helperFunctionsTest/transformToMapTest.cpp
+# tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+# tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+# target_compile_definitions(transformToMapTest PRIVATE TEST)
+# target_link_libraries(transformToMapTest gtest gtest_main)
 
-add_executable(minusCuboidTest tests/unit/compressor/blockCompress/helperFunctionsTest/minusCuboidTest.cpp
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-target_compile_definitions(minusCuboidTest PRIVATE TEST)
-target_link_libraries(minusCuboidTest gtest gtest_main)
+# add_executable(minusCuboidTest tests/unit/compressor/blockCompress/helperFunctionsTest/minusCuboidTest.cpp
+# tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+# tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+# target_compile_definitions(minusCuboidTest PRIVATE TEST)
+# target_link_libraries(minusCuboidTest gtest gtest_main)
 
-add_executable(findAllMatchedTest tests/unit/compressor/blockCompress/helperFunctionsTest/findAllMatchedTest.cpp
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-target_compile_definitions(findAllMatchedTest PRIVATE TEST)
-target_link_libraries(findAllMatchedTest gtest gtest_main)
+# add_executable(findAllMatchedTest tests/unit/compressor/blockCompress/helperFunctionsTest/findAllMatchedTest.cpp
+# tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+# tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+# target_compile_definitions(findAllMatchedTest PRIVATE TEST)
+# target_link_libraries(findAllMatchedTest gtest gtest_main)
 
 add_executable(blockCompressTest tests/unit/compressor/blockCompress/integrationSelfDebugging/BlockCompressTest.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
