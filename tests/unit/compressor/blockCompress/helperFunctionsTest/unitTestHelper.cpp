@@ -104,3 +104,42 @@ std::string cuboidKeyToString(const CuboidKey &cuboidKey)
     cuboidKeyString += "bottomRight: (" + std::to_string(cuboidKey.bottomRight.x) + "," + std::to_string(cuboidKey.bottomRight.y) + ")";
     return cuboidKeyString;
 }
+
+bool compareCuboid(const Cuboid &cuboid1, const Cuboid &cuboid2)
+{
+    // sorting priorities: first z, then y, then x
+    if (cuboid1.cuboidZ < cuboid2.cuboidZ)
+    {
+        return true;
+    }
+    else if (cuboid1.cuboidZ > cuboid2.cuboidZ)
+    {
+        return false;
+    }
+    else
+    {
+        if (cuboid1.cuboidY < cuboid2.cuboidY)
+        {
+            return true;
+        }
+        else if (cuboid1.cuboidY > cuboid2.cuboidY)
+        {
+            return false;
+        }
+        else
+        {
+            if (cuboid1.cuboidX < cuboid2.cuboidX)
+            {
+                return true;
+            }
+            else if (cuboid1.cuboidX > cuboid2.cuboidX)
+            {
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@
 #include <map>
 #include <deque>
 #include "unitTestHelpers.h"
-
+#define TESTING
 TEST(FindAllMatched, BasicTest)
 {
     // explain the test case

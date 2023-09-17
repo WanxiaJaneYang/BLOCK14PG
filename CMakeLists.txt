@@ -62,6 +62,12 @@ target_link_libraries(validCompressorBlockTests gtest gtest_main)
 # target_compile_definitions(findAllMatchedTest PRIVATE TEST)
 # target_link_libraries(findAllMatchedTest gtest gtest_main)
 
+add_executable(isOverLappedTest tests/unit/compressor/blockCompress/helperFunctionsTest/isOverlappedTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(isOverLappedTest PRIVATE TEST)
+target_link_libraries(isOverLappedTest gtest gtest_main)
+
 add_executable(blockCompressTest tests/unit/compressor/blockCompress/integrationSelfDebugging/BlockCompressTest.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})

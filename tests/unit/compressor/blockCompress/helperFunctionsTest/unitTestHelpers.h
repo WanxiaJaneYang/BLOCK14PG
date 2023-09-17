@@ -9,4 +9,5 @@ bool areMapsEqual(const std::map<CuboidKey, Cuboid> &expected, const std::map<Cu
 bool areCuboidsEqual(const Cuboid &expected, const Cuboid &actual);
 std::string cuboidToString(const Cuboid &cuboid);
 std::string cuboidKeyToString(const CuboidKey &cuboidKey);
+bool compareCuboid(const Cuboid &cuboid1, const Cuboid &cuboid2);
 #endif

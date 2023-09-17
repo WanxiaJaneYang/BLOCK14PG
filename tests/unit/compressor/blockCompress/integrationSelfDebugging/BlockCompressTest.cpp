@@ -5,6 +5,8 @@
 #include <iostream>
 #include <map>
 #include <deque>
+#include <algorithm>
+#include <vector>
 
 TEST(BlockCompressTest, BaseCase1)
 {
@@ -72,5 +74,125 @@ TEST(BlockCompressTest, BaseCase1)
         GlobalVars::outputTasks.pop(cuboid);
         std::cout << "output: " << count << " " << cuboidToString(cuboid) << std::endl;
         count++;
+    }
+}
+
+TEST(BlockCompressTest, ThreeLevelCase1)
+{
+    // oooo
+    // otto
+    // oooo
+
+    // tttt
+    // tttt
+    // tttt
+
+    // tttt
+    // toot
+    // tttt
+
+    // 0,0,0,0,0,0,4,1,1,o
+    // 0,0,0,0,1,0,1,1,1,o
+    // 0,0,0,1,1,0,2,1,1,t
+    // 0,0,0,3,1,0,1,1,1,o
+    // 0,0,0,0,2,0,4,1,1,o
+
+    // 0,0,0,0,0,1,4,3,1,t
+
+    // 0,0,0,0,0,2,4,1,1,t
+    // 0,0,0,0,1,2,1,1,1,t
+    // 0,0,0,1,1,2,2,1,1,o
+    // 0,0,0,3,1,2,1,1,1,t
+    // 0,0,0,0,2,2,4,1,1,t
+
+    // expected in the output tasks
+    // 0,0,0,0,0,0,4,1,1,o
+    // 0,0,0,0,0,1,4,1,2,t
+    // 0,0,0,0,1,0,1,1,1,o
+    // 0,0,0,0,1,1,1,1,2,t
+    // 0,0,0,0,2,0,4,1,1,o
+    // 0,0,0,0,2,1,4,1,2,t
+    // 0,0,0,1,1,0,2,1,2,t
+    // 0,0,0,1,1,2,2,1,1,o
+    // 0,0,0,3,1,0,1,1,1,o
+    // 0,0,0,3,1,1,1,1,2,t
+
+    std::deque<std::deque<Cuboid>> planes;
+    std::deque<Cuboid> plane1;
+    std::deque<Cuboid> plane2;
+    std::deque<Cuboid> plane3;
+
+    plane1.push_back(Cuboid(0, 0, 0, 0, 0, 0, 4, 1, 1, 'o'));
+    plane1.push_back(Cuboid(0, 0, 0, 0, 1, 0, 1, 1, 1, 'o'));
+    plane1.push_back(Cuboid(0, 0, 0, 1, 1, 0, 2, 1, 1, 't'));
+    plane1.push_back(Cuboid(0, 0, 0, 3, 1, 0, 1, 1, 1, 'o'));
+    plane1.push_back(Cuboid(0, 0, 0, 0, 2, 0, 4, 1, 1, 'o'));
+
+    planes.push_back(plane1);
+
+    plane2.push_back(Cuboid(0, 0, 0, 0, 0, 1, 4, 3, 1, 't'));
+
+    planes.push_back(plane2);
+
+    plane3.push_back(Cuboid(0, 0, 0, 0, 0, 2, 4, 1, 1, 't'));
+    plane3.push_back(Cuboid(0, 0, 0, 0, 1, 2, 1, 1, 1, 't'));
+    plane3.push_back(Cuboid(0, 0, 0, 1, 1, 2, 2, 1, 1, 'o'));
+    plane3.push_back(Cuboid(0, 0, 0, 3, 1, 2, 1, 1, 1, 't'));
+    plane3.push_back(Cuboid(0, 0, 0, 0, 2, 2, 4, 1, 1, 't'));
+
+    planes.push_back(plane3);
+
+    std::cout << "planes size: " << planes.size() << std::endl;
+    std::cout << "plane1 size: " << plane1.size() << std::endl;
+    std::cout << "plane2 size: " << plane2.size() << std::endl;
+    std::cout << "plane3 size: " << plane3.size() << std::endl;
+
+    // act
+    blockCompress(planes);
+
+    // expected in the output tasks
+    std::vector<Cuboid> expectedOutput;
+    Cuboid cuboid1 = Cuboid(0, 0, 0, 0, 0, 0, 4, 1, 2, 't');
+    Cuboid cuboid2 = Cuboid(0, 0, 0, 0, 1, 0, 1, 1, 2, 't');
+    Cuboid cuboid3 = Cuboid(0, 0, 0, 0, 2, 0, 4, 1, 2, 't');
+    Cuboid cuboid4 = Cuboid(0, 0, 0, 1, 1, 0, 2, 1, 2, 't');
+    Cuboid cuboid5 = Cuboid(0, 0, 0, 3, 1, 0, 1, 1, 2, 't');
+    Cuboid cuboid6 = Cuboid(0, 0, 0, 0, 0, 1, 4, 1, 2, 't');
+    Cuboid cuboid7 = Cuboid(0, 0, 0, 0, 1, 1, 1, 1, 2, 't');
+    Cuboid cuboid8 = Cuboid(0, 0, 0, 0, 2, 1, 4, 1, 2, 't');
+    Cuboid cuboid9 = Cuboid(0, 0, 0, 1, 1, 2, 2, 1, 2, 't');
+    Cuboid cuboid10 = Cuboid(0, 0, 0, 3, 1, 2, 1, 1, 2, 't');
+    expectedOutput.push_back(cuboid1);
+    expectedOutput.push_back(cuboid2);
+    expectedOutput.push_back(cuboid3);
+    expectedOutput.push_back(cuboid4);
+    expectedOutput.push_back(cuboid5);
+    expectedOutput.push_back(cuboid6);
+    expectedOutput.push_back(cuboid7);
+    expectedOutput.push_back(cuboid8);
+    expectedOutput.push_back(cuboid9);
+    expectedOutput.push_back(cuboid10);
+
+    // get the actual output
+    std::vector<Cuboid> actualOutput;
+    Cuboid cuboid;
+    int count = 0;
+    while (GlobalVars::outputTasks.pop(cuboid))
+    {
+        actualOutput.push_back(cuboid);
+        std::cout << "output: " << count << " " << cuboidToString(cuboid) << std::endl;
+        count++;
+    }
+
+    // sort the actual output and expected output
+    std::sort(actualOutput.begin(), actualOutput.end(), compareCuboid);
+    std::sort(expectedOutput.begin(), expectedOutput.end(), compareCuboid);
+
+    // check the output tasks
+    EXPECT_EQ(actualOutput.size(), expectedOutput.size());
+
+    for (int i = 0; i < actualOutput.size(); i++)
+    {
+        EXPECT_TRUE(areCuboidsEqual(actualOutput[i], expectedOutput[i]));
     }
 }
