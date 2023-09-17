@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(BLOCK)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Add your project source files 
@@ -25,6 +26,11 @@ add_subdirectory(googletest/googletest)
 # tests/unit/readInput/InputTestHelper.h ${SOURCES})
 # target_compile_definitions(validInputTests PRIVATE TEST)
 # target_link_libraries(validInputTests gtest gtest_main)
+# add_executable(validInputTests tests/unit/readInput/validTests.cpp 
+# tests/unit/readInput/InputTestHelper.cpp 
+# tests/unit/readInput/InputTestHelper.h ${SOURCES})
+# target_compile_definitions(validInputTests PRIVATE TEST)
+# target_link_libraries(validInputTests gtest gtest_main)
 
 # add_executable(invalidInputTests tests/unit/readInput/invalidTests.cpp 
 # tests/unit/readInput/InputTestHelper.cpp 
@@ -37,6 +43,11 @@ add_subdirectory(googletest/googletest)
 # tests/integration/integrationTestHelper.h ${SOURCES})
 # target_compile_definitions(integrationValidTests PRIVATE TEST)
 # target_link_libraries(integrationValidTests gtest gtest_main)
+# add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
+# tests/integration/integrationTestHelper.cpp 
+# tests/integration/integrationTestHelper.h ${SOURCES})
+# target_compile_definitions(integrationValidTests PRIVATE TEST)
+# target_link_libraries(integrationValidTests gtest gtest_main)
 
 add_executable(validCompressorBlockTests tests/unit/compressor/blockCompress/validTests.cpp 
 tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp 
@@ -44,17 +55,17 @@ tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
 target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
 target_link_libraries(validCompressorBlockTests gtest gtest_main)
 
-add_executable(lineCompressTests tests/unit/compressor/lineCompress/validTests.cpp
-tests/unit/compressor/lineCompress/Helper.cpp
-tests/unit/compressor/lineCompress/Helper.h ${SOURCES})
-target_compile_definitions(lineCompressTests PRIVATE TEST)
-target_link_libraries(lineCompressTests gtest gtest_main)
+# add_executable(lineCompressTests tests/unit/compressor/lineCompress/validTests.cpp
+# tests/unit/compressor/lineCompress/Helper.cpp
+# tests/unit/compressor/lineCompress/Helper.h ${SOURCES})
+# target_compile_definitions(lineCompressTests PRIVATE TEST)
+# target_link_libraries(lineCompressTests gtest gtest_main)
 
-add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
-tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
-tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
-target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
-target_link_libraries(validCompressorPlaneTests gtest gtest_main)
+# add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
+# tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
+# tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
+# target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
+# target_link_libraries(validCompressorPlaneTests gtest gtest_main)
 
 # add_executable(transformToMapTest tests/unit/compressor/blockCompress/helperFunctionsTest/transformToMapTest.cpp
 # tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 

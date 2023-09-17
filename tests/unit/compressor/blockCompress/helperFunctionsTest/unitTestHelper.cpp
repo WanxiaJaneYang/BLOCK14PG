@@ -138,7 +138,7 @@ bool compareCuboid(const Cuboid &cuboid1, const Cuboid &cuboid2)
             }
             else
             {
-                return false;
+                return cuboid1.tag < cuboid2.tag;
             }
         }
     }
