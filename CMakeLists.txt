@@ -38,6 +38,12 @@ add_subdirectory(googletest/googletest)
 # target_compile_definitions(integrationValidTests PRIVATE TEST)
 # target_link_libraries(integrationValidTests gtest gtest_main)
 
+add_executable(validCompressorBlockTests tests/unit/compressor/blockCompress/validTests.cpp 
+tests/unit/compressor/blockCompress/blockCompressTestHelper.cpp 
+tests/unit/compressor/blockCompress/blockCompressTestHelper.h ${SOURCES})
+target_compile_definitions(validCompressorBlockTests PRIVATE TEST)
+target_link_libraries(validCompressorBlockTests gtest gtest_main)
+
 add_executable(lineCompressTests tests/unit/compressor/lineCompress/validTests.cpp
 tests/unit/compressor/lineCompress/Helper.cpp
 tests/unit/compressor/lineCompress/Helper.h ${SOURCES})
