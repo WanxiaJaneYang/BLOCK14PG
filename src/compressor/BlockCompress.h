@@ -6,7 +6,7 @@
 #include "../globals/globals.h"
 #include "../cores/SafeOutputTasks.h"
 #include <algorithm>
-
+void blockCompress(std::deque<std::deque<Cuboid>> &planes);
 struct Point
 {
     int x;
@@ -32,9 +32,12 @@ struct RemainingCuboid
     Cuboid lower;
 };
 
-void blockCompress(std::deque<std::deque<Cuboid>> &planes);
+#ifdef TESTING
+
 RemainingCuboid minusCuboid(const Cuboid &currentCuboid, const Cuboid &prevCuboid);
 bool findAllMatched(RemainingCuboid &remainingCuboid, std::map<CuboidKey, Cuboid> &nextPlane);
 void transformToMap(std::deque<Cuboid> &plane, std::map<CuboidKey, Cuboid> &cuboids);
 void pushRemainIntoMerge(RemainingCuboid &remain, std::map<CuboidKey, Cuboid> &mergedPlane);
+bool isOverLapped(const CuboidKey &cuboid1, const CuboidKey &cuboid2);
+#endif
 #endif
