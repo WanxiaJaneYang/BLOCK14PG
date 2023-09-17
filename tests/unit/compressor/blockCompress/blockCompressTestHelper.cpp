@@ -88,14 +88,15 @@ std::string writeContentOfTasks(SafeOutputTasks &tasks)
 
     // sort cuboids in the plane
     std::sort(sortedCuboids.begin(), sortedCuboids.end(), [](const Cuboid &a, const Cuboid &b)
-              {
+        {
             if (a.cuboidX != b.cuboidX) return a.cuboidX < b.cuboidX;
             if (a.cuboidY != b.cuboidY) return a.cuboidY < b.cuboidY;
             if (a.cuboidZ != b.cuboidZ) return a.cuboidZ < b.cuboidZ;
             if (a.width != b.width) return a.width < b.width;
             if (a.height != b.height) return a.height < b.height;
             if (a.depth != b.depth) return a.depth < b.depth;
-            return a.tag < b.tag; });
+            return a.tag < b.tag; 
+        });
 
     // write into oss
     for (const auto &cuboid : sortedCuboids)
