@@ -91,6 +91,7 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
                 }
 
                 // case that the current cuboid contains the prev cuboid
+
                 else
                 {
                     // calculate the remain part of the cuboid in the current plane minusCuboid the cuboid in the prev plane
