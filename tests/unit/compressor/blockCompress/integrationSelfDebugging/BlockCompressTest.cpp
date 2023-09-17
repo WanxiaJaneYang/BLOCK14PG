@@ -1,3 +1,4 @@
+#define TESTING
 #include "../helperFunctionsTest/unitTestHelpers.h"
 #include "../../../../../src/compressor/Compressor.h"
 #include "../../../../../src/compressor/BlockCompress.h"

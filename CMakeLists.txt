@@ -68,6 +68,12 @@ tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOUR
 target_compile_definitions(isOverLappedTest PRIVATE TEST)
 target_link_libraries(isOverLappedTest gtest gtest_main)
 
+add_executable(AContainsB tests/unit/compressor/blockCompress/helperFunctionsTest/isAContainsBTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(AContainsB PRIVATE TEST)
+target_link_libraries(AContainsB gtest gtest_main)
+
 add_executable(blockCompressTest tests/unit/compressor/blockCompress/integrationSelfDebugging/BlockCompressTest.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})

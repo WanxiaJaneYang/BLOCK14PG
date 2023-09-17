@@ -39,5 +39,6 @@ bool findAllMatched(RemainingCuboid &remainingCuboid, std::map<CuboidKey, Cuboid
 void transformToMap(std::deque<Cuboid> &plane, std::map<CuboidKey, Cuboid> &cuboids);
 void pushRemainIntoMerge(RemainingCuboid &remain, std::map<CuboidKey, Cuboid> &mergedPlane);
 bool isOverLapped(const CuboidKey &cuboid1, const CuboidKey &cuboid2);
+bool isAContainsB(const CuboidKey &a, const CuboidKey &b);
 #endif
 #endif

@@ -1,3 +1,4 @@
+#define TESTING
 #include "../../../../../src/compressor/Compressor.h"
 #include "../../../../../src/compressor/BlockCompress.h"
 #include <gtest/gtest.h>
@@ -5,7 +6,7 @@
 #include <map>
 #include <deque>
 #include "unitTestHelpers.h"
-#define TESTING
+
 TEST(FindAllMatched, BasicTest)
 {
     // explain the test case

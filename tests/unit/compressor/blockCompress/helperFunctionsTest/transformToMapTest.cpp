@@ -1,3 +1,4 @@
+#define TESTING
 #include "../../../../../src/compressor/Compressor.h"
 #include "../../../../../src/compressor/BlockCompress.h"
 #include <gtest/gtest.h>

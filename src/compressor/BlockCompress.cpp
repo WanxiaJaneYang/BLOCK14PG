@@ -234,6 +234,36 @@ void pushPlaneIntoOutputTasks(std::map<CuboidKey, Cuboid> &prevPlane)
     }
 }
 
+bool isAContainsB(const CuboidKey &a, const CuboidKey &b)
+{
+    if (a.tag != b.tag)
+    {
+        return false;
+    }
+
+    if (a.topLeft.x > b.topLeft.x)
+    {
+        return false;
+    }
+
+    if (a.topLeft.y > b.topLeft.y)
+    {
+        return false;
+    }
+
+    if (a.bottomRight.x < b.bottomRight.x)
+    {
+        return false;
+    }
+
+    if (a.bottomRight.y < b.bottomRight.y)
+    {
+        return false;
+    }
+
+    return true;
+}
+
 /*compress the planes into cuboid and push them into output tasks*/
 void blockCompress(std::deque<std::deque<Cuboid>> &planes)
 {
@@ -310,7 +340,7 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
                 // contains the cuboid in the prev plane
 
                 // case that the current cuboid does not contain the prev cuboid
-                else if (key.tag != currentPlane.begin()->first.tag || key.topLeft.x < currentPlane.begin()->first.topLeft.x || key.topLeft.y < currentPlane.begin()->first.topLeft.y || key.bottomRight.x > currentPlane.rbegin()->first.bottomRight.x || key.bottomRight.y > currentPlane.rbegin()->first.bottomRight.y)
+                else if (!isAContainsB(currentPlane.begin()->first, key))
                 {
                     // push the cuboid into the output tasks
                     GlobalVars::outputTasks.push(it->second);
