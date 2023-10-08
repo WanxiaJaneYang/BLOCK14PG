@@ -1,5 +1,5 @@
 #include <vector>
-// #include <mutex>
+#include <mutex>
 #include "Block.h"
 #ifndef SAFEINPUTTASKS_H
 #define SAFEINPUTTASKS_H
@@ -11,7 +11,7 @@ class SafeInputTasks
 #else
     private: std::vector<Block> tasks;
 #endif
-    // std::mutex mtx;
+    std::mutex mtx;
 
 public:
     SafeInputTasks();
