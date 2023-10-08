@@ -13,19 +13,19 @@ SafeInputTasks::~SafeInputTasks()
 
 int SafeInputTasks::size()
 {
-    // std::lock_guard<std::mutex> lock(mtx);
+    std::lock_guard<std::mutex> lock(mtx);
     return tasks.size();
 }
 
 void SafeInputTasks::push(const Block &block)
 {
-    // std::lock_guard<std::mutex> lock(mtx);
+    std::lock_guard<std::mutex> lock(mtx);
     tasks.push_back(block);
 }
 
 bool SafeInputTasks::pop(Block &block)
 {
-    // std::lock_guard<std::mutex> lock(mtx);
+    std::lock_guard<std::mutex> lock(mtx);
     if (tasks.empty())
     {
         return false;
