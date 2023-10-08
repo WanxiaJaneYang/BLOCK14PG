@@ -12,29 +12,25 @@ SafeOutputTasks::~SafeOutputTasks()
 
 int SafeOutputTasks::size()
 {
-    // mtx.lock();
+    std::lock_guard<std::mutex> lock(mtx);
     int size = tasks.size();
-    // mtx.unlock();
     return size;
 }
 
 void SafeOutputTasks::push(const Cuboid &cuboid)
 {
-    // mtx.lock();
+    std::lock_guard<std::mutex> lock(mtx);  // Locks the mutex
     tasks.push_back(cuboid);
-    // mtx.unlock();
 }
 
 bool SafeOutputTasks::pop(Cuboid &cuboid)
 {
-    // mtx.lock();
+    std::lock_guard<std::mutex> lock(mtx);  // Locks the mutex
     if (tasks.empty())
     {
-        // mtx.unlock();
         return false;
     }
     cuboid = tasks.back();
     tasks.pop_back();
-    // mtx.unlock();
     return true;
 }
