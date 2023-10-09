@@ -62,6 +62,7 @@ void startThreads(std::istream &in)
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
     
+    // un-implemented 7 threads for output
     while (GlobalVars::outputTasks.size() > 0 && !outputRunning)
     {
         outputRunning = true;
