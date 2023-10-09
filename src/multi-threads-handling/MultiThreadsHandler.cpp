@@ -2,31 +2,72 @@
 #include "../input/readInput.h"
 #include "../output/output.h"
 #include "../compressor/Compressor.h"
+#include "../globals/globals.h"
+#include <atomic>
 #include <thread>
-#include "ThreadPool.h" 
+#include "ThreadPool.h"
+
+bool readInputRunning = false;
+bool outputRunning = false;
+std::atomic<int> compressionTasksCount(0);
 
 void startThreads()
 {
-    // Start dedicated threads for input and output
-    std::thread inputThread(readInput);
-    std::thread outputThread(output); // I need a function never ends
-    
-    inputThread.detach();
-    outputThread.detach();
-    
-    ThreadPool pool(6);
-    
-    pool.enqueue(readInput);
-    pool.enqueue(output);
-    pool.enqueue(startWritingThread)
-    
-      for (int i = 0; i < 6; ++i)
+    ThreadPool pool(7); // 8 threads being used in total, but 1 has been used by main process
+
+    readInputRunning = true; // set the flag to indicate that readInput is running
+    pool.enqueue(startReadingThread); // use 1 thread to read input at the beginning
+
+    while (readInputRunning) // 6 threads available now
+    {
+        if (GlobalVars::processTasks.size() > 0)
         {
-            pool.enqueue(Compressor::compress);
+            for (int i = 0; i < (5 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+            {
+                compressionTasksCount++;
+                pool.enqueue(startCompressingThread);
+            }
         }
-    
-    inputThread.join();
-    outputThread.join();
-    
+
+        if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
+        {
+            outputRunning = true;
+            pool.enqueue(startWritingThread);
+        }
+
+        // Prevent any busy-waiting even impossible in our senario
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));  // inside the loop
+
+    }
+
+    // after readInput finishes, we have one more thread to compress the remaining tasks
+    if (GlobalVars::processTasks.size() > 0)
+        {
+            for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+            {
+                compressionTasksCount++;
+                pool.enqueue(startCompressingThread);
+            }
+        }
+
+
     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
+}
+
+static void startReadingThread()
+{
+    readInput(); // call the original readInput function
+    readInputRunning = false;
+}
+
+static void startWritingThread()
+{
+    output();
+    outputRunning = false;
+}
+
+static void startCompressingThread()
+{
+    Compressor::compress();
+    compressionTasksCount--;
 }
