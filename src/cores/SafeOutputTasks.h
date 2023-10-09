@@ -6,6 +6,10 @@
 
 class SafeOutputTasks
 {
+#ifdef TEST
+public:
+    std::vector<Cuboid> tasks;
+#else
 private:
     std::vector<Cuboid> tasks;
     std::mutex mtx;
