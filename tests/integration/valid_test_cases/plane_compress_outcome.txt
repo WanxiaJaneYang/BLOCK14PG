@@ -1,0 +1,15 @@
+3291769.469176166[DEBUG] Main thread started, ID: 0x105290580
+3291769.469321833[DEBUG] ThreadPool created, ID: 0x105290580
+3291769.469350583[DEBUG] Reading thread started...
+3291769.469432166[DEBUG] Reading thread exited.
+3291769.481114791[DEBUG] Compressing pipeline started in thread ID: 0x16b18f000
+3291769.481137958[DEBUG] Compressing pipeline started in thread ID: 0x16b2a7000
+3291769.481148708[DEBUG] Compressing pipeline started in thread ID: 0x16b21b000
+3291769.481157875[DEBUG] Compressing pipeline ended in thread ID: 0x16b21b000
+3291769.481163708[DEBUG] Compressing pipeline ended in thread ID: 0x16b2a7000
+3291769.481252041[DEBUG] Compressing pipeline ended in thread ID: 0x16b18f000
+3291769.493654666[DEBUG] Writing thread started...
+1, 1, 0, 1, 1, 1,  NT
+0, 1, 0, 1, 1, 1,  NSW
+0, 0, 0, 2, 1, 1,  NSW
+3291769.493679375[DEBUG] Writing thread exited.
