@@ -1,0 +1,14 @@
+3288388.178478000[DEBUG] Main thread started, ID: 0x10068c580
+3288388.178543833[DEBUG] ThreadPool created, ID: 0x10068c580
+3288388.178564458[DEBUG] Reading thread started...
+3288388.178578458[DEBUG] Writing thread started...
+0, 0, 0, 1, 1, 1,  TAS
+1, 0, 0, 1, 1, 1,  sea
+0, 1, 0, 1, 1, 1,  sea
+1, 1, 0, 1, 1, 1,  TAS
+3288388.178593500[DEBUG] Writing thread exited.
+3288388.178658250[DEBUG] Reading thread exited.
+3288388.191116833[DEBUG] Compressing pipeline started in thread ID: 0x16fc5f000
+3288388.191136625[DEBUG] Compressing pipeline started in thread ID: 0x16fceb000
+3288388.191204833[DEBUG] Compressing pipeline ended in thread ID: 0x16fc5f000
+3288388.191219041[DEBUG] Compressing pipeline ended in thread ID: 0x16fceb000
