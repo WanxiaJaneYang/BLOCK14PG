@@ -35,9 +35,8 @@ void startThreads()
             pool.enqueue(startWritingThread);
         }
 
-        // Prevent any busy-waiting even impossible in our senario
+        // Prevent any busy-waiting even tho it's kinda impossible in our senario
         std::this_thread::sleep_for(std::chrono::milliseconds(10));  // inside the loop
-
     }
 
     // after readInput finishes, we have one more thread to compress the remaining tasks
@@ -50,24 +49,32 @@ void startThreads()
             }
         }
 
-
     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
 }
 
 static void startReadingThread()
 {
+    std::cout << "[DEBUG] Reading thread started..." << std::endl;
     readInput(); // call the original readInput function
     readInputRunning = false;
+    std::cout << "[DEBUG] Reading thread exited." << std::endl;
 }
 
 static void startWritingThread()
 {
+    std::cout << "[DEBUG] Writing thread started..." << std::endl;
     output();
     outputRunning = false;
+    std::cout << "[DEBUG] Writing thread exited." << std::endl;
 }
 
 static void startCompressingThread()
 {
+    std::thread::id this_id = std::this_thread::get_id();
+    std::cout << "[DEBUG] Compressing pipeline started in thread ID: " << this_id << std::endl;
+    
     Compressor::compress();
     compressionTasksCount--;
+    
+    std::cout << "[DEBUG] Compressing pipeline ended in thread ID: " << this_id << std::endl;
 }
