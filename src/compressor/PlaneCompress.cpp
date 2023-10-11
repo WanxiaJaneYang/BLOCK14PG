@@ -7,17 +7,17 @@ bool matchNextLine(Cuboid cuboid, std::deque<Cuboid> nextLine)
 {
     while (nextLine.size() > 0)
     {
-        Cuboid current = nextLine.front();
+        Cuboid next = nextLine.front();
         // exceed the comparison range, exit the loop
-        if (current.cuboidX > cuboid.cuboidX)
+        if (next.cuboidX > cuboid.cuboidX)
         {
             break;
         }
 
-        // if current cuboid in nextLine can overlap with cuboid in previous line
-        if (current.cuboidX == cuboid.cuboidX && current.tag == cuboid.tag)
+        // if next cuboid in nextLine can overlap with cuboid in previous line
+        if (next.cuboidX == cuboid.cuboidX && next.tag == cuboid.tag)
         {
-            if (current.width == cuboid.width)
+            if (next.width == cuboid.width)
             {
                 return true;
             }
@@ -27,13 +27,32 @@ bool matchNextLine(Cuboid cuboid, std::deque<Cuboid> nextLine)
     return false;
 }
 
+// pop the cuboids and push into currect queues when they cannot be merged
+void handleNotMergedCuboids(std::deque<Cuboid> &rectanglesToBeMerged, std::deque<Cuboid> &currentLine, int currentEnd, int rectEnd)
+{
+    // while current cuboid's end is before rectangleToBeMerged's end
+    while (currentEnd <= rectEnd && currentLine.size() > 0)
+    {
+        // pop and push the current cuboid into the rectanglesToBeMerged
+        rectanglesToBeMerged.push_back(currentLine.front());
+        currentLine.pop_front();
+        if (currentLine.size() > 0)
+        {
+            currentEnd = currentLine.front().cuboidX + currentLine.front().width;
+        }
+    }
+
+    // pop rectangle
+    rectanglesToBeMerged.pop_front();
+}
+
 std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 {
     std::deque<std::deque<Cuboid>> result;
     // basic idea: read the matrix line by line,
     // if start point and end point of two lines are the same, plus the color is the same, then merge them into a rectangle
     // else if the either the start point or the end point is the same, plus the color is the same,
-    // and the one below is longer than the one above, then split the one below into two rectangles, merge the one above with the overlap part
+    // and the one below is longer than the one above, then check the cuboid in next line to determine whether split and merge the current cuboid
     // else push the cuboid
 
     // first read the plane by plane
@@ -76,12 +95,12 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                     // current cuboid start point and end point
                     int currentStart = current.cuboidX;
                     int currentEnd = currentStart + current.width;
+                    bool canBeMerged = false;
 
                     // check the coordinates of the two cuboids rectangleToBeMerged and current
                     // consider if we can merge them or not
                     if (rectangleStart == currentStart && rectangleToBeMerged.tag == current.tag)
                     {
-                        bool canBeMerged = false;
                         // if the current cuboid's width is equal
                         if (current.width == rectangleToBeMerged.width)
                         {
@@ -95,60 +114,48 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                         }
                         else if (current.width > rectangleToBeMerged.width && y < GlobalVars::height - 1)
                         {
-                            // if the currentline cuboid is longer, check if there is a matched cuboid in nextLine
-                            std::deque<Cuboid> nextLine = plane[y + 1];
-                            // intialise the two cuboids
+                            // if the currentline cuboid is longer
+                            // intialise the two cuboids to represent two parts of current cuboid
                             Cuboid cuboid1 = current;
                             Cuboid cuboid2 = current;
                             // update the coordinates and width of cuboid1 and cuboid2
                             cuboid1.width = rectangleToBeMerged.width;
                             cuboid2.cuboidX = current.cuboidX + rectangleToBeMerged.width;
                             cuboid2.width = current.width - rectangleToBeMerged.width;
-                            // if there is matched part in nextline
+
+                            // nextLine is the currentLine's y + 1 in plane
+                            int next_y = y + 1;
+                            std::deque<Cuboid> nextLine = plane[next_y];
+
+                            // when current cuboid have overlapped cuboid in next line
+                            while (matchNextLine(current, nextLine) && next_y < GlobalVars::height - 1)
+                            {
+                                // update nextLine
+                                next_y += 1;
+                                nextLine = plane[next_y];
+                            }
+
+                            // if cuboids in nextLine cannot completely overlapped with current cuboid
+                            // check if cuboids in nextline can match cuboid1 or cuboid2
                             if (matchNextLine(cuboid1, nextLine) || matchNextLine(cuboid2, nextLine))
                             {
-                                currentLine.pop_front();
                                 rectanglesToBeMerged.pop_front();
                                 // merge the two cuboids' overlap part
                                 // push the merged cuboid into rectanglesToBeMerged queue
                                 rectangleToBeMerged.height += cuboid1.height;
                                 rectanglesToBeMerged.push_back(rectangleToBeMerged);
                                 // the currentline front would be changed to the cuboid2
-                                currentLine.push_front(cuboid2);
+                                currentLine.front() = cuboid2;
                                 canBeMerged = true;
                             }
-                        }
-
-                        if (!canBeMerged)
-                        {
-                            // when current cuboid can not be split and merged
-                            // while the rectangleToBeMerged endpoint is after current cuboid
-                            while (currentEnd <= rectangleEnd && currentLine.size() > 0)
-                            {
-                                // pop and push the current cuboid into the rectanglesToBeMerged
-                                rectanglesToBeMerged.push_back(currentLine.front());
-                                currentLine.pop_front();
-                                if (currentLine.size() > 0)
-                                {
-                                    currentEnd = currentLine.front().cuboidX + currentLine.front().width;
-                                }
-                            }
-
-                            // pop and push the rectangleToBeMerged into compressedplane
-                            rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
                         }
                     }
                     // if the two cuboids have same end points and tags
                     else if (rectangleEnd == currentEnd && rectangleToBeMerged.tag == current.tag)
                     {
-                        bool canBeMerged = false;
                         // if the current cuboid's width is greater than rectangleToBeMerged
                         if (current.width > rectangleToBeMerged.width && y < GlobalVars::height - 1)
                         {
-
-                            // if the currentline cuboid is longer, check if there is a matched cuboid in nextLine
-                            std::deque<Cuboid> nextLine = plane[y + 1];
                             // intialise the two cuboids
                             Cuboid cuboid1 = current;
                             Cuboid cuboid2 = current;
@@ -156,6 +163,19 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             cuboid1.width = current.width - rectangleToBeMerged.width;
                             cuboid2.cuboidX = current.cuboidX + cuboid1.width;
                             cuboid2.width = rectangleToBeMerged.width;
+
+                            // nextLine is the currentLine's y + 1 in plane
+                            int next_y = y + 1;
+                            std::deque<Cuboid> nextLine = plane[next_y];
+
+                            // when current cuboid have overlapped cuboid in next line
+                            while (matchNextLine(current, nextLine) && next_y < GlobalVars::height - 1)
+                            {
+                                // update nextLine
+                                next_y += 1;
+                                nextLine = plane[next_y];
+                            }
+
                             // if there is matched part in nextline
                             if (matchNextLine(cuboid1, nextLine) || matchNextLine(cuboid2, nextLine))
                             {
@@ -165,44 +185,67 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                                 // push cuboid1 into rectanglesToBeMerged
                                 rectanglesToBeMerged.push_back(cuboid1);
 
-                                // merge cuboid2 and rectangle above
+                                // merge cuboid2 and the rectangle above
                                 // push the merged cuboid into rectanglesToBeMerged queue
                                 rectangleToBeMerged.height += cuboid2.height;
                                 rectanglesToBeMerged.push_back(rectangleToBeMerged);
                                 canBeMerged = true;
                             }
                         }
-
-                        if (!canBeMerged)
+                    }
+                    else if (rectangleStart > currentStart && rectangleToBeMerged.tag == current.tag)
+                    {
+                        // different start points and end points
+                        // rectangle cuboid is shorter and within the current cuboid range
+                        if (rectangleEnd < currentEnd && y < GlobalVars::height - 1)
                         {
-                            // when current is shorter
-                            // pop and push the rectangleToBeMerged cuboid into the compressedPlane
-                            rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
+                            // intialise the two cuboids
+                            Cuboid cuboid1 = current;
+                            Cuboid cuboid2 = current;
+                            // update the coordinates and width of cuboid1 and cuboid2
+                            // cuboid 1 is the extra part before rectangleToBeMerged
+                            cuboid1.width = rectangleStart - currentStart;
+                            // cuboid 2 is the extra part after rectangleToBeMerged
+                            cuboid2.cuboidX = rectangleEnd;
+                            cuboid2.width = currentEnd - rectangleEnd;
 
-                            // pop and push the current cuboid into the rectanglesToBeMerged
-                            currentLine.pop_front();
-                            rectanglesToBeMerged.push_back(current);
+                            // nextLine is the currentLine's y + 1 in plane
+                            int next_y = y + 1;
+                            std::deque<Cuboid> nextLine = plane[next_y];
+
+                            // when current cuboid can have overlapped cuboid in next line
+                            while (matchNextLine(current, nextLine) && next_y < GlobalVars::height - 1)
+                            {
+                                // update nextLine
+                                next_y += 1;
+                                nextLine = plane[next_y];
+                            }
+                            // if cuboid1 and cuboid2 can be matched in next line
+                            if (matchNextLine(cuboid1, nextLine) && matchNextLine(cuboid2, nextLine))
+                            {
+                                rectanglesToBeMerged.pop_front();
+
+                                // push cuboid1 into rectanglesToBeMerged
+                                rectanglesToBeMerged.push_back(cuboid1);
+
+                                // merge current's middle part to the rectangle above
+                                // push the merged cuboid into rectanglesToBeMerged queue
+                                rectangleToBeMerged.height += current.height;
+                                rectanglesToBeMerged.push_back(rectangleToBeMerged);
+
+                                // the currentline front would be the cuboid2
+                                currentLine.front() = cuboid2;
+                                canBeMerged = true;
+                            }
                         }
                     }
-                    else
-                    {
-                        // when these two cuboids have different start points, end points or tags
-                        // if current cuboid endpoint is after the rectangleToBeMerged
-                        // pop and push the rectangleToBeMerged cuboid into the compressedPlane
-                        if (currentEnd >= rectangleEnd)
-                        {
-                            rectanglesToBeMerged.pop_front();
-                            compressedPlane.push_back(rectangleToBeMerged);
-                        }
 
-                        // pop and push the current cuboid into the rectanglesToBeMerged
-                        // if the rectangleToBeMerged endpoint is after current cuboid
-                        if (currentEnd <= rectangleEnd)
-                        {
-                            currentLine.pop_front();
-                            rectanglesToBeMerged.push_back(current);
-                        }
+                    // when these two cuboids have different tags
+                    // or they cannot be merged in conditions above
+                    if (!canBeMerged)
+                    {
+                        handleNotMergedCuboids(rectanglesToBeMerged, currentLine, currentEnd, rectangleEnd);
+                        compressedPlane.push_back(rectangleToBeMerged);
                     }
                 }
             }
