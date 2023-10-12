@@ -24,21 +24,17 @@ struct CuboidKey
     bool operator==(const CuboidKey &other) const;
 };
 
-struct RemainingCuboid
-{
-    Cuboid upper;
-    Cuboid left;
-    Cuboid right;
-    Cuboid lower;
-};
-
 #ifdef TESTING
 
-RemainingCuboid minusCuboid(const Cuboid &currentCuboid, const Cuboid &prevCuboid);
-bool findAllMatched(RemainingCuboid &remainingCuboid, std::map<CuboidKey, Cuboid> &nextPlane);
 void transformToMap(std::deque<Cuboid> &plane, std::map<CuboidKey, Cuboid> &cuboids);
-void pushRemainIntoMerge(RemainingCuboid &remain, std::map<CuboidKey, Cuboid> &mergedPlane);
 bool isOverLapped(const CuboidKey &cuboid1, const CuboidKey &cuboid2);
 bool isAContainsB(const CuboidKey &a, const CuboidKey &b);
+/*
+ * @param prevPlane: the previous plane
+ * @param nextPlane: the next plane
+ * @param cuboidsFromPrevPlane: the cuboids from the previous plane in the same area
+ * @param cuboidsFromNextPlane: the cuboids from the next plane in the same area
+ */
+
 #endif
 #endif

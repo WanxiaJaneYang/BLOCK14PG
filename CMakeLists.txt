@@ -73,29 +73,17 @@ target_link_libraries(validCompressorBlockTests gtest gtest_main)
 # target_compile_definitions(transformToMapTest PRIVATE TEST)
 # target_link_libraries(transformToMapTest gtest gtest_main)
 
-# add_executable(minusCuboidTest tests/unit/compressor/blockCompress/helperFunctionsTest/minusCuboidTest.cpp
+# add_executable(isOverLappedTest tests/unit/compressor/blockCompress/helperFunctionsTest/isOverlappedTest.cpp
 # tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
 # tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-# target_compile_definitions(minusCuboidTest PRIVATE TEST)
-# target_link_libraries(minusCuboidTest gtest gtest_main)
+# target_compile_definitions(isOverLappedTest PRIVATE TEST)
+# target_link_libraries(isOverLappedTest gtest gtest_main)
 
-# add_executable(findAllMatchedTest tests/unit/compressor/blockCompress/helperFunctionsTest/findAllMatchedTest.cpp
+# add_executable(AContainsB tests/unit/compressor/blockCompress/helperFunctionsTest/isAContainsBTest.cpp
 # tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
 # tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-# target_compile_definitions(findAllMatchedTest PRIVATE TEST)
-# target_link_libraries(findAllMatchedTest gtest gtest_main)
-
-add_executable(isOverLappedTest tests/unit/compressor/blockCompress/helperFunctionsTest/isOverlappedTest.cpp
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-target_compile_definitions(isOverLappedTest PRIVATE TEST)
-target_link_libraries(isOverLappedTest gtest gtest_main)
-
-add_executable(AContainsB tests/unit/compressor/blockCompress/helperFunctionsTest/isAContainsBTest.cpp
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
-tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
-target_compile_definitions(AContainsB PRIVATE TEST)
-target_link_libraries(AContainsB gtest gtest_main)
+# target_compile_definitions(AContainsB PRIVATE TEST)
+# target_link_libraries(AContainsB gtest gtest_main)
 
 add_executable(blockCompressTest tests/unit/compressor/blockCompress/integrationSelfDebugging/BlockCompressTest.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
