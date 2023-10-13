@@ -6,7 +6,7 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -I/Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest
 
-CXX_FLAGSarm64 = -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk  -DGTEST_HAS_PTHREAD=1  
+CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk  -DGTEST_HAS_PTHREAD=1  
 
-CXX_FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk  -DGTEST_HAS_PTHREAD=1  
+CXX_FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk  -DGTEST_HAS_PTHREAD=1  
 
