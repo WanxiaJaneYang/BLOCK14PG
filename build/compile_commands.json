@@ -1,0 +1,158 @@
+[
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/tests/unit/readInput/validTests.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/tests/unit/readInput/validTests.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/tests/unit/readInput/validTests.cpp",
+  "output": "CMakeFiles/validInputTests.dir/tests/unit/readInput/validTests.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp",
+  "output": "CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/validInputTests.dir/src/output/output.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp",
+  "output": "CMakeFiles/validInputTests.dir/src/output/output.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/tests/integration/integrationValidTests.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/tests/integration/integrationValidTests.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/tests/integration/integrationValidTests.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/tests/integration/integrationValidTests.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/tests/integration/integrationTestHelper.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/tests/integration/integrationTestHelper.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build",
+  "command": "/usr/bin/clang++ -DTEST -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -o CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp",
+  "output": "CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build/googletest/googletest",
+  "command": "/usr/bin/clang++  -I/Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -I/Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/src/gtest-all.cc",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/src/gtest-all.cc",
+  "output": "googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/Users/haofengchen/Desktop/BLOCK14PG/build/googletest/googletest",
+  "command": "/usr/bin/clang++  -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/include -isystem /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest -g -std=gnu++14 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/src/gtest_main.cc",
+  "file": "/Users/haofengchen/Desktop/BLOCK14PG/googletest/googletest/src/gtest_main.cc",
+  "output": "googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]

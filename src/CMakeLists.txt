@@ -27,7 +27,8 @@ set(SOURCES
 
 # List header files (optional but can be useful in some IDEs like Visual Studio)
 set(HEADERS 
-    compressor/Compressor.h 
+    compressor/Compressor.h
+    compressor/BlockCompress.h 
     cores/Block.h 
     cores/Cuboid.h 
     cores/SafeInputTasks.h 

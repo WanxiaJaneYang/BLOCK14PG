@@ -99,9 +99,13 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 
                             // pop and push the rectangleToBeMerged into compressedplane
                             rectanglesToBeMerged.pop_front();
+<<<<<<< HEAD
                             // compressedPlane.push_back(rectangleToBeMerged);
                             GlobalVars::outputTasks.push(rectangleToBeMerged);
 
+=======
+                            compressedPlane.push_back(rectangleToBeMerged);
+>>>>>>> origin/183-3d-compression-improved
                         }
                     }
                     // if the two cuboids have same end points and tags
@@ -170,5 +174,10 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
         }
         // result.push_back(compressedPlane);
     }
+<<<<<<< HEAD
     // return result;
 }
+=======
+    return result;
+}
+>>>>>>> origin/183-3d-compression-improved
