@@ -21,13 +21,13 @@ list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest/include)
 add_subdirectory(googletest/googletest) 
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 add_executable(validInputTests tests/unit/readInput/validTests.cpp 
 tests/unit/readInput/InputTestHelper.cpp 
 tests/unit/readInput/InputTestHelper.h ${SOURCES})
 target_compile_definitions(validInputTests PRIVATE TEST)
 target_link_libraries(validInputTests gtest gtest_main)
-=======
+# =======
 # add_executable(validInputTests tests/unit/readInput/validTests.cpp 
 # tests/unit/readInput/InputTestHelper.cpp 
 # tests/unit/readInput/InputTestHelper.h ${SOURCES})
@@ -38,7 +38,7 @@ target_link_libraries(validInputTests gtest gtest_main)
 # tests/unit/readInput/InputTestHelper.h ${SOURCES})
 # target_compile_definitions(validInputTests PRIVATE TEST)
 # target_link_libraries(validInputTests gtest gtest_main)
->>>>>>> origin/183-3d-compression-improved
+# >>>>>>> origin/183-3d-compression-improved
 
 # add_executable(invalidInputTests tests/unit/readInput/invalidTests.cpp 
 # tests/unit/readInput/InputTestHelper.cpp 
@@ -46,14 +46,14 @@ target_link_libraries(validInputTests gtest gtest_main)
 # target_compile_definitions(invalidInputTests PRIVATE TEST)
 # target_link_libraries(invalidInputTests gtest gtest_main)
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
 tests/integration/integrationTestHelper.cpp 
 tests/integration/integrationTestHelper.h ${SOURCES})
 target_compile_definitions(integrationValidTests PRIVATE TEST)
 target_link_libraries(integrationValidTests gtest gtest_main)
 
-=======
+# =======
 # add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
 # tests/integration/integrationTestHelper.cpp 
 # tests/integration/integrationTestHelper.h ${SOURCES})
@@ -77,14 +77,14 @@ target_link_libraries(validCompressorBlockTests gtest gtest_main)
 # target_compile_definitions(lineCompressTests PRIVATE TEST)
 # target_link_libraries(lineCompressTests gtest gtest_main)
 
->>>>>>> origin/183-3d-compression-improved
+# >>>>>>> origin/183-3d-compression-improved
 # add_executable(validCompressorPlaneTests tests/unit/compressor/planeCompress/validTests.cpp 
 # tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp 
 # tests/unit/compressor/planeCompress/planeCompressTestHelper.h ${SOURCES})
 # target_compile_definitions(validCompressorPlaneTests PRIVATE TEST)
 # target_link_libraries(validCompressorPlaneTests gtest gtest_main)
-<<<<<<< HEAD
-=======
+# <<<<<<< HEAD
+# =======
 
 # add_executable(transformToMapTest tests/unit/compressor/blockCompress/helperFunctionsTest/transformToMapTest.cpp
 # tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
@@ -109,4 +109,4 @@ tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
 target_compile_definitions(blockCompressTest PRIVATE TEST)
 target_link_libraries(blockCompressTest gtest gtest_main)
->>>>>>> origin/183-3d-compression-improved
+# >>>>>>> origin/183-3d-compression-improved
