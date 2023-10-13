@@ -2,7 +2,7 @@
 #include <deque>
 #include "../globals/globals.h"
 
-// check if there is matched cuboid in next line
+// check if there is a matched cuboid in next line
 bool matchNextLine(Cuboid cuboid, std::deque<Cuboid> nextLine)
 {
     while (nextLine.size() > 0)
@@ -18,6 +18,43 @@ bool matchNextLine(Cuboid cuboid, std::deque<Cuboid> nextLine)
         if (next.cuboidX == cuboid.cuboidX && next.tag == cuboid.tag)
         {
             if (next.width == cuboid.width)
+            {
+                return true;
+            }
+        }
+        nextLine.pop_front();
+    }
+    return false;
+}
+
+// check if it is needed to continue searching cuboid in next line
+bool continueNextLine(Cuboid rect, std::deque<Cuboid> nextLine)
+{
+    while (nextLine.size() > 0)
+    {
+        Cuboid next = nextLine.front();
+        // exceed the comparison range, exit the loop
+        if (next.cuboidX > rect.cuboidX)
+        {
+            break;
+        }
+
+        int nextEnd = next.cuboidX + next.width;
+        int rectEnd = rect.cuboidX + rect.width;
+
+        // check if the same tag cuboid in next line can cover the width of first line rectangle
+        // same start
+        if (next.cuboidX == rect.cuboidX && next.tag == rect.tag)
+        {
+            if (next.width > rect.width)
+            {
+                return true;
+            }
+        }
+        // or same ending
+        else if (nextEnd == rectEnd && next.tag == rect.tag)
+        {
+            if (next.width > rect.width)
             {
                 return true;
             }
@@ -118,34 +155,70 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             // intialise the two cuboids to represent two parts of current cuboid
                             Cuboid cuboid1 = current;
                             Cuboid cuboid2 = current;
-                            // update the coordinates and width of cuboid1 and cuboid2
+
+                            // update the coordinates and width of overlapped and extra cuboid
                             cuboid1.width = rectangleToBeMerged.width;
                             cuboid2.cuboidX = current.cuboidX + rectangleToBeMerged.width;
                             cuboid2.width = current.width - rectangleToBeMerged.width;
+                            Cuboid extra = cuboid2;
 
                             // nextLine is the currentLine's y + 1 in plane
                             int next_y = y + 1;
                             std::deque<Cuboid> nextLine = plane[next_y];
 
-                            // when current cuboid have overlapped cuboid in next line
-                            while (matchNextLine(current, nextLine) && next_y < GlobalVars::height - 1)
+                            // if cuboid in next line can cover rectangle above, continue read next line
+                            while (continueNextLine(rectangleToBeMerged, nextLine) && next_y < GlobalVars::height - 1)
                             {
                                 // update nextLine
                                 next_y += 1;
                                 nextLine = plane[next_y];
                             }
 
+                            // copy a new rectangle deque for searching another rect at current's end
+                            std::deque<Cuboid> rectangles = rectanglesToBeMerged;
+                            rectangles.pop_front();
+                            Cuboid rect = rectangles.front();
+                            int rectEnd = rect.cuboidX + rect.width;
+
+                            // while rectangles are within the current cuboid length
+                            // searching if there is another same rectangle at current's end
+                            while (rectEnd <= currentEnd)
+                            {
+                                if (rect.tag == current.tag && rectEnd == currentEnd && rect.cuboidX != rectangleEnd)
+                                {
+                                    // update the extra and cuboid2
+                                    extra.width = rect.cuboidX - extra.cuboidX;
+                                    cuboid2.cuboidX = rect.cuboidX;
+                                    cuboid2.width = rect.width;
+                                }
+
+                                if (rectEnd < currentEnd)
+                                {
+                                    rectangles.pop_front();
+                                    rect = rectangles.front();
+                                    rectEnd = rect.cuboidX + rect.width;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+
                             // if cuboids in nextLine cannot completely overlapped with current cuboid
-                            // check if cuboids in nextline can match cuboid1 or cuboid2
-                            if (matchNextLine(cuboid1, nextLine) || matchNextLine(cuboid2, nextLine))
+                            // check if cuboids in nextline can match overlapped or extra cuboid
+                            if (matchNextLine(cuboid1, nextLine) || matchNextLine(extra, nextLine))
                             {
                                 rectanglesToBeMerged.pop_front();
-                                // merge the two cuboids' overlap part
-                                // push the merged cuboid into rectanglesToBeMerged queue
+                                //  merge the two cuboids' overlap part
+                                //  push the merged cuboid into rectanglesToBeMerged queue
                                 rectangleToBeMerged.height += cuboid1.height;
                                 rectanglesToBeMerged.push_back(rectangleToBeMerged);
-                                // the currentline front would be changed to the cuboid2
+                                // the currentline front would be changed to the extra
                                 currentLine.front() = cuboid2;
+                                if (extra.cuboidX != cuboid2.cuboidX)
+                                {
+                                    currentLine.push_front(extra);
+                                }
                                 canBeMerged = true;
                             }
                         }
@@ -168,8 +241,8 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             int next_y = y + 1;
                             std::deque<Cuboid> nextLine = plane[next_y];
 
-                            // when current cuboid have overlapped cuboid in next line
-                            while (matchNextLine(current, nextLine) && next_y < GlobalVars::height - 1)
+                            // if cuboid in next line can cover rectangle above, continue read next line
+                            while (continueNextLine(rectangleToBeMerged, nextLine) && next_y < GlobalVars::height - 1)
                             {
                                 // update nextLine
                                 next_y += 1;
