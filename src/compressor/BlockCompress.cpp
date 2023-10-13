@@ -130,7 +130,7 @@ void CuboidsInSameArea(std::map<CuboidKey, Cuboid> &prevPlane, std::map<CuboidKe
     for (auto it = prevPlane.begin(); it!=prevPlane.end();it++)
     {
         // if the cuboid is in the same area as the middle cuboid
-        if (isAContainsB(middleCuboid, it->first))
+        if (it->first.tag==middleCuboid.tag&&isAContainsB(middleCuboid, it->first))
         {
             // push the cuboid into the cuboidsFromPrevPlane
             cuboidsFromPrevPlane[it->first] = it->second;
@@ -142,7 +142,7 @@ void CuboidsInSameArea(std::map<CuboidKey, Cuboid> &prevPlane, std::map<CuboidKe
     for (auto it = nextPlane.begin(); it!=nextPlane.end();it++)
     {
         // if the cuboid is in the same area as the middle cuboid
-        if (isAContainsB(middleCuboid, it->first))
+        if (it->first.tag==middleCuboid.tag&&isAContainsB(middleCuboid, it->first))
         {
             // push the cuboid into the cuboidsFromNextPlane
             cuboidsFromNextPlane[it->first] = it->second;
@@ -150,54 +150,57 @@ void CuboidsInSameArea(std::map<CuboidKey, Cuboid> &prevPlane, std::map<CuboidKe
     }
 }
 
-int tryMerge(std::map<CuboidKey, Cuboid> &cuboidsFromPrevPlane,std::map<CuboidKey, Cuboid> &cuboidsFromNextPlane, CuboidKey &middleCuboid, std::set<CuboidKey> &dividedCuboids){
-    int count=0;
-    std::set<CuboidKey> mergedCuboids;
-    std::set<CuboidKey> nonOverlappedCuboids;
+void retrieveUniqueAndNonOverlapping(std::map<CuboidKey, Cuboid> &cuboidsFromPrevPlane,std::map<CuboidKey, Cuboid> &cuboidsFromNextPlane,std::set<CuboidKey> &uniqueCuboids,std::set<CuboidKey> &nonOverlappedCuboids){
     for (auto it = cuboidsFromPrevPlane.begin(); it != cuboidsFromPrevPlane.end();it++)
     {
-        mergedCuboids.insert(it->first);
+        uniqueCuboids.insert(it->first);
+        nonOverlappedCuboids.insert(it->first);
     }
 
     for (auto it = cuboidsFromNextPlane.begin(); it != cuboidsFromNextPlane.end();it++)
     {
-        mergedCuboids.insert(it->first);
+        uniqueCuboids.insert(it->first);
         bool isOverlapped=false;
-        for (auto it2 = cuboidsFromPrevPlane.begin(); it2 != cuboidsFromPrevPlane.end();it2++)
-        {
-            if(isOverLapped(it->first,it2->first)){
-                isOverlapped=true;
-                break;
+        if(cuboidsFromPrevPlane.find(it->first)!=cuboidsFromPrevPlane.end()){
+            isOverlapped=true;
+        }
+        else{
+            for (auto it2 = cuboidsFromPrevPlane.begin(); it2 != cuboidsFromPrevPlane.end();it2++)
+            {
+                if(isOverLapped(it->first,it2->first)){
+                    // std::cout<<"overlapped"<<std::endl;
+                    // std::cout<<"cuboid1: "<<it->first.tag<<", topLeft( "<<it->first.topLeft.x<<", "<<it->first.topLeft.y<<"),( "<<it->first.bottomRight.x<<" "<<it->first.bottomRight.y<<")"<<std::endl;
+                    // std::cout<<"cuboid2: "<<it2->first.tag<<", topLeft( "<<it2->first.topLeft.x<<", "<<it2->first.topLeft.y<<"),( "<<it2->first.bottomRight.x<<" "<<it2->first.bottomRight.y<<")"<<std::endl;
+                    isOverlapped=true;
+                    break;
+                }
             }
         }
         if(!isOverlapped){
             nonOverlappedCuboids.insert(it->first);
         }
     }
+}
 
-    count=mergedCuboids.size();
+void divide(std::set<CuboidKey> nonOverlappedCuboids,CuboidKey &middleCuboid, std::set<CuboidKey> &dividedCuboids){
+    std::set<int> xSet;
+    std::set<int> ySet;
 
-    //segement the middle cuboid by the merged cuboids
-    std::vector<int> xVec;
-    std::vector<int> yVec;
-
-    xVec.push_back(middleCuboid.topLeft.x);
-    xVec.push_back(middleCuboid.bottomRight.x);
-    yVec.push_back(middleCuboid.topLeft.y);
-    yVec.push_back(middleCuboid.bottomRight.y);
+    xSet.insert(middleCuboid.topLeft.x);
+    xSet.insert(middleCuboid.bottomRight.x);
+    ySet.insert(middleCuboid.topLeft.y);
+    ySet.insert(middleCuboid.bottomRight.y);
     for(auto it=nonOverlappedCuboids.begin();it!=nonOverlappedCuboids.end();it++){
-        xVec.push_back(it->topLeft.x);
-        xVec.push_back(it->bottomRight.x);
-        yVec.push_back(it->topLeft.y);
-        yVec.push_back(it->bottomRight.y);
+        xSet.insert(it->topLeft.x);
+        xSet.insert(it->bottomRight.x);
+        ySet.insert(it->topLeft.y);
+        ySet.insert(it->bottomRight.y);
     }
 
     //sort the x and y
-    std::sort(xVec.begin(),xVec.end());
-    std::sort(yVec.begin(),yVec.end());
+    std::vector<int> xVec(xSet.begin(),xSet.end());
+    std::vector<int> yVec(ySet.begin(),ySet.end());
 
-    //form all the cuboids
-    std::set<CuboidKey> allPossibleCuboids;
     for(int i=0;i<xVec.size()-1;i++){
         for(int j=0;j<yVec.size()-1;j++){
             CuboidKey cuboidKey={
@@ -205,28 +208,39 @@ int tryMerge(std::map<CuboidKey, Cuboid> &cuboidsFromPrevPlane,std::map<CuboidKe
                 Point(xVec[i],yVec[j]),
                 Point(xVec[i+1],yVec[j+1])
             };
-            //check if the cuboid is overlapped with the merged cuboids or already exists
-            if (mergedCuboids.find(cuboidKey) != mergedCuboids.end())
-            {
-                bool isOverlapped=false;
-                for(auto it=mergedCuboids.begin();it!=mergedCuboids.end();it++){
-                    if(isOverLapped(cuboidKey,*it)){
-                        isOverlapped=true;
-                        break;
-                    }
+
+        std::cout<<"cuboidKey: "<<cuboidKey.tag<<", topLeft( "<<cuboidKey.topLeft.x<<", "<<cuboidKey.topLeft.y<<"),( "<<cuboidKey.bottomRight.x<<" "<<cuboidKey.bottomRight.y<<")"<<std::endl;
+        
+        if(nonOverlappedCuboids.find(cuboidKey) != nonOverlappedCuboids.end())
+        {
+            std::cout<<"find in nonOverlappedCuboids"<<std::endl;
+            std::cout<<"push into dividedCuboids"<<std::endl;
+            dividedCuboids.insert(cuboidKey);
+        }{
+            std::cout<<"not found in nonOverlappedCuboids"<<std::endl;
+            bool isContained=false;
+            for(auto it=nonOverlappedCuboids.begin();it!=nonOverlappedCuboids.end();it++){
+                if(isOverLapped(*it, cuboidKey)){
+                    isContained=true;
+                    break;
                 }
-                if(!isOverlapped){
-                    count+=1;
-                    dividedCuboids.insert(cuboidKey);
-                }
-            }else{
+            }
+            if(!isContained){
                 dividedCuboids.insert(cuboidKey);
             }
         }
     }
+}}
+int tryMerge(std::map<CuboidKey, Cuboid> &cuboidsFromPrevPlane,std::map<CuboidKey, Cuboid> &cuboidsFromNextPlane, CuboidKey &middleCuboid, std::set<CuboidKey> &dividedCuboids){
+    std::set<CuboidKey> uniqueCuboids;
+    std::set<CuboidKey> nonOverlappedCuboids;
+    retrieveUniqueAndNonOverlapping(cuboidsFromPrevPlane,cuboidsFromNextPlane,uniqueCuboids,nonOverlappedCuboids);
+
+    //segement the middle cuboid by the merged cuboids
+    divide(nonOverlappedCuboids,middleCuboid,dividedCuboids);
 
     //problem here: may have over segmentation cuboids
-    return count;
+    return uniqueCuboids.size()+dividedCuboids.size()-nonOverlappedCuboids.size();
 }
 
 /*compress the planes into cuboid and push them into output tasks*/
@@ -340,19 +354,31 @@ void blockCompress(std::deque<std::deque<Cuboid>> &planes)
                     // retrieve all the cuboids from prev and next that are in the same area
                     std::map<CuboidKey, Cuboid> cuboidsFromPrevPlane;
                     std::map<CuboidKey, Cuboid> cuboidsFromNextPlane;
-                    CuboidsInSameArea(prevPlane, cuboidsFromPrevPlane, nextPlane, cuboidsFromNextPlane, key);
+                    CuboidKey currentCuboidKey = currentPlane.begin()->first;
+                    CuboidsInSameArea(prevPlane, cuboidsFromPrevPlane, nextPlane, cuboidsFromNextPlane, currentCuboidKey);
 
                     // try to merge the cuboids in the same area
                     int originalSize=cuboidsFromPrevPlane.size()+cuboidsFromNextPlane.size()+1;
                     std::set<CuboidKey> dividedCuboids;
-                    if (tryMerge(cuboidsFromPrevPlane,cuboidsFromNextPlane, key,dividedCuboids)<originalSize){
+                    if (tryMerge(cuboidsFromPrevPlane,cuboidsFromNextPlane,currentCuboidKey,dividedCuboids)<originalSize){
+                        std::cout<<"try merge"<<std::endl;
                         //divide the current cuboid into smaller cuboids and push them into the current plane
-                        Cuboid currentCuboid=currentPlane[key];
+                        Cuboid currentCuboid=currentPlane[currentCuboidKey];
                         for(auto it=dividedCuboids.begin();it!=dividedCuboids.end();it++){
                             Cuboid cuboid = Cuboid(currentCuboid.blockX, currentCuboid.blockY, currentCuboid.blockZ, it->topLeft.x, it->topLeft.y, currentCuboid.cuboidZ, it->bottomRight.x - it->topLeft.x + 1, it->bottomRight.y - it->topLeft.y + 1, currentCuboid.depth, currentCuboid.tag);
                             currentPlane[*it] = cuboid;
+                            std::cout<<"cuboid: "<<cuboid.tag<<", blockX: "<<cuboid.blockX<<", blockY: "<<cuboid.blockY<<", blockZ: "<<cuboid.blockZ<<", cuboidX: "<<cuboid.cuboidX<<", cuboidY: "<<cuboid.cuboidY<<", cuboidZ: "<<cuboid.cuboidZ<<", width: "<<cuboid.width<<", height: "<<cuboid.height<<", depth: "<<cuboid.depth<<std::endl;
                         }
-                        currentPlane.erase(key);
+                        currentPlane.erase(currentCuboidKey);
+                    }else{
+                        //push the cuboid from the prev plane into the output tasks
+                        for(auto it2=cuboidsFromPrevPlane.begin();it2!=cuboidsFromPrevPlane.end();it2++){
+                            GlobalVars::outputTasks.push(it2->second);
+                            prevPlane.erase(it2->first);
+                        }
+                        //push the cuboid of the current into the merged plane
+                        mergedPlane[currentCuboidKey] = currentPlane[currentCuboidKey];
+                        currentPlane.erase(currentCuboidKey);
                     }
                 }
             }
