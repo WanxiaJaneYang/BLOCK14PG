@@ -90,3 +90,21 @@ tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp
 tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
 target_compile_definitions(blockCompressTest PRIVATE TEST)
 target_link_libraries(blockCompressTest gtest gtest_main)
+
+add_executable(cuboidsFromSameAreaTest tests/unit/compressor/blockCompress/helperFunctionsTest/cuboidsInSameAreaTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(cuboidsFromSameAreaTest PRIVATE TEST)
+target_link_libraries(cuboidsFromSameAreaTest gtest gtest_main)
+
+add_executable(retriveUniqueNonOverlapTest tests/unit/compressor/blockCompress/helperFunctionsTest/retriveUniqueNonOverlapTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(retriveUniqueNonOverlapTest PRIVATE TEST)
+target_link_libraries(retriveUniqueNonOverlapTest gtest gtest_main)
+
+add_executable(divideTest tests/unit/compressor/blockCompress/helperFunctionsTest/divideTest.cpp
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelper.cpp 
+tests/unit/compressor/blockCompress/helperFunctionsTest/unitTestHelpers.h ${SOURCES})
+target_compile_definitions(divideTest PRIVATE TEST)
+target_link_libraries(divideTest gtest gtest_main)
