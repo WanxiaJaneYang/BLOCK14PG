@@ -204,7 +204,6 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                                 }
                             }
 
-                            // if cuboids in nextLine cannot completely overlapped with current cuboid
                             // check if cuboids in nextline can match overlapped or extra cuboid
                             if (matchNextLine(cuboid1, nextLine) || matchNextLine(extra, nextLine))
                             {
@@ -213,7 +212,7 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                                 //  push the merged cuboid into rectanglesToBeMerged queue
                                 rectangleToBeMerged.height += cuboid1.height;
                                 rectanglesToBeMerged.push_back(rectangleToBeMerged);
-                                // the currentline front would be changed to the extra
+                                // update currentLine front
                                 currentLine.front() = cuboid2;
                                 if (extra.cuboidX != cuboid2.cuboidX)
                                 {
@@ -286,13 +285,14 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             int next_y = y + 1;
                             std::deque<Cuboid> nextLine = plane[next_y];
 
-                            // when current cuboid can have overlapped cuboid in next line
+                            // when current cuboid can have overlapped cuboid in next line, continue reading next line
                             while (matchNextLine(current, nextLine) && next_y < GlobalVars::height - 1)
                             {
                                 // update nextLine
                                 next_y += 1;
                                 nextLine = plane[next_y];
                             }
+
                             // if cuboid1 and cuboid2 can be matched in next line
                             if (matchNextLine(cuboid1, nextLine) && matchNextLine(cuboid2, nextLine))
                             {
@@ -314,7 +314,7 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                     }
 
                     // when these two cuboids have different tags
-                    // or they cannot be merged in conditions above
+                    // or they cannot be merged in the conditions above
                     if (!canBeMerged)
                     {
                         handleNotMergedCuboids(rectanglesToBeMerged, currentLine, currentEnd, rectangleEnd);
