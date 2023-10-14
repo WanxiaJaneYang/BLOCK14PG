@@ -183,54 +183,73 @@ void retrieveUniqueAndNonOverlapping(std::map<CuboidKey, Cuboid> &cuboidsFromPre
 }
 
 void divide(std::set<CuboidKey> nonOverlappedCuboids,CuboidKey &middleCuboid, std::set<CuboidKey> &dividedCuboids){
-    std::set<int> xSet;
-    std::set<int> ySet;
+    int width = middleCuboid.bottomRight.x - middleCuboid.topLeft.x + 1;
+    int height = middleCuboid.bottomRight.y - middleCuboid.topLeft.y + 1;
+    bool **matrix = new bool *[height];
 
-    xSet.insert(middleCuboid.topLeft.x);
-    xSet.insert(middleCuboid.bottomRight.x);
-    ySet.insert(middleCuboid.topLeft.y);
-    ySet.insert(middleCuboid.bottomRight.y);
-    for(auto it=nonOverlappedCuboids.begin();it!=nonOverlappedCuboids.end();it++){
-        xSet.insert(it->topLeft.x);
-        xSet.insert(it->bottomRight.x);
-        ySet.insert(it->topLeft.y);
-        ySet.insert(it->bottomRight.y);
+    for(int i = 0; i < height; ++i) {
+        matrix[i] = new bool[width];
+        std::fill(matrix[i], matrix[i] + width, false);  // initialize with false
     }
 
-    //sort the x and y
-    std::vector<int> xVec(xSet.begin(),xSet.end());
-    std::vector<int> yVec(ySet.begin(),ySet.end());
+    //fill the matrix with the non overlapped cuboids
+    for(auto it=nonOverlappedCuboids.begin();it!=nonOverlappedCuboids.end();it++){
+        for (int y = it->topLeft.y; y <= it->bottomRight.y; ++y) {
+            std::fill(matrix[y] + it->topLeft.x, matrix[y] + it->bottomRight.x + 1, true);
+        }
+    }
 
-    for(int i=0;i<xVec.size()-1;i++){
-        for(int j=0;j<yVec.size()-1;j++){
-            CuboidKey cuboidKey={
-                middleCuboid.tag,
-                Point(xVec[i],yVec[j]),
-                Point(xVec[i+1],yVec[j+1])
-            };
+    struct Line{
+        int startX;
+        int endX;
+        bool operator<(const Line &other) const{
+            if (startX != other.startX)
+                return startX < other.startX;
 
-        std::cout<<"cuboidKey: "<<cuboidKey.tag<<", topLeft( "<<cuboidKey.topLeft.x<<", "<<cuboidKey.topLeft.y<<"),( "<<cuboidKey.bottomRight.x<<" "<<cuboidKey.bottomRight.y<<")"<<std::endl;
-        
-        if(nonOverlappedCuboids.find(cuboidKey) != nonOverlappedCuboids.end())
-        {
-            std::cout<<"find in nonOverlappedCuboids"<<std::endl;
-            std::cout<<"push into dividedCuboids"<<std::endl;
-            dividedCuboids.insert(cuboidKey);
-        }{
-            std::cout<<"not found in nonOverlappedCuboids"<<std::endl;
-            bool isContained=false;
-            for(auto it=nonOverlappedCuboids.begin();it!=nonOverlappedCuboids.end();it++){
-                if(isOverLapped(*it, cuboidKey)){
-                    isContained=true;
-                    break;
-                }
+            if (endX != other.endX)
+                return endX < other.endX;
+
+            return false;
+        }
+        bool operator==(const Line &other) const{
+            return startX == other.startX && endX == other.endX;
+        }
+    };
+    struct Loc{
+        int startY;
+        int endY;
+    };
+
+    //retrieve the remaining false area as cuboids
+    std::map<Line, Loc> lines;
+    for (int y = 0; y < height; ++y) {
+        int x = 0;
+        while (x < width) {
+            if (matrix[y][x]) {
+                ++x;
+                continue;
             }
-            if(!isContained){
-                dividedCuboids.insert(cuboidKey);
+            int x0 = x;
+            while (x < width && !matrix[y][x]) {
+                ++x;
+            }
+            Line line{ x0, x - 1 };
+            Loc loc{ y, y };
+            if (lines.find(line) != lines.end() && lines[line].endY == y - 1) {
+                loc.startY = lines[line].startY;
             }
         }
     }
-}}
+
+    for (auto mapItr=lines.begin();mapItr!=lines.end();mapItr++){
+        dividedCuboids.insert(CuboidKey{middleCuboid.tag,Point(mapItr->first.startX+middleCuboid.topLeft.x,mapItr->second.startY+middleCuboid.topLeft.y),Point(mapItr->first.endX+middleCuboid.topLeft.x,mapItr->second.endY+middleCuboid.topLeft.y)});
+    }
+
+    for(auto it=nonOverlappedCuboids.begin();it!=nonOverlappedCuboids.end();it++){
+        dividedCuboids.insert(*it);
+    }
+}
+
 int tryMerge(std::map<CuboidKey, Cuboid> &cuboidsFromPrevPlane,std::map<CuboidKey, Cuboid> &cuboidsFromNextPlane, CuboidKey &middleCuboid, std::set<CuboidKey> &dividedCuboids){
     std::set<CuboidKey> uniqueCuboids;
     std::set<CuboidKey> nonOverlappedCuboids;
