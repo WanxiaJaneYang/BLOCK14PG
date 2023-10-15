@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.10)
 
 # Define the project and specify the required C++ standard
 project(BLOCK)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # List source files
@@ -14,6 +14,7 @@ set(SOURCES
     compressor/Compressor.cpp
     compressor/LineCompress.cpp
     compressor/PlaneCompress.cpp
+    compressor/BlockCompress.cpp
     cores/Block.cpp 
     cores/Cuboid.cpp 
     cores/SafeInputTasks.cpp 
