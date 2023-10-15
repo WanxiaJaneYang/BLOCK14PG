@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /Users/haofengchen/Desktop/BLOCK14PG/build/googletest
 # The main recursive "all" target.
 all: CMakeFiles/validInputTests.dir/all
 all: CMakeFiles/integrationValidTests.dir/all
+all: CMakeFiles/validCompressorPlaneTests.dir/all
 all: googletest/googletest/all
 .PHONY : all
 
@@ -75,6 +76,7 @@ preinstall: googletest/googletest/preinstall
 # The main recursive "clean" target.
 clean: CMakeFiles/validInputTests.dir/clean
 clean: CMakeFiles/integrationValidTests.dir/clean
+clean: CMakeFiles/validCompressorPlaneTests.dir/clean
 clean: googletest/googletest/clean
 .PHONY : clean
 
@@ -103,7 +105,7 @@ CMakeFiles/validInputTests.dir/all: googletest/googletest/CMakeFiles/gtest.dir/a
 CMakeFiles/validInputTests.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/googletest/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target validInputTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/googletest/CMakeFiles --progress-num=37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52 "Built target validInputTests"
 .PHONY : CMakeFiles/validInputTests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -148,6 +150,33 @@ integrationValidTests: CMakeFiles/integrationValidTests.dir/rule
 CMakeFiles/integrationValidTests.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/clean
 .PHONY : CMakeFiles/integrationValidTests.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/validCompressorPlaneTests.dir
+
+# All Build rule for target.
+CMakeFiles/validCompressorPlaneTests.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
+CMakeFiles/validCompressorPlaneTests.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/googletest/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target validCompressorPlaneTests"
+.PHONY : CMakeFiles/validCompressorPlaneTests.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/validCompressorPlaneTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/haofengchen/Desktop/BLOCK14PG/build/googletest/CMakeFiles 20
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/validCompressorPlaneTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/haofengchen/Desktop/BLOCK14PG/build/googletest/CMakeFiles 0
+.PHONY : CMakeFiles/validCompressorPlaneTests.dir/rule
+
+# Convenience name for target.
+validCompressorPlaneTests: CMakeFiles/validCompressorPlaneTests.dir/rule
+.PHONY : validCompressorPlaneTests
+
+# clean rule for target.
+CMakeFiles/validCompressorPlaneTests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/clean
+.PHONY : CMakeFiles/validCompressorPlaneTests.dir/clean
 
 #=============================================================================
 # Target rules for target googletest/googletest/CMakeFiles/gtest.dir

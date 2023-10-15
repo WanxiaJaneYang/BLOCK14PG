@@ -8,7 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp" "CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o.d"
   "/Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp" "CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o.d"
+  "/Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp" "CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o.d"
+  "/Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp" "CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o.d"
   "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp" "CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o.d"
   "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp" "CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o.d"
   "/Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp" "CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o" "gcc" "CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o.d"

@@ -97,10 +97,24 @@ CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/tests/unit/readInput/InputTestHelper.cpp -o CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.s
 
+CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o: CMakeFiles/validInputTests.dir/flags.make
+CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp
+CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o -MF CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o.d -o CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp
+
+CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp > CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.i
+
+CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp -o CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.s
+
 CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp
 CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o -MF CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o.d -o CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp
 
 CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.i: cmake_force
@@ -111,10 +125,38 @@ CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp -o CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.s
 
+CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o: CMakeFiles/validInputTests.dir/flags.make
+CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp
+CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o -MF CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o.d -o CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp
+
+CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp > CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.i
+
+CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp -o CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.s
+
+CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o: CMakeFiles/validInputTests.dir/flags.make
+CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp
+CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o -MF CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o.d -o CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp
+
+CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp > CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.i
+
+CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp -o CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.s
+
 CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp
 CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o -MF CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o.d -o CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp
 
 CMakeFiles/validInputTests.dir/src/cores/Block.cpp.i: cmake_force
@@ -128,7 +170,7 @@ CMakeFiles/validInputTests.dir/src/cores/Block.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp
 CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o -MF CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o.d -o CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp
 
 CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.i: cmake_force
@@ -142,7 +184,7 @@ CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp
 CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o -MF CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o.d -o CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp
 
 CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.i: cmake_force
@@ -156,7 +198,7 @@ CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp
 CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o -MF CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o.d -o CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp
 
 CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.i: cmake_force
@@ -170,7 +212,7 @@ CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp
 CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o -MF CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o.d -o CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp
 
 CMakeFiles/validInputTests.dir/src/globals/globals.cpp.i: cmake_force
@@ -184,7 +226,7 @@ CMakeFiles/validInputTests.dir/src/globals/globals.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp
 CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o -MF CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o.d -o CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp
 
 CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.i: cmake_force
@@ -198,7 +240,7 @@ CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp
 CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o -MF CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o.d -o CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp
 
 CMakeFiles/validInputTests.dir/src/input/readInput.cpp.i: cmake_force
@@ -212,7 +254,7 @@ CMakeFiles/validInputTests.dir/src/input/readInput.cpp.s: cmake_force
 CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp
 CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o -MF CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o.d -o CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp
 
 CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.i: cmake_force
@@ -226,7 +268,7 @@ CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cp
 CMakeFiles/validInputTests.dir/src/output/output.cpp.o: CMakeFiles/validInputTests.dir/flags.make
 CMakeFiles/validInputTests.dir/src/output/output.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp
 CMakeFiles/validInputTests.dir/src/output/output.cpp.o: CMakeFiles/validInputTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/validInputTests.dir/src/output/output.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/validInputTests.dir/src/output/output.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validInputTests.dir/src/output/output.cpp.o -MF CMakeFiles/validInputTests.dir/src/output/output.cpp.o.d -o CMakeFiles/validInputTests.dir/src/output/output.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp
 
 CMakeFiles/validInputTests.dir/src/output/output.cpp.i: cmake_force
@@ -241,7 +283,10 @@ CMakeFiles/validInputTests.dir/src/output/output.cpp.s: cmake_force
 validInputTests_OBJECTS = \
 "CMakeFiles/validInputTests.dir/tests/unit/readInput/validTests.cpp.o" \
 "CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o" \
+"CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o" \
 "CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o" \
+"CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o" \
+"CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o" \
 "CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o" \
 "CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o" \
 "CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o" \
@@ -257,7 +302,10 @@ validInputTests_EXTERNAL_OBJECTS =
 
 validInputTests: CMakeFiles/validInputTests.dir/tests/unit/readInput/validTests.cpp.o
 validInputTests: CMakeFiles/validInputTests.dir/tests/unit/readInput/InputTestHelper.cpp.o
+validInputTests: CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o
 validInputTests: CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o
+validInputTests: CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o
+validInputTests: CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o
 validInputTests: CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o
 validInputTests: CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o
 validInputTests: CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o
@@ -272,7 +320,7 @@ validInputTests: lib/libgtest.a
 validInputTests: lib/libgtest_main.a
 validInputTests: lib/libgtest.a
 validInputTests: CMakeFiles/validInputTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable validInputTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable validInputTests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/validInputTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

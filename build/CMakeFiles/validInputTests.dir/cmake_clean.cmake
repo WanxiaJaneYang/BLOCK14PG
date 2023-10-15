@@ -1,6 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o"
+  "CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o.d"
   "CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o"
   "CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o.d"
+  "CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o"
+  "CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o.d"
+  "CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o"
+  "CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o.d"
   "CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o"
   "CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o.d"
   "CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o"

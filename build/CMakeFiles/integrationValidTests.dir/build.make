@@ -97,10 +97,24 @@ CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/tests/integration/integrationTestHelper.cpp -o CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp.s
 
+CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
+CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp
+CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp
+
+CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp > CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.i
+
+CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/BlockCompress.cpp -o CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.s
+
 CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp
 CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp
 
 CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.i: cmake_force
@@ -111,10 +125,38 @@ CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/Compressor.cpp -o CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.s
 
+CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
+CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp
+CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp
+
+CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp > CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.i
+
+CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/LineCompress.cpp -o CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.s
+
+CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
+CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp
+CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp
+
+CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp > CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.i
+
+CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/haofengchen/Desktop/BLOCK14PG/src/compressor/PlaneCompress.cpp -o CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.s
+
 CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp
 CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Block.cpp
 
 CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.i: cmake_force
@@ -128,7 +170,7 @@ CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.s: cmake_force
 CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp
 CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/Cuboid.cpp
 
 CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.i: cmake_force
@@ -142,7 +184,7 @@ CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.s: cmake_force
 CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp
 CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeInputTasks.cpp
 
 CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.i: cmake_force
@@ -156,7 +198,7 @@ CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.s: cmake_force
 CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp
 CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/cores/SafeOutputTasks.cpp
 
 CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.i: cmake_force
@@ -170,7 +212,7 @@ CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.s: cmake_forc
 CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp
 CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/globals/globals.cpp
 
 CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.i: cmake_force
@@ -184,7 +226,7 @@ CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.s: cmake_force
 CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp
 CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/Buffer.cpp
 
 CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.i: cmake_force
@@ -198,7 +240,7 @@ CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.s: cmake_force
 CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp
 CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/input/readInput.cpp
 
 CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.i: cmake_force
@@ -212,7 +254,7 @@ CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.s: cmake_force
 CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp
 CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/multi-threads-handling/MultiThreadsHandler.cpp
 
 CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.i: cmake_force
@@ -226,7 +268,7 @@ CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHand
 CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o: CMakeFiles/integrationValidTests.dir/flags.make
 CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o: /Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp
 CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o: CMakeFiles/integrationValidTests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o -MF CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o.d -o CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o -c /Users/haofengchen/Desktop/BLOCK14PG/src/output/output.cpp
 
 CMakeFiles/integrationValidTests.dir/src/output/output.cpp.i: cmake_force
@@ -241,7 +283,10 @@ CMakeFiles/integrationValidTests.dir/src/output/output.cpp.s: cmake_force
 integrationValidTests_OBJECTS = \
 "CMakeFiles/integrationValidTests.dir/tests/integration/integrationValidTests.cpp.o" \
 "CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp.o" \
+"CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o" \
 "CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o" \
+"CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o" \
+"CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o" \
 "CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o" \
 "CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o" \
 "CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o" \
@@ -257,7 +302,10 @@ integrationValidTests_EXTERNAL_OBJECTS =
 
 integrationValidTests: CMakeFiles/integrationValidTests.dir/tests/integration/integrationValidTests.cpp.o
 integrationValidTests: CMakeFiles/integrationValidTests.dir/tests/integration/integrationTestHelper.cpp.o
+integrationValidTests: CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o
 integrationValidTests: CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o
+integrationValidTests: CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o
+integrationValidTests: CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o
 integrationValidTests: CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o
 integrationValidTests: CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o
 integrationValidTests: CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o
@@ -272,7 +320,7 @@ integrationValidTests: lib/libgtest.a
 integrationValidTests: lib/libgtest_main.a
 integrationValidTests: lib/libgtest.a
 integrationValidTests: CMakeFiles/integrationValidTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable integrationValidTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/haofengchen/Desktop/BLOCK14PG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable integrationValidTests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/integrationValidTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

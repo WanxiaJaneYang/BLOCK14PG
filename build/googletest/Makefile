@@ -143,6 +143,19 @@ integrationValidTests/fast:
 .PHONY : integrationValidTests/fast
 
 #=============================================================================
+# Target rules for targets named validCompressorPlaneTests
+
+# Build rule for target.
+validCompressorPlaneTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 validCompressorPlaneTests
+.PHONY : validCompressorPlaneTests
+
+# fast build rule for target.
+validCompressorPlaneTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/build
+.PHONY : validCompressorPlaneTests/fast
+
+#=============================================================================
 # Target rules for targets named gtest
 
 # Build rule for target.
@@ -175,6 +188,7 @@ src/compressor/BlockCompress.o: src/compressor/BlockCompress.cpp.o
 src/compressor/BlockCompress.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/BlockCompress.cpp.o
 .PHONY : src/compressor/BlockCompress.cpp.o
 
 src/compressor/BlockCompress.i: src/compressor/BlockCompress.cpp.i
@@ -184,6 +198,7 @@ src/compressor/BlockCompress.i: src/compressor/BlockCompress.cpp.i
 src/compressor/BlockCompress.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/BlockCompress.cpp.i
 .PHONY : src/compressor/BlockCompress.cpp.i
 
 src/compressor/BlockCompress.s: src/compressor/BlockCompress.cpp.s
@@ -193,6 +208,7 @@ src/compressor/BlockCompress.s: src/compressor/BlockCompress.cpp.s
 src/compressor/BlockCompress.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/BlockCompress.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/BlockCompress.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/BlockCompress.cpp.s
 .PHONY : src/compressor/BlockCompress.cpp.s
 
 src/compressor/Compressor.o: src/compressor/Compressor.cpp.o
@@ -202,6 +218,7 @@ src/compressor/Compressor.o: src/compressor/Compressor.cpp.o
 src/compressor/Compressor.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/Compressor.cpp.o
 .PHONY : src/compressor/Compressor.cpp.o
 
 src/compressor/Compressor.i: src/compressor/Compressor.cpp.i
@@ -211,6 +228,7 @@ src/compressor/Compressor.i: src/compressor/Compressor.cpp.i
 src/compressor/Compressor.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/Compressor.cpp.i
 .PHONY : src/compressor/Compressor.cpp.i
 
 src/compressor/Compressor.s: src/compressor/Compressor.cpp.s
@@ -220,6 +238,7 @@ src/compressor/Compressor.s: src/compressor/Compressor.cpp.s
 src/compressor/Compressor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/Compressor.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/Compressor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/Compressor.cpp.s
 .PHONY : src/compressor/Compressor.cpp.s
 
 src/compressor/LineCompress.o: src/compressor/LineCompress.cpp.o
@@ -229,6 +248,7 @@ src/compressor/LineCompress.o: src/compressor/LineCompress.cpp.o
 src/compressor/LineCompress.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/LineCompress.cpp.o
 .PHONY : src/compressor/LineCompress.cpp.o
 
 src/compressor/LineCompress.i: src/compressor/LineCompress.cpp.i
@@ -238,6 +258,7 @@ src/compressor/LineCompress.i: src/compressor/LineCompress.cpp.i
 src/compressor/LineCompress.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/LineCompress.cpp.i
 .PHONY : src/compressor/LineCompress.cpp.i
 
 src/compressor/LineCompress.s: src/compressor/LineCompress.cpp.s
@@ -247,6 +268,7 @@ src/compressor/LineCompress.s: src/compressor/LineCompress.cpp.s
 src/compressor/LineCompress.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/LineCompress.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/LineCompress.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/LineCompress.cpp.s
 .PHONY : src/compressor/LineCompress.cpp.s
 
 src/compressor/PlaneCompress.o: src/compressor/PlaneCompress.cpp.o
@@ -256,6 +278,7 @@ src/compressor/PlaneCompress.o: src/compressor/PlaneCompress.cpp.o
 src/compressor/PlaneCompress.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/PlaneCompress.cpp.o
 .PHONY : src/compressor/PlaneCompress.cpp.o
 
 src/compressor/PlaneCompress.i: src/compressor/PlaneCompress.cpp.i
@@ -265,6 +288,7 @@ src/compressor/PlaneCompress.i: src/compressor/PlaneCompress.cpp.i
 src/compressor/PlaneCompress.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/PlaneCompress.cpp.i
 .PHONY : src/compressor/PlaneCompress.cpp.i
 
 src/compressor/PlaneCompress.s: src/compressor/PlaneCompress.cpp.s
@@ -274,6 +298,7 @@ src/compressor/PlaneCompress.s: src/compressor/PlaneCompress.cpp.s
 src/compressor/PlaneCompress.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/compressor/PlaneCompress.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/compressor/PlaneCompress.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/compressor/PlaneCompress.cpp.s
 .PHONY : src/compressor/PlaneCompress.cpp.s
 
 src/cores/Block.o: src/cores/Block.cpp.o
@@ -283,6 +308,7 @@ src/cores/Block.o: src/cores/Block.cpp.o
 src/cores/Block.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Block.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/Block.cpp.o
 .PHONY : src/cores/Block.cpp.o
 
 src/cores/Block.i: src/cores/Block.cpp.i
@@ -292,6 +318,7 @@ src/cores/Block.i: src/cores/Block.cpp.i
 src/cores/Block.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Block.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/Block.cpp.i
 .PHONY : src/cores/Block.cpp.i
 
 src/cores/Block.s: src/cores/Block.cpp.s
@@ -301,6 +328,7 @@ src/cores/Block.s: src/cores/Block.cpp.s
 src/cores/Block.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Block.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/Block.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/Block.cpp.s
 .PHONY : src/cores/Block.cpp.s
 
 src/cores/Cuboid.o: src/cores/Cuboid.cpp.o
@@ -310,6 +338,7 @@ src/cores/Cuboid.o: src/cores/Cuboid.cpp.o
 src/cores/Cuboid.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/Cuboid.cpp.o
 .PHONY : src/cores/Cuboid.cpp.o
 
 src/cores/Cuboid.i: src/cores/Cuboid.cpp.i
@@ -319,6 +348,7 @@ src/cores/Cuboid.i: src/cores/Cuboid.cpp.i
 src/cores/Cuboid.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/Cuboid.cpp.i
 .PHONY : src/cores/Cuboid.cpp.i
 
 src/cores/Cuboid.s: src/cores/Cuboid.cpp.s
@@ -328,6 +358,7 @@ src/cores/Cuboid.s: src/cores/Cuboid.cpp.s
 src/cores/Cuboid.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/Cuboid.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/Cuboid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/Cuboid.cpp.s
 .PHONY : src/cores/Cuboid.cpp.s
 
 src/cores/SafeInputTasks.o: src/cores/SafeInputTasks.cpp.o
@@ -337,6 +368,7 @@ src/cores/SafeInputTasks.o: src/cores/SafeInputTasks.cpp.o
 src/cores/SafeInputTasks.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/SafeInputTasks.cpp.o
 .PHONY : src/cores/SafeInputTasks.cpp.o
 
 src/cores/SafeInputTasks.i: src/cores/SafeInputTasks.cpp.i
@@ -346,6 +378,7 @@ src/cores/SafeInputTasks.i: src/cores/SafeInputTasks.cpp.i
 src/cores/SafeInputTasks.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/SafeInputTasks.cpp.i
 .PHONY : src/cores/SafeInputTasks.cpp.i
 
 src/cores/SafeInputTasks.s: src/cores/SafeInputTasks.cpp.s
@@ -355,6 +388,7 @@ src/cores/SafeInputTasks.s: src/cores/SafeInputTasks.cpp.s
 src/cores/SafeInputTasks.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeInputTasks.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/SafeInputTasks.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/SafeInputTasks.cpp.s
 .PHONY : src/cores/SafeInputTasks.cpp.s
 
 src/cores/SafeOutputTasks.o: src/cores/SafeOutputTasks.cpp.o
@@ -364,6 +398,7 @@ src/cores/SafeOutputTasks.o: src/cores/SafeOutputTasks.cpp.o
 src/cores/SafeOutputTasks.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/SafeOutputTasks.cpp.o
 .PHONY : src/cores/SafeOutputTasks.cpp.o
 
 src/cores/SafeOutputTasks.i: src/cores/SafeOutputTasks.cpp.i
@@ -373,6 +408,7 @@ src/cores/SafeOutputTasks.i: src/cores/SafeOutputTasks.cpp.i
 src/cores/SafeOutputTasks.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/SafeOutputTasks.cpp.i
 .PHONY : src/cores/SafeOutputTasks.cpp.i
 
 src/cores/SafeOutputTasks.s: src/cores/SafeOutputTasks.cpp.s
@@ -382,6 +418,7 @@ src/cores/SafeOutputTasks.s: src/cores/SafeOutputTasks.cpp.s
 src/cores/SafeOutputTasks.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/cores/SafeOutputTasks.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/cores/SafeOutputTasks.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/cores/SafeOutputTasks.cpp.s
 .PHONY : src/cores/SafeOutputTasks.cpp.s
 
 src/globals/globals.o: src/globals/globals.cpp.o
@@ -391,6 +428,7 @@ src/globals/globals.o: src/globals/globals.cpp.o
 src/globals/globals.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/globals/globals.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/globals/globals.cpp.o
 .PHONY : src/globals/globals.cpp.o
 
 src/globals/globals.i: src/globals/globals.cpp.i
@@ -400,6 +438,7 @@ src/globals/globals.i: src/globals/globals.cpp.i
 src/globals/globals.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/globals/globals.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/globals/globals.cpp.i
 .PHONY : src/globals/globals.cpp.i
 
 src/globals/globals.s: src/globals/globals.cpp.s
@@ -409,6 +448,7 @@ src/globals/globals.s: src/globals/globals.cpp.s
 src/globals/globals.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/globals/globals.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/globals/globals.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/globals/globals.cpp.s
 .PHONY : src/globals/globals.cpp.s
 
 src/input/Buffer.o: src/input/Buffer.cpp.o
@@ -418,6 +458,7 @@ src/input/Buffer.o: src/input/Buffer.cpp.o
 src/input/Buffer.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/input/Buffer.cpp.o
 .PHONY : src/input/Buffer.cpp.o
 
 src/input/Buffer.i: src/input/Buffer.cpp.i
@@ -427,6 +468,7 @@ src/input/Buffer.i: src/input/Buffer.cpp.i
 src/input/Buffer.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/input/Buffer.cpp.i
 .PHONY : src/input/Buffer.cpp.i
 
 src/input/Buffer.s: src/input/Buffer.cpp.s
@@ -436,6 +478,7 @@ src/input/Buffer.s: src/input/Buffer.cpp.s
 src/input/Buffer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/Buffer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/input/Buffer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/input/Buffer.cpp.s
 .PHONY : src/input/Buffer.cpp.s
 
 src/input/readInput.o: src/input/readInput.cpp.o
@@ -445,6 +488,7 @@ src/input/readInput.o: src/input/readInput.cpp.o
 src/input/readInput.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/readInput.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/input/readInput.cpp.o
 .PHONY : src/input/readInput.cpp.o
 
 src/input/readInput.i: src/input/readInput.cpp.i
@@ -454,6 +498,7 @@ src/input/readInput.i: src/input/readInput.cpp.i
 src/input/readInput.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/readInput.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/input/readInput.cpp.i
 .PHONY : src/input/readInput.cpp.i
 
 src/input/readInput.s: src/input/readInput.cpp.s
@@ -463,6 +508,7 @@ src/input/readInput.s: src/input/readInput.cpp.s
 src/input/readInput.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/input/readInput.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/input/readInput.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/input/readInput.cpp.s
 .PHONY : src/input/readInput.cpp.s
 
 src/multi-threads-handling/MultiThreadsHandler.o: src/multi-threads-handling/MultiThreadsHandler.cpp.o
@@ -472,6 +518,7 @@ src/multi-threads-handling/MultiThreadsHandler.o: src/multi-threads-handling/Mul
 src/multi-threads-handling/MultiThreadsHandler.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.o
 .PHONY : src/multi-threads-handling/MultiThreadsHandler.cpp.o
 
 src/multi-threads-handling/MultiThreadsHandler.i: src/multi-threads-handling/MultiThreadsHandler.cpp.i
@@ -481,6 +528,7 @@ src/multi-threads-handling/MultiThreadsHandler.i: src/multi-threads-handling/Mul
 src/multi-threads-handling/MultiThreadsHandler.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.i
 .PHONY : src/multi-threads-handling/MultiThreadsHandler.cpp.i
 
 src/multi-threads-handling/MultiThreadsHandler.s: src/multi-threads-handling/MultiThreadsHandler.cpp.s
@@ -490,6 +538,7 @@ src/multi-threads-handling/MultiThreadsHandler.s: src/multi-threads-handling/Mul
 src/multi-threads-handling/MultiThreadsHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/multi-threads-handling/MultiThreadsHandler.cpp.s
 .PHONY : src/multi-threads-handling/MultiThreadsHandler.cpp.s
 
 src/output/output.o: src/output/output.cpp.o
@@ -499,6 +548,7 @@ src/output/output.o: src/output/output.cpp.o
 src/output/output.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/output/output.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/output/output.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/output/output.cpp.o
 .PHONY : src/output/output.cpp.o
 
 src/output/output.i: src/output/output.cpp.i
@@ -508,6 +558,7 @@ src/output/output.i: src/output/output.cpp.i
 src/output/output.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/output/output.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/output/output.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/output/output.cpp.i
 .PHONY : src/output/output.cpp.i
 
 src/output/output.s: src/output/output.cpp.s
@@ -517,6 +568,7 @@ src/output/output.s: src/output/output.cpp.s
 src/output/output.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validInputTests.dir/build.make CMakeFiles/validInputTests.dir/src/output/output.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/src/output/output.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/src/output/output.cpp.s
 .PHONY : src/output/output.cpp.s
 
 tests/integration/integrationTestHelper.o: tests/integration/integrationTestHelper.cpp.o
@@ -566,6 +618,54 @@ tests/integration/integrationValidTests.s: tests/integration/integrationValidTes
 tests/integration/integrationValidTests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integrationValidTests.dir/build.make CMakeFiles/integrationValidTests.dir/tests/integration/integrationValidTests.cpp.s
 .PHONY : tests/integration/integrationValidTests.cpp.s
+
+tests/unit/compressor/planeCompress/planeCompressTestHelper.o: tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.o
+.PHONY : tests/unit/compressor/planeCompress/planeCompressTestHelper.o
+
+# target to build an object file
+tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.o
+.PHONY : tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.o
+
+tests/unit/compressor/planeCompress/planeCompressTestHelper.i: tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.i
+.PHONY : tests/unit/compressor/planeCompress/planeCompressTestHelper.i
+
+# target to preprocess a source file
+tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.i
+.PHONY : tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.i
+
+tests/unit/compressor/planeCompress/planeCompressTestHelper.s: tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.s
+.PHONY : tests/unit/compressor/planeCompress/planeCompressTestHelper.s
+
+# target to generate assembly for a file
+tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.s
+.PHONY : tests/unit/compressor/planeCompress/planeCompressTestHelper.cpp.s
+
+tests/unit/compressor/planeCompress/validTests.o: tests/unit/compressor/planeCompress/validTests.cpp.o
+.PHONY : tests/unit/compressor/planeCompress/validTests.o
+
+# target to build an object file
+tests/unit/compressor/planeCompress/validTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/tests/unit/compressor/planeCompress/validTests.cpp.o
+.PHONY : tests/unit/compressor/planeCompress/validTests.cpp.o
+
+tests/unit/compressor/planeCompress/validTests.i: tests/unit/compressor/planeCompress/validTests.cpp.i
+.PHONY : tests/unit/compressor/planeCompress/validTests.i
+
+# target to preprocess a source file
+tests/unit/compressor/planeCompress/validTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/tests/unit/compressor/planeCompress/validTests.cpp.i
+.PHONY : tests/unit/compressor/planeCompress/validTests.cpp.i
+
+tests/unit/compressor/planeCompress/validTests.s: tests/unit/compressor/planeCompress/validTests.cpp.s
+.PHONY : tests/unit/compressor/planeCompress/validTests.s
+
+# target to generate assembly for a file
+tests/unit/compressor/planeCompress/validTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validCompressorPlaneTests.dir/build.make CMakeFiles/validCompressorPlaneTests.dir/tests/unit/compressor/planeCompress/validTests.cpp.s
+.PHONY : tests/unit/compressor/planeCompress/validTests.cpp.s
 
 tests/unit/readInput/InputTestHelper.o: tests/unit/readInput/InputTestHelper.cpp.o
 .PHONY : tests/unit/readInput/InputTestHelper.o
@@ -626,6 +726,7 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... integrationValidTests"
+	@echo "... validCompressorPlaneTests"
 	@echo "... validInputTests"
 	@echo "... src/compressor/BlockCompress.o"
 	@echo "... src/compressor/BlockCompress.i"
@@ -672,6 +773,12 @@ help:
 	@echo "... tests/integration/integrationValidTests.o"
 	@echo "... tests/integration/integrationValidTests.i"
 	@echo "... tests/integration/integrationValidTests.s"
+	@echo "... tests/unit/compressor/planeCompress/planeCompressTestHelper.o"
+	@echo "... tests/unit/compressor/planeCompress/planeCompressTestHelper.i"
+	@echo "... tests/unit/compressor/planeCompress/planeCompressTestHelper.s"
+	@echo "... tests/unit/compressor/planeCompress/validTests.o"
+	@echo "... tests/unit/compressor/planeCompress/validTests.i"
+	@echo "... tests/unit/compressor/planeCompress/validTests.s"
 	@echo "... tests/unit/readInput/InputTestHelper.o"
 	@echo "... tests/unit/readInput/InputTestHelper.i"
 	@echo "... tests/unit/readInput/InputTestHelper.s"
