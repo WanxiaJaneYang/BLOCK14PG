@@ -318,7 +318,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                     if (!canBeMerged)
                     {
                         handleNotMergedCuboids(rectanglesToBeMerged, currentLine, currentEnd, rectangleEnd);
-                        GlobalVars::outputTasks.push(rectanglesToBeMerged.front());
+                        GlobalVars::outputTasks.push(rectangleToBeMerged);
                     }
                 }
             }
