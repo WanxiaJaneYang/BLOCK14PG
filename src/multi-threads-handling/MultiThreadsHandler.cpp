@@ -17,10 +17,10 @@ static std::mutex coutMutex; // Define a global mutex for synchronizing std::cou
 
 void startThreads(std::istream &in)
 {
-    std::cout << getHighPrecisionTimestamp() << "[DEBUG] Main thread started, ID: " << std::this_thread::get_id() << std::endl;
+    //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Main thread started, ID: " << std::this_thread::get_id() << std::endl;
     ThreadPool pool(7); // 8 threads being used in total, but 1 has been used by main process
 
-    std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
+    //std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
     readInputRunning = true; // set the flag to indicate that readInput is running
     pool.enqueue([&in]()
                  { startReadingThread(in); }); // lambda: use 1 thread to read input at the beginning
@@ -77,13 +77,13 @@ static void startReadingThread(std::istream &in)
 {
     {
         std::lock_guard<std::mutex> lock(coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
+        //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
     }
     readInput(in); // call the original readInput function
     readInputRunning = false;
     {
         std::lock_guard<std::mutex> lock(coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread exited." << std::endl;
+        //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread exited." << std::endl;
     }
 }
 
@@ -91,13 +91,13 @@ static void startWritingThread()
 {
     {
         std::lock_guard<std::mutex> lock(coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
+        //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
     }
     output();
     outputRunning = false;
     {
         std::lock_guard<std::mutex> lock(coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread exited." << std::endl;
+        //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread exited." << std::endl;
     }
 }
 
@@ -106,14 +106,14 @@ static void startCompressingThread()
     std::thread::id this_id = std::this_thread::get_id();
     {
         std::lock_guard<std::mutex> lock(coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started in thread ID: " << this_id << std::endl;
+        //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started in thread ID: " << this_id << std::endl;
     }
     compress();
     compressionTasksCount--;
 
     {
         std::lock_guard<std::mutex> lock(coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended in thread ID: " << this_id << std::endl;
+        //std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended in thread ID: " << this_id << std::endl;
     }
 }
 
