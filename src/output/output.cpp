@@ -18,7 +18,7 @@ void output()
         int sizeZ = cuboid.depth;
         std::string label = GlobalVars::tagTable.at(cuboid.tag);
         //  print out the block position, block size and accurate label
-        std::cout << positionX << ", " << positionY << ", " << positionZ << ", " << sizeX << ", " << sizeY << ", " << sizeZ << ", " << label << std::endl;
+        std::cout << positionX << ", " << positionY << ", " << positionZ << ", " << sizeX << ", " << sizeY << ", " << sizeZ << "," << label << std::endl;
         outputCuboid = GlobalVars::outputTasks.pop(cuboid);
     }
 }
