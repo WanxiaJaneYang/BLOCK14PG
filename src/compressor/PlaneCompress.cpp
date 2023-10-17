@@ -83,7 +83,7 @@ void handleNotMergedCuboids(std::deque<Cuboid> &rectanglesToBeMerged, std::deque
     rectanglesToBeMerged.pop_front();
 }
 
-void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
+std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 {
     std::deque<std::deque<Cuboid>> result;
     // basic idea: read the matrix line by line,
@@ -100,7 +100,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
         std::deque<std::deque<Cuboid>> plane = compressedLines[z];
 
         // this is var for compressed rectangles
-        // std::deque<Cuboid> compressedPlane;
+        std::deque<Cuboid> compressedPlane;
 
         // this is var declared out of the loop
         std::deque<Cuboid> rectanglesToBeMerged;
@@ -318,7 +318,7 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
                     if (!canBeMerged)
                     {
                         handleNotMergedCuboids(rectanglesToBeMerged, currentLine, currentEnd, rectangleEnd);
-                        GlobalVars::outputTasks.push(rectangleToBeMerged);
+                        compressedPlane.push_back(rectangleToBeMerged);
                     }
                 }
             }
@@ -326,10 +326,10 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
         // push all remaining rectangles into the compressedPlane
         while (rectanglesToBeMerged.size() > 0)
         {
-            GlobalVars::outputTasks.push(rectanglesToBeMerged.front());
+            compressedPlane.push_back(rectanglesToBeMerged.front());
             rectanglesToBeMerged.pop_front();
         }
-        // result.push_back(compressedPlane);
+        result.push_back(compressedPlane);
     }
-    // return result;
+    return result;
 }
