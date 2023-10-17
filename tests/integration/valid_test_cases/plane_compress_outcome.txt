@@ -1,108 +1,48 @@
-3318728.131982625[DEBUG] Main thread started, ID: 0x100a04580
-3318728.132043916[DEBUG] ThreadPool created, ID: 0x100a04580
-3318728.132052166[DEBUG] Reading thread started...
-3318728.132059666[DEBUG] Writing thread started...
-0, 0, 11, 14, 10, 1,  sd_1
-0, 0, 10, 14, 10, 1,  sd_1
-10, 9, 9, 4, 1, 1,  sd_1
-0, 9, 9, 10, 1, 1,  basement
-0, 0, 9, 14, 9, 1,  basement
-0, 0, 8, 14, 10, 1,  basement
-0, 0, 7, 14, 10, 1,  basement
-0, 0, 6, 14, 10, 1,  basement
-0, 0, 5, 14, 10, 1,  basement
-0, 0, 4, 14, 10, 1,  basement
-0, 0, 3, 14, 10, 1,  basement
-0, 0, 2, 14, 10, 1,  basement
-0, 0, 1, 14, 10, 1,  basement
-0, 0, 0, 14, 10, 1,  basement
-14, 0, 11, 14, 10, 1,  sd_1
-14, 0, 10, 14, 10, 1,  sd_1
-25, 5, 9, 3, 5, 1,  sd_1
-14, 9, 9, 11, 1, 1,  sd_1
-15, 8, 9, 10, 1, 1,  sd_1
-14, 8, 9, 1, 1, 1,  basement
-19, 7, 9, 6, 1, 1,  sd_1
-14, 7, 9, 5, 1, 1,  basement
-22, 6, 9, 3, 1, 1,  sd_1
-14, 6, 9, 8, 1, 1,  basement
-14, 5, 9, 11, 1, 1,  basement
-14, 0, 9, 14, 5, 1,  basement
-14, 0, 8, 14, 10, 1,  basement
-14, 0, 7, 14, 10, 1,  basement
-14, 0, 6, 14, 10, 1,  basement
-14, 0, 5, 14, 10, 1,  basement
-14, 0, 4, 14, 10, 1,  basement
-14, 0, 3, 14, 10, 1,  basement
-14, 0, 2, 14, 10, 1,  basement
-14, 0, 1, 14, 10, 1,  basement
-14, 0, 0, 14, 10, 1,  basement
-28, 0, 11, 14, 10, 1,  sd_1
-28, 0, 10, 14, 10, 1,  sd_1
-33, 0, 9, 9, 10, 1,  sd_1
-28, 4, 9, 5, 6, 1,  sd_1
-30, 3, 9, 3, 1, 1,  sd_1
-28, 3, 9, 2, 1, 1,  basement
-31, 2, 9, 2, 1, 1,  sd_1
-28, 2, 9, 3, 1, 1,  basement
-32, 1, 9, 1, 1, 1,  sd_1
-28, 1, 9, 4, 1, 1,  basement
-28, 0, 9, 5, 1, 1,  basement
-28, 0, 8, 14, 10, 1,  basement
-28, 0, 7, 14, 10, 1,  basement
-28, 0, 6, 14, 10, 1,  basement
-28, 0, 5, 14, 10, 1,  basement
-28, 0, 4, 14, 10, 1,  basement
-28, 0, 3, 14, 10, 1,  basement
-28, 0, 2, 14, 10, 1,  basement
-28, 0, 1, 14, 10, 1,  basement
-28, 0, 0, 14, 10, 1,  basement
-42, 0, 11, 14, 10, 1,  sd_1
-42, 0, 10, 14, 10, 1,  sd_1
-42, 0, 9, 14, 10, 1,  sd_1
-55, 3, 8, 1, 7, 1,  sd_1
-50, 9, 8, 5, 1, 1,  sd_1
-42, 9, 8, 8, 1, 1,  basement
-51, 8, 8, 4, 1, 1,  sd_1
-42, 8, 8, 9, 1, 1,  basement
-52, 7, 8, 3, 1, 1,  sd_1
-42, 7, 8, 10, 1, 1,  basement
-53, 6, 8, 2, 1, 1,  sd_1
-42, 6, 8, 11, 1, 1,  basement
-54, 5, 8, 1, 1, 1,  sd_1
-42, 5, 8, 12, 1, 1,  basement
-42, 3, 8, 13, 2, 1,  basement
-42, 0, 8, 14, 3, 1,  basement
-42, 0, 7, 14, 10, 1,  basement
-42, 0, 6, 14, 10, 1,  basement
-42, 0, 5, 14, 10, 1,  basement
-42, 0, 4, 14, 10, 1,  basement
-42, 0, 3, 14, 10, 1,  basement
-42, 0, 2, 14, 10, 1,  basement
-42, 0, 1, 14, 10, 1,  basement
-42, 0, 0, 14, 10, 1,  basement
-56, 0, 11, 14, 10, 1,  sd_1
-56, 0, 10, 14, 10, 1,  sd_1
-56, 0, 9, 14, 10, 1,  sd_1
-56, 0, 8, 14, 10, 1,  sd_1
-56, 0, 7, 14, 10, 1,  basement
-56, 0, 6, 14, 10, 1,  basement
-56, 0, 5, 14, 10, 1,  basement
-56, 0, 4, 14, 10, 1,  basement
-56, 0, 3, 14, 10, 1,  basement
-56, 0, 2, 14, 10, 1,  basement
-56, 0, 1, 14, 10, 1,  basement
-56, 0, 0, 14, 10, 1,  basement
-3318728.132136458[DEBUG] Writing thread exited.
-3318728.132217250[DEBUG] Reading thread exited.
-3318728.147117833[DEBUG] Compressing pipeline started in thread ID: 0x16f8ab000
-3318728.147150708[DEBUG] Compressing pipeline started in thread ID: 0x16f937000
-3318728.147170041[DEBUG] Compressing pipeline ended in thread ID: 0x16f937000
-3318728.147175833[DEBUG] Compressing pipeline started in thread ID: 0x16f9c3000
-3318728.147177833[DEBUG] Compressing pipeline ended in thread ID: 0x16f9c3000
-3318728.147189625[DEBUG] Compressing pipeline ended in thread ID: 0x16f8ab000
-3318728.162159583[DEBUG] Writing thread started...
-1, 1, 0, 1, 1, 1,  NT
-0, 1, 0, 1, 1, 1,  NSW
-0, 0, 0, 2, 1, 1,  NSW
-3318728.162188916[DEBUG] Writing thread exited.
+0, 0, 10, 14, 10, 2, sd_1
+10, 9, 9, 4, 1, 1, sd_1
+0, 9, 9, 10, 1, 1, basement
+0, 0, 9, 14, 9, 1, basement
+0, 0, 0, 14, 10, 9, basement
+14, 0, 10, 14, 10, 2, sd_1
+14, 9, 9, 11, 1, 1, sd_1
+15, 8, 9, 10, 1, 1, sd_1
+14, 8, 9, 1, 1, 1, basement
+19, 7, 9, 6, 1, 1, sd_1
+14, 7, 9, 5, 1, 1, basement
+22, 6, 9, 3, 1, 1, sd_1
+14, 6, 9, 8, 1, 1, basement
+25, 5, 9, 3, 5, 1, sd_1
+14, 5, 9, 11, 1, 1, basement
+14, 0, 9, 14, 5, 1, basement
+14, 0, 0, 14, 10, 9, basement
+28, 0, 10, 14, 10, 2, sd_1
+28, 4, 9, 5, 6, 1, sd_1
+30, 3, 9, 3, 1, 1, sd_1
+28, 3, 9, 2, 1, 1, basement
+31, 2, 9, 2, 1, 1, sd_1
+28, 2, 9, 3, 1, 1, basement
+32, 1, 9, 1, 1, 1, sd_1
+28, 1, 9, 4, 1, 1, basement
+33, 0, 9, 9, 10, 1, sd_1
+28, 0, 9, 5, 1, 1, basement
+28, 0, 0, 14, 10, 9, basement
+42, 0, 9, 14, 10, 3, sd_1
+50, 9, 8, 5, 1, 1, sd_1
+42, 9, 8, 8, 1, 1, basement
+51, 8, 8, 4, 1, 1, sd_1
+42, 8, 8, 9, 1, 1, basement
+52, 7, 8, 3, 1, 1, sd_1
+42, 7, 8, 10, 1, 1, basement
+53, 6, 8, 2, 1, 1, sd_1
+42, 6, 8, 11, 1, 1, basement
+54, 5, 8, 1, 1, 1, sd_1
+42, 5, 8, 12, 1, 1, basement
+55, 3, 8, 1, 7, 1, sd_1
+42, 3, 8, 13, 2, 1, basement
+42, 0, 8, 14, 3, 1, basement
+42, 0, 0, 14, 10, 8, basement
+56, 0, 8, 14, 10, 4, sd_1
+56, 0, 0, 14, 10, 8, basement
+1, 1, 0, 1, 1, 1, NT
+0, 1, 0, 1, 1, 1, NSW
+0, 0, 0, 2, 1, 1, NSW

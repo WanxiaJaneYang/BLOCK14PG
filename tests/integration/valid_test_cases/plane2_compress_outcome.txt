@@ -1,15 +1,3 @@
-3317971.701799666[DEBUG] Main thread started, ID: 0x100a04580
-3317971.701872458[DEBUG] ThreadPool created, ID: 0x100a04580
-3317971.701890541[DEBUG] Reading thread started...
-3317971.701924875[DEBUG] Reading thread exited.
-3317971.714408541[DEBUG] Compressing pipeline started in thread ID: 0x16f81f000
-3317971.714414166[DEBUG] Compressing pipeline started in thread ID: 0x16f8ab000
-3317971.714418250[DEBUG] Compressing pipeline started in thread ID: 0x16f937000
-3317971.714429500[DEBUG] Compressing pipeline ended in thread ID: 0x16f8ab000
-3317971.714436750[DEBUG] Compressing pipeline ended in thread ID: 0x16f937000
-3317971.714495333[DEBUG] Compressing pipeline ended in thread ID: 0x16f81f000
-3317971.726967666[DEBUG] Writing thread started...
-0, 2, 0, 3, 1, 1,  QLD
-0, 1, 0, 3, 1, 1,  NT
-0, 0, 0, 3, 1, 1,  NSW
-3317971.726987916[DEBUG] Writing thread exited.
+0, 2, 0, 3, 1, 1, QLD
+0, 1, 0, 3, 1, 1, NT
+0, 0, 0, 3, 1, 1, NSW
