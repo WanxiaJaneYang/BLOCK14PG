@@ -36,6 +36,7 @@ set(HEADERS
     input/readInput.h 
     input/Buffer.h
     multi-threads-handling/MultiThreadsHandler.h 
+    multi-threads-handling/ThreadPool.h 
     output/output.h
 )
 

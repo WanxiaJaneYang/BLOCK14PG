@@ -1,6 +1,7 @@
 # Ignore Mac system files
 .DS_Store
 .DS_store
+Dockerfile
 # Ignore Mac compiler and debuger config
 .vscode/
 
