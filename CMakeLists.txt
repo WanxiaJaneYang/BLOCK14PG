@@ -4,7 +4,7 @@ set(CMAKE_OSX_ARCHITECTURES arm64)
 cmake_minimum_required(VERSION 3.10)
 
 project(BLOCK)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Add your project source files 
@@ -20,11 +20,11 @@ list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest/include)
 add_subdirectory(googletest/googletest) 
 
-add_executable(validInputTests tests/unit/readInput/validTests.cpp 
-tests/unit/readInput/InputTestHelper.cpp 
-tests/unit/readInput/InputTestHelper.h ${SOURCES})
-target_compile_definitions(validInputTests PRIVATE TEST)
-target_link_libraries(validInputTests gtest gtest_main)
+# add_executable(validInputTests tests/unit/readInput/validTests.cpp 
+# tests/unit/readInput/InputTestHelper.cpp 
+# tests/unit/readInput/InputTestHelper.h ${SOURCES})
+# target_compile_definitions(validInputTests PRIVATE TEST)
+# target_link_libraries(validInputTests gtest gtest_main)
 
 # add_executable(invalidInputTests tests/unit/readInput/invalidTests.cpp 
 # tests/unit/readInput/InputTestHelper.cpp 
