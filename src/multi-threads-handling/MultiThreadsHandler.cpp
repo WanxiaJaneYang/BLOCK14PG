@@ -7,23 +7,22 @@
 #include <thread>
 #include "ThreadPool.h"
 #include <mutex>
-// #include <chrono>
-// #include <iomanip>
+#include <chrono>
+#include <iomanip>
 
 bool readInputRunning = false;
 bool outputRunning = false;
 std::atomic<int> compressionTasksCount(0);
 static std::mutex coutMutex; // Define a global mutex for synchronizing std::cout usage
 
-void startThreads(std::istream &in)
+void startThreads()
 {
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] Main thread started, ID: " << std::this_thread::get_id() << std::endl;
-    ThreadPool pool(7); // 8 threads being used in total, but 1 has been used by main process
+    ThreadPool pool(7); // 8 threads being used std::cin total, but 1 has been used by main process
 
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
     readInputRunning = true; // set the flag to indicate that readInput is running
-    pool.enqueue([&in]()
-                 { startReadingThread(in); }); // lambda: use 1 thread to read input at the beginning
+    pool.enqueue(startReadingThread); // lambda: use 1 thread to read input at the beginning
 
     while (readInputRunning) // 6 threads available now
     {
@@ -42,7 +41,7 @@ void startThreads(std::istream &in)
             pool.enqueue(startWritingThread);
         }
 
-        // Prevent any busy-waiting even tho it's kinda impossible in our senario
+        // Prevent any busy-waiting even tho it's kinda impossible std::cin our senario
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
@@ -70,13 +69,13 @@ void startThreads(std::istream &in)
     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
 }
 
-static void startReadingThread(std::istream &in)
+static void startReadingThread()
 {
     // {
     //     std::lock_guard<std::mutex> lock(coutMutex);
     //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
     // }
-    readInput(in); // call the original readInput function
+    readInput(); // call the original readInput function
     readInputRunning = false;
     // {
     //     std::lock_guard<std::mutex> lock(coutMutex);
@@ -103,14 +102,14 @@ static void startCompressingThread()
     std::thread::id this_id = std::this_thread::get_id();
     // {
     //     std::lock_guard<std::mutex> lock(coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started in thread ID: " << this_id << std::endl;
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << std::endl;
     // }
     compress();
     compressionTasksCount--;
 
     // {
     //     std::lock_guard<std::mutex> lock(coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended in thread ID: " << this_id << std::endl;
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended std::cin thread ID: " << this_id << std::endl;
     // }
 }
 

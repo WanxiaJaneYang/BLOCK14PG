@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-void readInput(std::istream &in)
+void readInput()
 {
     std::string line;
 
