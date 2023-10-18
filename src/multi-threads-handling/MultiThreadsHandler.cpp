@@ -21,7 +21,7 @@ void startThreads()
     ThreadPool pool(7); // 8 threads being used std::cin total, but 1 has been used by main process
 
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
-    readInputRunning = true; // set the flag to indicate that readInput is running
+    readInputRunning = true;          // set the flag to indicate that readInput is running
     pool.enqueue(startReadingThread); // lambda: use 1 thread to read input at the beginning
 
     while (readInputRunning) // 6 threads available now
@@ -60,10 +60,13 @@ void startThreads()
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
-    while ((compressionTasksCount.load()>0 || GlobalVars::outputTasks.size() > 0) && !outputRunning)
+    while (compressionTasksCount.load() > 0 || GlobalVars::outputTasks.size() > 0 || outputRunning) // cover all unfinished conditions
     {
-        outputRunning = true;
-        pool.enqueue(startWritingThread);
+        if (GlobalVars::outputTasks.size() > 0 && !outputRunning)
+        {
+            outputRunning = true;
+            pool.enqueue(startWritingThread);
+        }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
