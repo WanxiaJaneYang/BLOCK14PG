@@ -45,16 +45,13 @@ void startThreads(std::istream &in)
         // Prevent any busy-waiting even tho it's kinda impossible in our senario
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
-    while (!readInputRunning)
+    while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        if (GlobalVars::processTasks.size() > 0)
+        for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
         {
-            for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
-            {
-                compressionTasksCount++;
-                pool.enqueue(startCompressingThread);
-            }
+            compressionTasksCount++;
+            pool.enqueue(startCompressingThread);
         }
 
         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
@@ -64,7 +61,12 @@ void startThreads(std::istream &in)
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
-
+    while (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
+    {
+        outputRunning = true;
+        pool.enqueue(startWritingThread);
+        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
+    }
     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
 }
 
