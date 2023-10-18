@@ -7,8 +7,8 @@
 #include <thread>
 #include "ThreadPool.h"
 #include <mutex>
-#include <chrono>
-#include <iomanip>
+// #include <chrono>
+// #include <iomanip>
 
 bool readInputRunning = false;
 bool outputRunning = false;
@@ -45,13 +45,16 @@ void startThreads(std::istream &in)
         // Prevent any busy-waiting even tho it's kinda impossible in our senario
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
-    while (GlobalVars::processTasks.size() > 0)
+    while (!readInputRunning)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+        if (GlobalVars::processTasks.size() > 0)
         {
-            compressionTasksCount++;
-            pool.enqueue(startCompressingThread);
+            for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+            {
+                compressionTasksCount++;
+                pool.enqueue(startCompressingThread);
+            }
         }
 
         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
@@ -59,14 +62,6 @@ void startThreads(std::istream &in)
             outputRunning = true;
             pool.enqueue(startWritingThread);
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
-    }
-    
-    // un-implemented 7 threads for output
-    while (GlobalVars::outputTasks.size() > 0 && !outputRunning)
-    {
-        outputRunning = true;
-        pool.enqueue(startWritingThread);
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
 
