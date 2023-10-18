@@ -40,13 +40,23 @@ set(HEADERS
     output/output.h
 )
 
+# Find required threads package
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+message(STATUS "Using threading library: ${CMAKE_THREAD_LIBS_INIT}")
+
 # Add executable target
 add_executable(BLOCK ${SOURCES} ${HEADERS})
 
 # Compiler and linker flags
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU") # For GCC
-    target_compile_options(BLOCK PRIVATE -m64)
-    target_link_options(BLOCK PRIVATE -static -m64)
+    target_compile_options(BLOCK PRIVATE)
+    target_link_options(BLOCK PRIVATE -static)
+    target_link_libraries(BLOCK PRIVATE ${CMAKE_THREAD_LIBS_INIT})
 endif()
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    # Linux specific configuration
+endif()
+
 
 
