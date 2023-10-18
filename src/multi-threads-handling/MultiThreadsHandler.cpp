@@ -60,7 +60,7 @@ void startThreads()
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
     }
-    while (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
+    while ((compressionTasksCount.load()>0 || GlobalVars::outputTasks.size() > 0) && !outputRunning)
     {
         outputRunning = true;
         pool.enqueue(startWritingThread);
@@ -99,7 +99,7 @@ static void startWritingThread()
 
 static void startCompressingThread()
 {
-    std::thread::id this_id = std::this_thread::get_id();
+    // std::thread::id this_id = std::this_thread::get_id();
     // {
     //     std::lock_guard<std::mutex> lock(coutMutex);
     //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << std::endl;
