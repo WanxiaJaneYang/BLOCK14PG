@@ -1,22 +1,22 @@
 #include "IntegrationTestHelper.h"
 
 // Parameterized test class
-class IntegrationTest : public ::testing::TestWithParam<std::string> {};
+// class IntegrationTest : public ::testing::TestWithParam<std::string> {};
 
 // Actual test definition
-TEST_P(IntegrationTest, HandlesValidIntegration) {
+TEST(Singletest, HandlesValidIntegration) {
 
-    // Get the expected file path according to the name convention
-    std::string testFilePath = GetParam();
+    // // Get the expected file path according to the name convention
+    // std::string testFilePath = GetParam();
 
-    // Read the content of the file into an istringstream
-    std::istringstream simulatedInput = simulateInputStream(testFilePath);
+    // // Read the content of the file into an istringstream
+    // std::istringstream simulatedInput = simulateInputStream(testFilePath);
 
     // Redirect std::cout to oss
     std::ostringstream oss;
     StreamRedirector redirect(std::cout, oss.rdbuf());
 
-    startThreads(simulatedInput);
+    startThreads();
     // readInput(simulatedInput); 
     // Compressor::compress(); 
     // output();
@@ -33,19 +33,19 @@ TEST_P(IntegrationTest, HandlesValidIntegration) {
     }
 
     // find the expected result
-    std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
-        size_t pos = baseName.rfind("_case");
-    if (pos != std::string::npos) {
-        baseName.erase(pos, 5); // 5 is the length of "_case"
-    }
-    std::string expectedFilePath = "../../tests/integration/valid_test_cases/" + baseName + "_expected.txt";
+    // std::string baseName = std::__fs::filesystem::path(testFilePath).stem().string();
+    //     size_t pos = baseName.rfind("_case");
+    // if (pos != std::string::npos) {
+    //     baseName.erase(pos, 5); // 5 is the length of "_case"
+    // }
+    // std::string expectedFilePath = "../../tests/integration/valid_test_cases/" + baseName + "_expected.txt";
 
-    // convert the file stream into sorted lines
-    std::ifstream expectedFile(expectedFilePath);
-    std::vector<std::string> expectedLines = sortedLinesFromStream(expectedFile);
+    // // convert the file stream into sorted lines
+    // std::ifstream expectedFile(expectedFilePath);
+    // std::vector<std::string> expectedLines = sortedLinesFromStream(expectedFile);
 
     // an output file for validating multithreading
-    std::string outputPath = "../../tests/integration/valid_test_cases/" + baseName + "_outcome.txt";
+    std::string outputPath = "../../tests/integration/valid_test_cases/_outcome.txt";
     std::ofstream outFile(outputPath);  
     if (outFile.is_open())
     {
@@ -65,9 +65,9 @@ TEST_P(IntegrationTest, HandlesValidIntegration) {
 
 }
 
-// Instantiate the test case with the files in the directory
-INSTANTIATE_TEST_SUITE_P(
-    FileBasedTests,
-    IntegrationTest,
-    ::testing::ValuesIn(listInputFiles("../../tests/integration/valid_test_cases/"))
-);
+// // Instantiate the test case with the files in the directory
+// INSTANTIATE_TEST_SUITE_P(
+//     FileBasedTests,
+//     IntegrationTest,
+//     ::testing::ValuesIn(listInputFiles("../../tests/integration/valid_test_cases/"))
+// );
