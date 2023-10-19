@@ -89,7 +89,7 @@ static std::mutex coutMutex; // Define a global mutex for synchronizing std::cou
 void startThreads()
 {
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] Main thread started, ID: " << std::this_thread::get_id() << std::endl;
-    ThreadPool pool(3); // 8 threads being used std::cin total, but 1 has been used by main process
+    ThreadPool pool(7); // 8 threads being used std::cin total, but 1 has been used by main process
 
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
     readInputRunning = true;          // set the flag to indicate that readInput is running
@@ -99,7 +99,7 @@ void startThreads()
     {
         if (GlobalVars::processTasks.size() > 0)
         {
-            for (int i = 0; i < (2 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+            for (int i = 0; i < (5 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
             {
                 compressionTasksCount++;
                 pool.enqueue(startCompressingThread);
@@ -120,7 +120,7 @@ void startThreads()
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        for (int i = 0; i < (5 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+        for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
         {
             compressionTasksCount++;
             pool.enqueue(startCompressingThread);
