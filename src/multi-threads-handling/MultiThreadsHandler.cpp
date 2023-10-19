@@ -120,7 +120,7 @@ void startThreads()
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        for (int i = 0; i < (3 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+        for (int i = 0; i < (5 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
         {
             compressionTasksCount++;
             pool.enqueue(startCompressingThread);
@@ -133,12 +133,12 @@ void startThreads()
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); 
     }
-    
-    std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(100)); // in case the size of processTasks hasn't been increased yet
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        for (int i = 0; i < (3 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+        for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
         {
             compressionTasksCount++;
             pool.enqueue(startCompressingThread);
@@ -161,9 +161,8 @@ void startThreads()
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
-
     // repeat the above process in case of any gap
-    std::this_thread::sleep_for(std::chrono::milliseconds(100)); // wait for 0.1 second
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));   
     while (compressionTasksCount.load() > 0 || GlobalVars::outputTasks.size() > 0 || outputRunning) // cover all unfinished conditions
     {
         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
