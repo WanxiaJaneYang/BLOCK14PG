@@ -83,7 +83,7 @@ void handleNotMergedCuboids(std::deque<Cuboid> &rectanglesToBeMerged, std::deque
     rectanglesToBeMerged.pop_front();
 }
 
-std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
+void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 {
     std::deque<std::deque<Cuboid>> result;
     // basic idea: read the matrix line by line,
