@@ -9,18 +9,34 @@ std::mutex tasksMutex;
 
 void compress()
 {
+    while (true) // Use an infinite loop since we're going to control the exit within the loop
     {
-        std::lock_guard<std::mutex> lock(tasksMutex); // protect line and plane function call
-
-        while (GlobalVars::processTasks.size() > 0) // also being protected as there's a time gap between size>0 & pop
+        Block block;
+        
         {
-            Block block;
+            std::lock_guard<std::mutex> lock(tasksMutex);
+            if (GlobalVars::processTasks.size==0) {
+                return; // Exit the function if there's no more tasks to process
+            }
             GlobalVars::processTasks.pop(block);
-
-            // compress the block, first compress the line
-            std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
-            // read line by line and compress them into rectangles
-            planeCompress(lineCompressed);
         }
+
+        // These functions are outside the lock, allowing concurrent execution
+        std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
+        planeCompress(lineCompressed);
     }
 }
+
+// void compress()
+// {
+//     while (GlobalVars::processTasks.size() > 0) //  there's a time gap between size>0 & pop
+//     {
+//         Block block;
+//         GlobalVars::processTasks.pop(block);
+
+//         // compress the block, first compress the line
+//         std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
+//         // read line by line and compress them into rectangles
+//         planeCompress(lineCompressed);
+//     }
+// }

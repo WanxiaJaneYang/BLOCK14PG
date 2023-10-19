@@ -15,81 +15,10 @@ bool outputRunning = false;
 std::atomic<int> compressionTasksCount(0);
 static std::mutex coutMutex; // Define a global mutex for synchronizing std::cout usage
 
-// void startThreads()
-// {
-//     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] Main thread started, ID: " << std::this_thread::get_id() << std::endl;
-//     ThreadPool pool(7); // 8 threads being used std::cin total, but 1 has been used by main process
-
-//     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
-//     readInputRunning = true;          // set the flag to indicate that readInput is running
-//     pool.enqueue(startReadingThread); // lambda: use 1 thread to read input at the beginning
-
-//     while (readInputRunning) // 6 threads available now
-//     {
-//         if (GlobalVars::processTasks.size() > 0)
-//         {
-//             for (int i = 0; i < (5 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
-//             {
-//                 compressionTasksCount++;
-//                 pool.enqueue(startCompressingThread);
-//             }
-//         }
-
-//         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
-//         {
-//             outputRunning = true;
-//             pool.enqueue(startWritingThread);
-//         }
-
-//         // Prevent any busy-waiting even tho it's kinda impossible std::cin our senario
-//         std::this_thread::sleep_for(std::chrono::milliseconds(10));
-//     }
-//     std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
-
-//     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
-//     // after readInput finishes, we have one more thread to compress the remaining tasks
-//     {
-//         for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
-//         {
-//             compressionTasksCount++;
-//             pool.enqueue(startCompressingThread);
-//         }
-//         std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
-
-//         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
-//         { 
-//             outputRunning = true;
-//             pool.enqueue(startWritingThread);
-//         }
-//         std::this_thread::sleep_for(std::chrono::milliseconds(10)); 
-//     }
-//     while (compressionTasksCount.load() > 0 || GlobalVars::outputTasks.size() > 0 || outputRunning) // cover all unfinished conditions
-//     {
-//         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
-//         {
-//             outputRunning = true;
-//             pool.enqueue(startWritingThread);
-//         }
-//         std::this_thread::sleep_for(std::chrono::milliseconds(10));
-//     }
-
-//     // repeat the above process in case of any gap
-//     std::this_thread::sleep_for(std::chrono::milliseconds(100)); // wait for 0.1 second
-//     while (compressionTasksCount.load() > 0 || GlobalVars::outputTasks.size() > 0 || outputRunning) // cover all unfinished conditions
-//     {
-//         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
-//         {
-//             outputRunning = true;
-//             pool.enqueue(startWritingThread);
-//         }
-//         std::this_thread::sleep_for(std::chrono::milliseconds(10)); 
-//     }
-//     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
-// }
 void startThreads()
 {
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] Main thread started, ID: " << std::this_thread::get_id() << std::endl;
-    ThreadPool pool(7); // 8 threads being used std::cin total, but 1 has been used by main process
+    ThreadPool pool(3); // 8 threads being used std::cin total, but 1 has been used by main process
 
     // std::cout << getHighPrecisionTimestamp() << "[DEBUG] ThreadPool created, ID: " << std::this_thread::get_id() << std::endl;
     readInputRunning = true;          // set the flag to indicate that readInput is running
@@ -99,7 +28,7 @@ void startThreads()
     {
         if (GlobalVars::processTasks.size() > 0)
         {
-            for (int i = 0; i < (5 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+            for (int i = 0; i < (1 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
             {
                 compressionTasksCount++;
                 pool.enqueue(startCompressingThread);
@@ -120,7 +49,7 @@ void startThreads()
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+        for (int i = 0; i < (2 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
         {
             compressionTasksCount++;
             pool.enqueue(startCompressingThread);
@@ -138,7 +67,7 @@ void startThreads()
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
-        for (int i = 0; i < (6 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
+        for (int i = 0; i < (2 - compressionTasksCount.load()); ++i) // reserve a thread for output, use out 5 threads left
         {
             compressionTasksCount++;
             pool.enqueue(startCompressingThread);
