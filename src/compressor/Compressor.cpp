@@ -12,12 +12,14 @@ void compress()
     while (true) // Use an infinite loop since we're going to control the exit within the loop
     {
         Block block;
-        
+
+        //critical section
         {
             std::lock_guard<std::mutex> lock(tasksMutex);
-            if (GlobalVars::processTasks.size==0) {
-                return; // Exit the function if there's no more tasks to process
-            }
+            // Exit the function if there's no more tasks to process
+            if (GlobalVars::processTasks.size() == 0)
+                break;
+
             GlobalVars::processTasks.pop(block);
         }
 
