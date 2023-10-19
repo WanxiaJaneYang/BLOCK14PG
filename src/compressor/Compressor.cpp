@@ -24,15 +24,3 @@ void compress()
         }
     }
 }
-
-void compress()
-{
-    Block block;
-    {
-        GlobalVars::processTasks.pop(block);
-        // compress the block, first compress the lines
-        std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
-        // compress them into rectangles
-        planeCompress(lineCompressed);
-    }
-}
