@@ -42,8 +42,10 @@ void startThreads()
         }
 
         // Prevent any busy-waiting even tho it's kinda impossible std::cin our senario
-        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
+    std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
+
     while (!readInputRunning && GlobalVars::processTasks.size() > 0)
     // after readInput finishes, we have one more thread to compress the remaining tasks
     {
@@ -52,22 +54,35 @@ void startThreads()
             compressionTasksCount++;
             pool.enqueue(startCompressingThread);
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
 
+        if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
+        { 
+            outputRunning = true;
+            pool.enqueue(startWritingThread);
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(10)); 
+    }
+    while (compressionTasksCount.load() > 0 || GlobalVars::outputTasks.size() > 0 || outputRunning) // cover all unfinished conditions
+    {
         if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
         {
             outputRunning = true;
             pool.enqueue(startWritingThread);
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
+
+    // repeat the above process in case of any gap
+    std::this_thread::sleep_for(std::chrono::milliseconds(100)); // wait for 0.1 second
     while (compressionTasksCount.load() > 0 || GlobalVars::outputTasks.size() > 0 || outputRunning) // cover all unfinished conditions
     {
-        if (GlobalVars::outputTasks.size() > 0 && !outputRunning)
+        if (GlobalVars::outputTasks.size() > 0 && !outputRunning) // got something to output
         {
             outputRunning = true;
             pool.enqueue(startWritingThread);
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // inside the loop
+        std::this_thread::sleep_for(std::chrono::milliseconds(10)); 
     }
     // ThreadPool's destructor will wait for all tasks to complete before the main function exits
 }
