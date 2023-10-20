@@ -2,7 +2,7 @@
 #include <iostream>
 #include <mutex>
 
-static std::mutex taskMutex;
+static std::mutex coutMutex;
 
 // print the Cuboid information in the required output format
 void output()
@@ -22,9 +22,9 @@ void output()
         std::string label = GlobalVars::tagTable.at(cuboid.tag);
         //  print out the block position, block size and accurate label
         {
-            std::lock_guard<std::mutex> lock(taskMutex);
+            std::lock_guard<std::mutex> coutLock(coutMutex);
             std::cout << positionX << ", " << positionY << ", " << positionZ << ", " << sizeX << ", " << sizeY << ", " << sizeZ << "," << label << std::endl;
-            outputCuboid = GlobalVars::outputTasks.pop(cuboid);
         }
+            outputCuboid = GlobalVars::outputTasks.pop(cuboid);
     }
 }
