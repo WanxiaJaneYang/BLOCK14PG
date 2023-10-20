@@ -14,6 +14,8 @@ bool readInputRunning = false;
 bool outputRunning = false;
 std::atomic<int> compressionTasksCount(0);
 static std::mutex coutMutex; // Define a global mutex for synchronizing std::cout usage
+std::mutex compressionAndOutputMutex;
+std::mutex readAndCompressMutex;
 
 void startThreads()
 {
@@ -41,6 +43,8 @@ void startThreads()
             outputRunning = true;
             pool.enqueue(startWritingThread);
         }
+        std::lock_guard<std::mutex> lock1(readAndCompressMutex); //not check the break conditions while readInput() is adding tasks.
+        std::lock_guard<std::mutex> lock2(compressionAndOutputMutex); //not check the break conditions while compressor() is adding tasks.
 
         // Exit condition for the infinite loop
         if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
@@ -54,6 +58,7 @@ static void startReadingThread()
     //     std::lock_guard<std::mutex> lock(coutMutex);
     //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
     // }
+    std::lock_guard<std::mutex> lock1(readAndCompressMutex);
     readInput(); // call the original readInput function
     readInputRunning = false;
     // {
@@ -84,6 +89,7 @@ static void startCompressingThread()
     //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
 
     // }
+    std::lock_guard<std::mutex> lock2(compressionAndOutputMutex);
     compress();
     compressionTasksCount--;
 
