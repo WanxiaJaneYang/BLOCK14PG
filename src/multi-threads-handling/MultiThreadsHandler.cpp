@@ -17,35 +17,35 @@ static std::mutex coutMutex; // Define a global mutex for synchronizing std::cou
 
 void startThreads()
 {
-    startReadingThread();
-    startCompressingThread();
-    startWritingThread();
-    // ThreadPool pool(3); // 3 for 4 core, 7 for 8 core
-    // readInputRunning = true;
-    // pool.enqueue(startReadingThread);
+    // startReadingThread();
+    // startCompressingThread();
+    // startWritingThread();
+    ThreadPool pool(3); // 3 for 4 core, 7 for 8 core
+    readInputRunning = true;
+    pool.enqueue(startReadingThread);
 
-    // while (true)
-    // {
-    //     if (GlobalVars::processTasks.size() > 0)
-    //     {
-    //         int maxTasks = readInputRunning ? 1 : 2; // 5 : 6
-    //         for (int i = 0; i < (maxTasks - compressionTasksCount.load()); ++i)
-    //         {
-    //             compressionTasksCount++;
-    //             pool.enqueue(startCompressingThread);
-    //         }
-    //     }
+    while (true)
+    {
+        if (GlobalVars::processTasks.size() > 0)
+        {
+            int maxTasks = readInputRunning ? 1 : 2; // 5 : 6
+            for (int i = 0; i < (maxTasks - compressionTasksCount.load()); ++i)
+            {
+                compressionTasksCount++;
+                pool.enqueue(startCompressingThread);
+            }
+        }
 
-    //     if (GlobalVars::outputTasks.size() > 0 && !outputRunning)
-    //     {
-    //         outputRunning = true;
-    //         pool.enqueue(startWritingThread);
-    //     }
+        if (GlobalVars::outputTasks.size() > 0 && !outputRunning)
+        {
+            outputRunning = true;
+            pool.enqueue(startWritingThread);
+        }
 
-    //     // Exit condition for the infinite loop
-    //     if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
-    //         break;
-    // }
+        // Exit condition for the infinite loop
+        if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
+            break;
+    }
 }
 
 static void startReadingThread()
