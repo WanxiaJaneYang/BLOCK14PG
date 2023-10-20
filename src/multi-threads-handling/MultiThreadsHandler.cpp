@@ -14,8 +14,6 @@ bool readInputRunning = false;
 bool outputRunning = false;
 std::atomic<int> compressionTasksCount(0);
 static std::mutex coutMutex; // Define a global mutex for synchronizing std::cout usage
-std::mutex compressionAndOutputMutex;
-std::mutex readAndCompressMutex;
 
 void startThreads()
 {
@@ -43,9 +41,6 @@ void startThreads()
             outputRunning = true;
             pool.enqueue(startWritingThread);
         }
-        std::lock_guard<std::mutex> lock1(readAndCompressMutex); //not check the break conditions while readInput() is adding tasks.
-        std::lock_guard<std::mutex> lock2(compressionAndOutputMutex); //not check the break conditions while compressor() is adding tasks.
-
         // Exit condition for the infinite loop
         if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
             break;
@@ -54,25 +49,24 @@ void startThreads()
 
 static void startReadingThread()
 {
-    // {
-    //     std::lock_guard<std::mutex> lock(coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
-    // }
-    std::lock_guard<std::mutex> lock1(readAndCompressMutex);
+    {
+        std::lock_guard<std::mutex> lock(coutMutex);
+        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
+    }
     readInput(); // call the original readInput function
     readInputRunning = false;
-    // {
-    //     std::lock_guard<std::mutex> lock(coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread exited." << std::endl;
-    // }
+    {
+        std::lock_guard<std::mutex> lock(coutMutex);
+        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread exited." << std::endl;
+    }
 }
 
 static void startWritingThread()
 {
-    // {
-    //     std::lock_guard<std::mutex> lock(coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
-    // }
+    {
+        std::lock_guard<std::mutex> lock(coutMutex);
+        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
+    }
     output();
     outputRunning = false;
     // {
@@ -83,13 +77,12 @@ static void startWritingThread()
 
 static void startCompressingThread()
 {
-    // std::thread::id this_id = std::this_thread::get_id();
-    // {
-    //     std::lock_guard<std::mutex> lock(coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
+    std::thread::id this_id = std::this_thread::get_id();
+    {
+        std::lock_guard<std::mutex> lock(coutMutex);
+        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
 
-    // }
-    std::lock_guard<std::mutex> lock2(compressionAndOutputMutex);
+    }
     compress();
     compressionTasksCount--;
 
@@ -99,18 +92,18 @@ static void startCompressingThread()
     // }
 }
 
-// std::string getHighPrecisionTimestamp()
-// {
-//     // Get the current time with high precision
-//     auto now = std::chrono::high_resolution_clock::now();
-//     auto seconds_since_epoch = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch());
-//     auto fraction_seconds_since_epoch = now.time_since_epoch() - seconds_since_epoch;
+std::string getHighPrecisionTimestamp()
+{
+    // Get the current time with high precision
+    auto now = std::chrono::high_resolution_clock::now();
+    auto seconds_since_epoch = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch());
+    auto fraction_seconds_since_epoch = now.time_since_epoch() - seconds_since_epoch;
 
-//     // Format high precision time into a string
-//     std::ostringstream oss;
-//     oss << seconds_since_epoch.count() << "."
-//         << std::setw(9) << std::setfill('0')
-//         << fraction_seconds_since_epoch.count();
+    // Format high precision time into a string
+    std::ostringstream oss;
+    oss << seconds_since_epoch.count() << "."
+        << std::setw(9) << std::setfill('0')
+        << fraction_seconds_since_epoch.count();
 
-//     return oss.str();
-// }
+    return oss.str();
+}
