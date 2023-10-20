@@ -23,8 +23,8 @@ void output()
         //  print out the block position, block size and accurate label
         {
             std::lock_guard<std::mutex> coutLock(coutMutex);
-            std::cout << positionX << ", " << positionY << ", " << positionZ << ", " << sizeX << ", " << sizeY << ", " << sizeZ << "," << label << std::endl;
+            std::cout << positionX << "," << positionY << "," << positionZ << "," << sizeX << "," << sizeY << "," << sizeZ << "," << label << std::endl;
         }
-            outputCuboid = GlobalVars::outputTasks.pop(cuboid);
+        outputCuboid = GlobalVars::outputTasks.pop(cuboid);
     }
 }

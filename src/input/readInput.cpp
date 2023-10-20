@@ -30,6 +30,11 @@ void readInput()
 
         ss >> key >> comma;
         std::getline(ss, value, ',');
+        
+        // Remove leading spaces from the value
+        value.erase(value.begin(), std::find_if(value.begin(), value.end(), [](unsigned char ch)
+                                                { return !std::isspace(ch); }));
+
         GlobalVars::tagTable[key] = value;
     }
 

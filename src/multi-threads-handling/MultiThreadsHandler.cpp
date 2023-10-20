@@ -20,7 +20,7 @@ void startThreads()
     // startReadingThread();
     // startCompressingThread();
     // startWritingThread();
-    ThreadPool pool(3); // 3 for 4 core, 7 for 8 core
+    ThreadPool pool(7); // 3 for 4 core, 7 for 8 core
     readInputRunning = true;
     pool.enqueue(startReadingThread);
 
@@ -28,7 +28,7 @@ void startThreads()
     {
         if (GlobalVars::processTasks.size() > 0)
         {
-            int maxTasks = readInputRunning ? 1 : 2; // 5 : 6
+            int maxTasks = readInputRunning ? 5 : 6; // 5 : 6
             for (int i = 0; i < (maxTasks - compressionTasksCount.load()); ++i)
             {
                 compressionTasksCount++;
