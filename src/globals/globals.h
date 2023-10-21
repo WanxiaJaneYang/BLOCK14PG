@@ -20,5 +20,6 @@ namespace GlobalVars
     extern int width;
     extern int height;
     extern int depth;
+    extern std::mutex coutMutex;
 }
 #endif

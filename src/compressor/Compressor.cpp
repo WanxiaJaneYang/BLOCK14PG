@@ -4,6 +4,8 @@
 #include "../cores/SafeOutputTasks.h"
 #include <deque>
 #include <mutex>
+#include <thread>
+#include <chrono>
 
 std::mutex tasksMutex;
 
@@ -13,13 +15,20 @@ void compress()
     {
         Block block;
 
-        //critical section
+        // critical section
         {
             std::lock_guard<std::mutex> lock(tasksMutex);
             // Exit the function if there's no more tasks to process
             if (GlobalVars::processTasks.size() == 0)
-                break;
-
+            {
+                // sleep for 1 ms
+                std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                if (GlobalVars::processTasks.size() == 0)
+                {
+                    break;
+                }
+            }
+            //protected time gap between size=0 and poping
             GlobalVars::processTasks.pop(block);
         }
 

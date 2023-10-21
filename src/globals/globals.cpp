@@ -11,4 +11,5 @@ namespace GlobalVars
     int width;
     int height;
     int depth;
+    std::mutex coutMutex;
 }

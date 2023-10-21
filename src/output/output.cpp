@@ -1,17 +1,29 @@
 #include "output.h"
 #include <iostream>
 #include <mutex>
-
-static std::mutex coutMutex;
+#include <thread>
+#include <chrono>
 
 // print the Cuboid information in the required output format
 void output()
 {
     // get Cuboid from GlobalVars::outputTasks
     Cuboid cuboid;
-    bool outputCuboid = GlobalVars::outputTasks.pop(cuboid);
-    while (outputCuboid)
+    while (true)
     {
+
+        bool outputCuboid = GlobalVars::outputTasks.pop(cuboid);
+        if (!outputCuboid)
+        {
+            // sleep for 10 ms
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            outputCuboid = GlobalVars::outputTasks.pop(cuboid);
+            if (!outputCuboid)
+            {
+                break;
+            }
+        }
+
         //  calculate correct block position
         int positionX = cuboid.blockX + cuboid.cuboidX;
         int positionY = cuboid.blockY + cuboid.cuboidY;
@@ -22,7 +34,7 @@ void output()
         std::string label = GlobalVars::tagTable.at(cuboid.tag);
         //  print out the block position, block size and accurate label
         {
-            std::lock_guard<std::mutex> coutLock(coutMutex);
+            std::lock_guard<std::mutex> coutLock(GlobalVars::coutMutex);
             std::cout << positionX << "," << positionY << "," << positionZ << "," << sizeX << "," << sizeY << "," << sizeZ << "," << label << std::endl;
         }
         outputCuboid = GlobalVars::outputTasks.pop(cuboid);
