@@ -15,8 +15,8 @@ void output()
         bool outputCuboid = GlobalVars::outputTasks.pop(cuboid);
         if (!outputCuboid)
         {
-            // sleep for 10 ms
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            // sleep for 1 ms to avoid frequet exit and restart
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
             outputCuboid = GlobalVars::outputTasks.pop(cuboid);
             if (!outputCuboid)
             {
@@ -33,10 +33,9 @@ void output()
         int sizeZ = cuboid.depth;
         std::string label = GlobalVars::tagTable.at(cuboid.tag);
         //  print out the block position, block size and accurate label
-        {
-            std::lock_guard<std::mutex> coutLock(GlobalVars::coutMutex);
+        // {
+        //     std::lock_guard<std::mutex> coutLock(GlobalVars::coutMutex);
             std::cout << positionX << "," << positionY << "," << positionZ << "," << sizeX << "," << sizeY << "," << sizeZ << "," << label << std::endl;
-        }
-        outputCuboid = GlobalVars::outputTasks.pop(cuboid);
+        // }
     }
 }

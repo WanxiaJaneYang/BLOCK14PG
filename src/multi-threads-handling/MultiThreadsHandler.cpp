@@ -19,7 +19,7 @@ void startThreads()
     // startReadingThread();
     // startCompressingThread();
     // startWritingThread();
-    ThreadPool pool(7); // 3 for 4 core, 7 for 8 core
+    ThreadPool pool(3); // 3 for 4 core, 7 for 8 core
     readInputRunning = true;
     pool.enqueue(startReadingThread);
 
@@ -27,7 +27,7 @@ void startThreads()
     {
         if (GlobalVars::processTasks.size() > 0)
         {
-            int maxTasks = readInputRunning ? 5 : 6; // 5 : 6
+            int maxTasks = readInputRunning ? 1 : 2; // 5 : 6
             for (int i = 0; i < (maxTasks - compressionTasksCount.load()); ++i)
             {
                 compressionTasksCount.fetch_add(1);
@@ -42,52 +42,59 @@ void startThreads()
         }
         // Exit condition for the infinite loop
         if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
-            break;
+        {
+            // sleep for 10 ms
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
+            {
+                break;
+            }
+        }
     }
 }
 
 static void startReadingThread()
 {
-    {
-        std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
-    }
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
+    // }
     readInput(); // call the original readInput function
     readInputRunning = false;
-    {
-        std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread exited." << std::endl;
-    }
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread exited." << std::endl;
+    // }
 }
 
 static void startWritingThread()
 {
-    {
-        std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
-    }
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
+    // }
     output();
     outputRunning = false;
-    {
-        std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread exited." << std::endl;
-    }
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread exited." << std::endl;
+    // }
 }
 
 static void startCompressingThread()
 {
-    std::thread::id this_id = std::this_thread::get_id();
-    {
-        std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
-    }
+    // std::thread::id this_id = std::this_thread::get_id();
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
+    // }
     compress();
     compressionTasksCount.fetch_sub(1);
 
-    {
-        std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
-    }
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
+    // }
 }
 
 std::string getHighPrecisionTimestamp()

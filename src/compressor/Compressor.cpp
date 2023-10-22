@@ -21,12 +21,7 @@ void compress()
             // Exit the function if there's no more tasks to process
             if (GlobalVars::processTasks.size() == 0)
             {
-                // sleep for 1 ms
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
-                if (GlobalVars::processTasks.size() == 0)
-                {
-                    break;
-                }
+                break;
             }
             //protected time gap between size=0 and poping
             GlobalVars::processTasks.pop(block);
