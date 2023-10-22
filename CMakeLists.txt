@@ -1,5 +1,5 @@
 set(GOOGLETEST_VERSION "1.14.0")
-set(CMAKE_OSX_ARCHITECTURES arm64)
+#set(CMAKE_OSX_ARCHITECTURES arm64)
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -34,7 +34,9 @@ add_subdirectory(googletest/googletest)
 
 add_executable(integrationValidTests tests/integration/integrationValidTests.cpp 
 tests/integration/integrationTestHelper.cpp 
-tests/integration/integrationTestHelper.h ${SOURCES})
+tests/integration/integrationTestHelper.h
+tests/integration/Chunk.cpp 
+tests/integration/Chunk.h ${SOURCES})
 target_compile_definitions(integrationValidTests PRIVATE TEST)
 target_link_libraries(integrationValidTests gtest gtest_main)
 

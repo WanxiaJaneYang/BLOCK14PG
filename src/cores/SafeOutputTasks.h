@@ -1,6 +1,7 @@
 #include <vector>
 #include <mutex>
 #include "Cuboid.h"
+#include <deque>
 
 #ifndef SAFEOUTPUTTASKS_H
 #define SAFEOUTPUTTASKS_H
@@ -9,10 +10,10 @@ class SafeOutputTasks
 {
 #ifdef TEST
 public:
-    std::vector<Cuboid> tasks;
+    std::vector<std::deque<std::deque<Cuboid>>>tasks;
 #else
 private:
-    std::vector<Cuboid> tasks;
+    std::vector<std::deque<std::deque<Cuboid>>>tasks;
 #endif // end of TEST
 
     std::mutex mtx;
@@ -20,8 +21,8 @@ private:
 public:
     SafeOutputTasks();
     int size();
-    void push(const Cuboid &cuboid);
-    bool pop(Cuboid &cuboid);
+    void push(const std::deque<std::deque<Cuboid>>& cuboids);
+    bool pop(std::deque<std::deque<Cuboid>>& cuboids);
     virtual ~SafeOutputTasks();
 };
 
