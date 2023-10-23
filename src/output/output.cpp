@@ -11,19 +11,21 @@ void output()
     std::deque<std::deque<Cuboid>> cuboidsGroup;
     while (true)
     {
+
         bool outputDeque = GlobalVars::outputTasks.pop(cuboidsGroup);
-            // std::cout << "poped" << outputDeque << std::endl;
 
         if (!outputDeque)
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+            // waited then pop and check again to avoid frequent exit and entering of writing thread
             outputDeque = GlobalVars::outputTasks.pop(cuboidsGroup);
             if (!outputDeque)
             {
                 break;
             }
         }
-
+        // lock ends here
         for (const auto &cuboids : cuboidsGroup)
         {
             for (const auto &cuboid : cuboids)

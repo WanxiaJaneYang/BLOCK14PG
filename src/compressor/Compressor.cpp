@@ -7,24 +7,16 @@
 #include <thread>
 #include <chrono>
 
-std::mutex tasksMutex;
-
 void compress()
 {
     while (true) // Use an infinite loop since we're going to control the exit within the loop
     {
         Block block;
+        bool processDeque = GlobalVars::processTasks.pop(block);
 
-        // critical section
+        if (!processDeque)
         {
-            std::lock_guard<std::mutex> lock(tasksMutex);
-            // Exit the function if there's no more tasks to process
-            if (GlobalVars::processTasks.size() == 0)
-            {
-                break;
-            }
-            //protected time gap between size=0 and poping
-            GlobalVars::processTasks.pop(block);
+            break;
         }
 
         // These functions are outside the lock, allowing concurrent execution

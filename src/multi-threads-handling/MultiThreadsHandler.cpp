@@ -16,9 +16,6 @@ std::atomic<int> compressionTasksCount(0);
 
 void startThreads()
 {
-    // startReadingThread();
-    // startCompressingThread();
-    // startWritingThread();
     ThreadPool pool(7); // 3 for 4 core, 7 for 8 core
     readInputRunning = true;
     pool.enqueue(startReadingThread);
