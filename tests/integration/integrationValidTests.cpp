@@ -3,7 +3,7 @@
 
 TEST(Singletest, HandlesValidIntegration)
 {
-    Chunk matrix(64, 64, 8, '?');
+    Chunk matrix(700, 500, 120, '?');
 
     // Redirect std::cout to oss
     std::ostringstream oss;
