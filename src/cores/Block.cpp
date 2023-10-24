@@ -5,6 +5,13 @@
 Block::Block() : x(0), y(0), z(0) {}
 
 // Overloaded constructor
+Block::Block(int x, int y, int z, int id)
+{
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    this->id = id;
+}
 Block::Block(int x, int y, int z)
 {
     this->x = x;
@@ -29,7 +36,9 @@ int Block::getZ() const
 {
     return z;
 }
+int Block::getId() const { return id; }
 
+void Block::setId(int id) { this->id = id; }
 // Set x
 void Block::setX(int x)
 {

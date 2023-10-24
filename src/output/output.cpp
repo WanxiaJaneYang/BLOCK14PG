@@ -12,20 +12,20 @@ void output()
     while (true)
     {
 
-        bool outputDeque = GlobalVars::outputTasks.pop(cuboidsGroup);
+        bool hasBlock = GlobalVars::outputTasks.pop(cuboidsGroup);
 
-        if (!outputDeque)
+        if (!hasBlock)
         {
             std::this_thread::sleep_for(std::chrono::milliseconds(200));
 
             // waited then pop and check again to avoid frequent exit and entering of writing thread
-            outputDeque = GlobalVars::outputTasks.pop(cuboidsGroup);
-            if (!outputDeque)
+            hasBlock = GlobalVars::outputTasks.pop(cuboidsGroup);
+            if (!hasBlock)
             {
                 break;
             }
         }
-        // lock ends here
+
         for (const auto &cuboids : cuboidsGroup)
         {
             for (const auto &cuboid : cuboids)

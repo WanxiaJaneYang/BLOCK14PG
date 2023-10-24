@@ -12,16 +12,19 @@ void compress()
     while (true) // Use an infinite loop since we're going to control the exit within the loop
     {
         Block block;
-        bool processDeque = GlobalVars::processTasks.pop(block);
+        bool hasBlock = GlobalVars::processTasks.pop(block);
 
-        if (!processDeque)
+        if (!hasBlock)
         {
             break;
         }
 
-        // These functions are outside the lock, allowing concurrent execution
         std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
-        planeCompress(lineCompressed);
+        std::deque<std::deque<Cuboid>> planeCompressed = planeCompress(lineCompressed);
+        {
+            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
+            GlobalVars::intermediateBuffer[block.id] = planeCompressed;
+        }
     }
 }
 

@@ -21,5 +21,7 @@ namespace GlobalVars
     extern int height;
     extern int depth;
     extern std::mutex coutMutex;
+    extern std::mutex bufferMtx;
+    extern std::map<int, std::deque<std::deque<Cuboid>>> intermediateBuffer;
 }
 #endif

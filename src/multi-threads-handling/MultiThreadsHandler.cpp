@@ -13,6 +13,7 @@
 bool readInputRunning = false;
 bool outputRunning = false;
 std::atomic<int> compressionTasksCount(0);
+int nextExpectedBlockID = 0;
 
 void startThreads()
 {
@@ -22,6 +23,7 @@ void startThreads()
 
     while (true)
     {
+        // assign available threads to compressor reserving one for writing
         if (GlobalVars::processTasks.size() > 0)
         {
             int maxTasks = readInputRunning ? 5 : 6;
@@ -31,17 +33,35 @@ void startThreads()
                 pool.enqueue(startCompressingThread);
             }
         }
+        // check if there's any block in the intermediate buffer that can be output in order
+        {
+            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
+            auto it = GlobalVars::intermediateBuffer.find(nextExpectedBlockID);
 
+            // if found the in-order block, push it to output and increment nextExpectedBlockID
+            while (it != GlobalVars::intermediateBuffer.end())
+            {
+                // std::cerr << "found nextExpectedBlockID: " << nextExpectedBlockID << std::endl;
+                std::deque<std::deque<Cuboid>> toOutput = it->second;
+
+                GlobalVars::intermediateBuffer.erase(it);
+
+                nextExpectedBlockID++;
+                GlobalVars::outputTasks.push(toOutput);
+                it = GlobalVars::intermediateBuffer.find(nextExpectedBlockID);
+            }
+        }
+        // use only one thread for writing
         if (GlobalVars::outputTasks.size() > 0 && !outputRunning)
         {
             outputRunning = true;
             pool.enqueue(startWritingThread);
         }
-        // Exit condition for the infinite loop
+        // Exit condition for the infinite loop: nothing to do
         if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
         {
-            // sleep for 10 ms
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            // sleep for 100 ms in case any gap
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
             if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
             {
                 break;

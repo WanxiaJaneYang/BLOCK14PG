@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 #include <algorithm>
-
+int nextBlockID = 0;
 void readInput()
 {
     std::string line;
@@ -31,7 +31,7 @@ void readInput()
 
         ss >> key >> comma;
         std::getline(ss, value, ',');
-        
+
         // Remove leading spaces from the value
         value.erase(value.begin(), std::find_if(value.begin(), value.end(), [](unsigned char ch)
                                                 { return !std::isspace(ch); }));
@@ -120,9 +120,10 @@ void readInput()
             // Check if the buffer block is full
             if (rowCount % GlobalVars::width == 0 && (lineCount + 1) % GlobalVars::height == 0 && (zCoord + 1) % GlobalVars::depth == 0)
             {
-                // Store the full bloack of buffer into GlobalVars::processTasks
+                // Store the full block of buffer into GlobalVars::processTasks
+                blockRef.setId(nextBlockID);
                 GlobalVars::processTasks.push(blockRef);
-
+                nextBlockID++;
                 // Pop full block from buffer list and decrease index by 1
                 bufferLst.tasks.erase(bufferLst.tasks.begin() + index);
                 index--;

@@ -339,7 +339,7 @@
 #include <deque>
 #include "../globals/globals.h"
 
-void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
+std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
 {
     std::deque<std::deque<Cuboid>> result;
     // basic idea: read the matrix line by line,
@@ -506,5 +506,6 @@ void planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines)
         }
         result.push_back(compressedPlane);
     }
-    GlobalVars::outputTasks.push(result);
+    // GlobalVars::outputTasks.push(result);
+    return result;
 }
