@@ -22,6 +22,27 @@ std::unordered_map<char, std::string> Chunk::labelMapping = {
     {'n', "sd_9"},
     {'E', "sill_E"},
     {'W', "sill_W"}
+// { ':', 'atmosphere'},
+// {'O', 'continent'},
+// {'~', 'inner_core'},
+// {'-', 'mantle'},
+// {'o', 'ocean'},
+// { '`', 'outer_core'},
+// { '.', 'space'}
+
+// {'.',"#000000"},
+// {'b',"#0000AA"},
+// {'g',"#00AA00"},
+// {'d',"#555555"},
+// {'a',"#5555FF"},
+// {'p',"#55FF55"},
+// {'m',"#55FFFF"},
+// {'r',"#AA0000"},
+// {'o',"#AA5500"},
+// {'w',"#AAAAAA"},
+// {'P',"#FF5555"},
+// {'B',"#FFFF55"},
+// {'W',"#FFFFFF"}
 };
 
 

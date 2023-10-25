@@ -13,56 +13,56 @@
 bool readInputRunning = false;
 bool outputRunning = false;
 std::atomic<int> compressionTasksCount(0);
-int nextExpectedBlockID = 0;
 
 void startThreads()
 {
     ThreadPool pool(7); // 3 for 4 core, 7 for 8 core
     readInputRunning = true;
+    // {
+    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
+    // }
     pool.enqueue(startReadingThread);
 
     while (true)
     {
+        int maxTasks = readInputRunning ? 5 : 6;
+
         // assign available threads to compressor reserving one for writing
         if (GlobalVars::processTasks.size() > 0)
         {
-            int maxTasks = readInputRunning ? 5 : 6;
-            for (int i = 0; i < (maxTasks - compressionTasksCount.load()); ++i)
+            // {
+            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] processTasks.size(): " << GlobalVars::processTasks.size() << std::endl;
+            // }
+            while (maxTasks > compressionTasksCount.load())
             {
                 compressionTasksCount.fetch_add(1);
+                // {
+                //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+                //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing thread started " << std::endl;
+                // }
                 pool.enqueue(startCompressingThread);
             }
         }
-        // check if there's any block in the intermediate buffer that can be output in order
-        {
-            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
-            auto it = GlobalVars::intermediateBuffer.find(nextExpectedBlockID);
 
-            // if found the in-order block, push it to output and increment nextExpectedBlockID
-            while (it != GlobalVars::intermediateBuffer.end())
-            {
-                // std::cerr << "found nextExpectedBlockID: " << nextExpectedBlockID << std::endl;
-                std::deque<std::deque<Cuboid>> toOutput = it->second;
-
-                GlobalVars::intermediateBuffer.erase(it);
-
-                nextExpectedBlockID++;
-                GlobalVars::outputTasks.push(toOutput);
-                it = GlobalVars::intermediateBuffer.find(nextExpectedBlockID);
-            }
-        }
         // use only one thread for writing
-        if (GlobalVars::outputTasks.size() > 0 && !outputRunning)
+        if (GlobalVars::newBlockCompressedSingnal.load() && !outputRunning)
         {
+            GlobalVars::newBlockCompressedSingnal.store(false);
             outputRunning = true;
+            // {
+            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
+            // }
             pool.enqueue(startWritingThread);
         }
         // Exit condition for the infinite loop: nothing to do
-        if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
+        if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && !GlobalVars::newBlockCompressedSingnal.load() && !outputRunning)
         {
             // sleep for 100 ms in case any gap
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::outputTasks.size() == 0 && !outputRunning)
+            if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && !GlobalVars::newBlockCompressedSingnal.load() && !outputRunning)
             {
                 break;
             }
@@ -72,10 +72,7 @@ void startThreads()
 
 static void startReadingThread()
 {
-    // {
-    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
-    // }
+
     readInput(); // call the original readInput function
     readInputRunning = false;
     // {
@@ -86,10 +83,7 @@ static void startReadingThread()
 
 static void startWritingThread()
 {
-    // {
-    //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
-    // }
+
     output();
     outputRunning = false;
     // {
@@ -100,17 +94,17 @@ static void startWritingThread()
 
 static void startCompressingThread()
 {
-    // std::thread::id this_id = std::this_thread::get_id();
+    std::thread::id this_id = std::this_thread::get_id();
     // {
     //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline started std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
     // }
     compress();
     compressionTasksCount.fetch_sub(1);
 
     // {
     //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing pipeline ended std::cin thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
+    //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing thread ID: " << this_id << "compressor threads number:" << compressionTasksCount << std::endl;
     // }
 }
 

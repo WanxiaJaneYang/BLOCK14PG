@@ -6,9 +6,12 @@
 #include <mutex>
 #include <thread>
 #include <chrono>
+#include <iostream>
 
 void compress()
 {
+    std::thread::id this_id = std::this_thread::get_id();
+
     while (true) // Use an infinite loop since we're going to control the exit within the loop
     {
         Block block;
@@ -18,12 +21,20 @@ void compress()
         {
             break;
         }
-
+        // {
+        //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+        //     std::cout << "Started Compression of Block: " << block.id << "  Compressing thread ID: " << this_id << std::endl;
+        // }
         std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
         std::deque<std::deque<Cuboid>> planeCompressed = planeCompress(lineCompressed);
         {
             std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
             GlobalVars::intermediateBuffer[block.id] = planeCompressed;
+            // {
+            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            //     std::cout << "Finished Compression of Block: " << block.id << std::endl;
+            // }
+            GlobalVars::newBlockCompressedSingnal.store(true);
         }
     }
 }

@@ -11,20 +11,29 @@ void output()
     std::deque<std::deque<Cuboid>> cuboidsGroup;
     while (true)
     {
-
-        bool hasBlock = GlobalVars::outputTasks.pop(cuboidsGroup);
-
-        if (!hasBlock)
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
+            auto it = GlobalVars::intermediateBuffer.find(GlobalVars::nextExpectedBlockID);
+            // if found the in-order block, push it to output and increment nextExpectedBlockID
 
-            // waited then pop and check again to avoid frequent exit and entering of writing thread
-            hasBlock = GlobalVars::outputTasks.pop(cuboidsGroup);
-            if (!hasBlock)
+            if (it == GlobalVars::intermediateBuffer.end())
             {
+                // {
+                //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+                //     std::cout << "!!!!!!!! not found nextExpectedBlockID: " << GlobalVars::nextExpectedBlockID << std::endl;
+                // }
                 break;
             }
+
+            // {
+            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            //     std::cout << "found nextExpectedBlockID: " << GlobalVars::nextExpectedBlockID << std::endl;
+            // }
+            cuboidsGroup = it->second;
+
+            GlobalVars::intermediateBuffer.erase(it);
         }
+        GlobalVars::nextExpectedBlockID++;
 
         for (const auto &cuboids : cuboidsGroup)
         {
@@ -39,8 +48,8 @@ void output()
                 std::string label = GlobalVars::tagTable.at(cuboid.tag);
 
                 // only one thread at a time can output, no contention
-                // {
-                //     std::lock_guard<std::mutex> coutLock(GlobalVars::coutMutex);
+                //  {
+                //      std::lock_guard<std::mutex> coutLock(GlobalVars::coutMutex);
                 std::cout << positionX << "," << positionY << "," << positionZ << ","
                           << sizeX << "," << sizeY << "," << sizeZ << "," << label << std::endl;
                 // }

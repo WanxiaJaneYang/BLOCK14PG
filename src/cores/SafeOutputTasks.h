@@ -10,10 +10,10 @@ class SafeOutputTasks
 {
 #ifdef TEST
 public:
-    std::vector<std::deque<std::deque<Cuboid>>>tasks;
+    std::deque<std::deque<std::deque<Cuboid>>>tasks;
 #else
 private:
-    std::vector<std::deque<std::deque<Cuboid>>>tasks;
+    std::deque<std::deque<std::deque<Cuboid>>>tasks;
 #endif // end of TEST
 
     std::mutex mtx;

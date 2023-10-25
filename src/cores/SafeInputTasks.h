@@ -1,5 +1,6 @@
 #include <vector>
 #include <mutex>
+#include <deque>
 #include "Block.h"
 #ifndef SAFEINPUTTASKS_H
 #define SAFEINPUTTASKS_H
@@ -7,9 +8,9 @@
 class SafeInputTasks
 {
 #ifdef TEST
-    public: std::vector<Block> tasks;
+    public: std::deque<Block> tasks;
 #else
-    private: std::vector<Block> tasks;
+    private: std::deque<Block> tasks;
 #endif
     std::mutex mtx;
 

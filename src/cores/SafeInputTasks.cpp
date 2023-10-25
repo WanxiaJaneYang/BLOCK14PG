@@ -30,7 +30,7 @@ bool SafeInputTasks::pop(Block &block)
     {
         return false;
     }
-    block = tasks.back();
-    tasks.pop_back();
+    block = tasks.front();
+    tasks.pop_front();
     return true;
 }

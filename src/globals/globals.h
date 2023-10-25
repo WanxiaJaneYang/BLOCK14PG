@@ -23,5 +23,7 @@ namespace GlobalVars
     extern std::mutex coutMutex;
     extern std::mutex bufferMtx;
     extern std::map<int, std::deque<std::deque<Cuboid>>> intermediateBuffer;
+    extern int nextExpectedBlockID;
+    extern std::atomic<bool> newBlockCompressedSingnal;
 }
 #endif

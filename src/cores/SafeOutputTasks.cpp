@@ -30,7 +30,7 @@ bool SafeOutputTasks::pop(std::deque<std::deque<Cuboid>>& cuboids)
     {
         return false;
     }
-    cuboids = tasks.back();
-    tasks.pop_back();
+    cuboids = tasks.front();
+    tasks.pop_front();
     return true;
 }
