@@ -8,27 +8,27 @@ Chunk::Chunk(int dimX, int dimY, int dimZ, char initialValue)
 }
 
 std::unordered_map<char, std::string> Chunk::labelMapping = {
-    {'o', "air"},
-    {'B', "basement"},
-    {'C', "cover"},
-    {'f', "sd_1"},
-    {'g', "sd_2"},
-    {'h', "sd_3"},
-    {'i', "sd_4"},
-    {'j', "sd_5"},
-    {'k', "sd_6"},
-    {'l', "sd_7"},
-    {'m', "sd_8"},
-    {'n', "sd_9"},
-    {'E', "sill_E"},
-    {'W', "sill_W"}
-// { ':', 'atmosphere'},
-// {'O', 'continent'},
-// {'~', 'inner_core'},
-// {'-', 'mantle'},
-// {'o', 'ocean'},
-// { '`', 'outer_core'},
-// { '.', 'space'}
+    // {'o', "air"},
+    // {'B', "basement"},
+    // {'C', "cover"},
+    // {'f', "sd_1"},
+    // {'g', "sd_2"},
+    // {'h', "sd_3"},
+    // {'i', "sd_4"},
+    // {'j', "sd_5"},
+    // {'k', "sd_6"},
+    // {'l', "sd_7"},
+    // {'m', "sd_8"},
+    // {'n', "sd_9"},
+    // {'E', "sill_E"},
+    // {'W', "sill_W"}
+{ ':', "atmosphere"},
+{'O', "continent"},
+{'~', "inner_core"},
+{'-', "mantle"},
+{'o', "ocean"},
+{ '`', "outer_core"},
+{ '.', "space"}
 
 // {'.',"#000000"},
 // {'b',"#0000AA"},

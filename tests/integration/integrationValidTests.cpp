@@ -5,8 +5,8 @@ TEST(Singletest, HandlesValidIntegration)
 {
     // Chunk matrix(188, 250, 8, '?');//the FAST
 
-    Chunk matrix(700, 500, 120, '?');//the combination
-    // Chunk matrix(255, 255, 255, '?');//the 
+    // Chunk matrix(700, 500, 120, '?');//the combination
+    Chunk matrix(256, 256, 256, '?');//the 
 
     // Redirect std::cout to oss
     std::ostringstream oss;

@@ -23,19 +23,23 @@ void compress()
         }
         // {
         //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-        //     std::cout << "Started Compression of Block: " << block.id << "  Compressing thread ID: " << this_id << std::endl;
+        //     std::cout << "Started lineCompression of Block: " << block.id << "  Compressing thread ID: " << this_id << std::endl;
         // }
-        std::deque<std::deque<std::deque<Cuboid>>> lineCompressed = lineCompress(block);
-        std::deque<std::deque<Cuboid>> planeCompressed = planeCompress(lineCompressed);
-        {
-            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
-            GlobalVars::intermediateBuffer[block.id] = planeCompressed;
-            // {
-            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-            //     std::cout << "Finished Compression of Block: " << block.id << std::endl;
-            // }
-            GlobalVars::newBlockCompressedSingnal.store(true);
-        }
+        GlobalVars::blockStatus[block.id] = 'c'; // compressing
+        // std::deque<std::deque<std::deque<Cuboid>>> lineCompressed =
+        lineCompress(block);
+        // {
+        //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+        //     std::cout << "Started planeCompression of Block: " << block.id << "  Compressing thread ID: " << this_id << std::endl;
+        // }
+        // std::deque<std::deque<Cuboid>> planeCompressed = planeCompress(lineCompressed);
+
+        GlobalVars::blockStatus[block.id] = 'f'; // finish
+
+        // {
+        //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+        //     std::cout << "Finished Compression of Block: " << block.id << std::endl;
+        // }
     }
 }
 

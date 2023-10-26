@@ -1,7 +1,7 @@
 // #include "Compressor.h"
 // #include <deque>
 // #include "../globals/globals.h"
-
+# include <iostream>
 // // check if there is a matched cuboid in next line
 // bool matchNextLine(Cuboid cuboid, std::deque<Cuboid> nextLine)
 // {
@@ -351,6 +351,10 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
     // first read the plane by plane
     for (size_t z = 0; z < GlobalVars::depth; z++)
     {
+        {
+            std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            std::cout << "Started planeCompression of Line: " << z << std::endl;
+        }
         // read the plane line by line
         // current plane
         std::deque<std::deque<Cuboid>> plane = compressedLines[z];
@@ -437,7 +441,6 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             rectanglesToBeMerged.pop_front();
                             compressedPlane.push_back(rectangleToBeMerged);
                             // GlobalVars::outputTasks.push(rectangleToBeMerged);
-
                         }
                     }
                     // if the two cuboids have same end points and tags
@@ -482,7 +485,6 @@ std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cu
                             rectanglesToBeMerged.pop_front();
                             compressedPlane.push_back(rectangleToBeMerged);
                             // GlobalVars::outputTasks.push(rectangleToBeMerged);
-
                         }
 
                         // pop and push the current cuboid into the rectanglesToBeMerged

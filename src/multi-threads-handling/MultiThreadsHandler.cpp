@@ -45,9 +45,8 @@ void startThreads()
         }
 
         // use only one thread for writing
-        if (GlobalVars::newBlockCompressedSingnal.load() && !outputRunning)
+        if (GlobalVars::intermediateBuffer.size() > 0 && !outputRunning)
         {
-            GlobalVars::newBlockCompressedSingnal.store(false);
             outputRunning = true;
             // {
             //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
@@ -56,11 +55,11 @@ void startThreads()
             pool.enqueue(startWritingThread);
         }
         // Exit condition for the infinite loop: nothing to do
-        if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && !GlobalVars::newBlockCompressedSingnal.load() && !outputRunning)
+        if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::intermediateBuffer.size() == 0 && !outputRunning)
         {
             // sleep for 100 ms in case any gap
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && !GlobalVars::newBlockCompressedSingnal.load() && !outputRunning)
+            if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::intermediateBuffer.size() == 0 && !outputRunning)
             {
                 break;
             }

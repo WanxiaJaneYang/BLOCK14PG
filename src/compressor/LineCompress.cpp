@@ -2,20 +2,25 @@
 #include <deque>
 #include "../cores/Cuboid.h"
 #include "../globals/globals.h"
-
-std::deque<std::deque<std::deque<Cuboid>>> lineCompress(Block &block)
+#include <iostream>
+// std::deque<std::deque<std::deque<Cuboid>>>
+void lineCompress(Block &block)
 {
     std::deque<std::deque<std::deque<Cuboid>>> result;
     int baseX = block.getX();
     int baseY = block.getY();
     int baseZ = block.getZ();
-
+    int blockId = block.getId();
     int start, end;
     for (size_t z = 0; z < GlobalVars::depth; z++)
     {
         std::deque<std::deque<Cuboid>> plane;
         for (size_t y = 0; y < GlobalVars::height; y++)
         {
+            // {
+            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            //     std::cout << "Started lineCompression of Line: " << y << std::endl;
+            // }
             std::deque<Cuboid> line;
             // reset the start point
             start = 0;
@@ -29,7 +34,11 @@ std::deque<std::deque<std::deque<Cuboid>>> lineCompress(Block &block)
                         // push the previous cuboid into the line
                         end = x - 1;
                         Cuboid cuboid = Cuboid(baseX, baseY, baseZ, start, y, z, end - start + 1, 1, 1, block.getData()[z][y][x - 1]);
-                        line.push_back(cuboid);
+                        // line.push_back(cuboid);
+                        {
+                            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
+                            GlobalVars::intermediateBuffer.insert(std::make_pair(blockId, cuboid));
+                        }
                         // reset the start point
                         start = x;
                     }
@@ -40,14 +49,18 @@ std::deque<std::deque<std::deque<Cuboid>>> lineCompress(Block &block)
                         // push the previous cuboid into the line
                         end = x;
                         Cuboid cuboid = Cuboid(baseX, baseY, baseZ, start, y, z, end - start + 1, 1, 1, block.getData()[z][y][x]);
-                        line.push_back(cuboid);
+                        // line.push_back(cuboid);
+                        {
+                            std::lock_guard<std::mutex> lock(GlobalVars::bufferMtx);
+                            GlobalVars::intermediateBuffer.insert(std::make_pair(blockId, cuboid));
+                        }
                     }
                 }
             }
-            plane.push_back(line);
+            // plane.push_back(line);
         }
-        result.push_back(plane);
+        // result.push_back(plane);
     }
 
-    return result;
+    // return result;
 }
