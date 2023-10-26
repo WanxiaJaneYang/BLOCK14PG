@@ -29,21 +29,19 @@ void startThreads()
         int maxTasks = readInputRunning ? 5 : 6;
 
         // assign available threads to compressor reserving one for writing
-        if (GlobalVars::processTasks.size() > 0)
+        while ( maxTasks > compressionTasksCount.load() && GlobalVars::processTasks.size() > 0 )
         {
             // {
             //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
             //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] processTasks.size(): " << GlobalVars::processTasks.size() << std::endl;
             // }
-            while (maxTasks > compressionTasksCount.load())
-            {
-                compressionTasksCount.fetch_add(1);
-                // {
-                //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
-                //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing thread started " << std::endl;
-                // }
-                pool.enqueue(startCompressingThread);
-            }
+
+            compressionTasksCount.fetch_add(1);
+            // {
+            //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
+            //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing thread started " << std::endl;
+            // }
+            pool.enqueue(startCompressingThread);
         }
 
         // use only one thread for writing
@@ -67,6 +65,7 @@ void startThreads()
                 break;
             }
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }
 
