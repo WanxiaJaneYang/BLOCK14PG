@@ -4,15 +4,27 @@
 #include "../globals/globals.h"
 #include <iostream>
 // std::deque<std::deque<std::deque<Cuboid>>>
-void lineCompress(Block &block)
+void lineCompress(Block &block, int thread)
 {
     std::deque<std::deque<std::deque<Cuboid>>> result;
     int baseX = block.getX();
     int baseY = block.getY();
     int baseZ = block.getZ();
     int blockId = block.getId();
+    int depth;
+    int Z;
+    if (thread == 1)
+    {
+        Z=0;
+        depth = GlobalVars::depth / 2;
+    }
+    else
+    {
+        Z = GlobalVars::depth - GlobalVars::depth / 2;
+        depth = GlobalVars::depth;
+    }
     int start, end;
-    for (size_t z = 0; z < GlobalVars::depth; z++)
+    for (size_t z = Z; z < depth; z++)
     {
         std::deque<std::deque<Cuboid>> plane;
         for (size_t y = 0; y < GlobalVars::height; y++)

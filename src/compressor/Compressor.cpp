@@ -7,7 +7,8 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
-
+std::atomic<bool> thread1finish{false};
+std::atomic<bool> thread2finish{false};
 void compress()
 {
     std::thread::id this_id = std::this_thread::get_id();
@@ -25,16 +26,28 @@ void compress()
         //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
         //     std::cout << "Started lineCompression of Block: " << block.id << "  Compressing thread ID: " << this_id << std::endl;
         // }
+
         GlobalVars::blockStatus[block.id] = 'c'; // compressing
-        // std::deque<std::deque<std::deque<Cuboid>>> lineCompressed =
-        lineCompress(block);
+        GlobalVars::pool.enqueue([block]() mutable
+                                 { startLineCompressor2(block); });
+        lineCompress(block, 1);
+        thread1finish.store(true);
         // {
         //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
         //     std::cout << "Started planeCompression of Block: " << block.id << "  Compressing thread ID: " << this_id << std::endl;
         // }
         // std::deque<std::deque<Cuboid>> planeCompressed = planeCompress(lineCompressed);
-
+        char status;
+        while (status != 'f')
+        {
+            if (thread1finish.load() && thread2finish.load())
+            {
+                status = 'f';
+            }
+        }
         GlobalVars::blockStatus[block.id] = 'f'; // finish
+        thread1finish.store(false);
+        thread2finish.store(false);
 
         // {
         //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
@@ -42,7 +55,12 @@ void compress()
         // }
     }
 }
+void startLineCompressor2(Block &block)
+{
 
+    lineCompress(block, 2); // call the original readInput function
+    thread2finish.store(true);
+}
 // void compress()
 // {
 //     while (GlobalVars::processTasks.size() > 0) //  there's a time gap between size>0 & pop

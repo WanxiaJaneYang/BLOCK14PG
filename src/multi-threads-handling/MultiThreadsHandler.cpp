@@ -5,7 +5,6 @@
 #include "../globals/globals.h"
 #include <atomic>
 #include <thread>
-#include "ThreadPool.h"
 #include <mutex>
 #include <chrono>
 #include <iomanip>
@@ -16,17 +15,17 @@ std::atomic<int> compressionTasksCount(0);
 
 void startThreads()
 {
-    ThreadPool pool(7); // 3 for 4 core, 7 for 8 core
+    // ThreadPool pool(3); // 3 for 4 core, 7 for 8 core
     readInputRunning = true;
     // {
     //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
     //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Reading thread started..." << std::endl;
     // }
-    pool.enqueue(startReadingThread);
+    GlobalVars::pool.enqueue(startReadingThread);
 
     while (true)
     {
-        int maxTasks = readInputRunning ? 5 : 6;
+        int maxTasks = readInputRunning ? 5 : 6 ;//1 : 2; //
 
         // assign available threads to compressor reserving one for writing
         while ( maxTasks > compressionTasksCount.load() && GlobalVars::processTasks.size() > 0 )
@@ -41,7 +40,7 @@ void startThreads()
             //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
             //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Compressing thread started " << std::endl;
             // }
-            pool.enqueue(startCompressingThread);
+            GlobalVars::pool.enqueue(startCompressingThread);
         }
 
         // use only one thread for writing
@@ -52,7 +51,7 @@ void startThreads()
             //     std::lock_guard<std::mutex> lock(GlobalVars::coutMutex);
             //     std::cout << getHighPrecisionTimestamp() << "[DEBUG] Writing thread started..." << std::endl;
             // }
-            pool.enqueue(startWritingThread);
+            GlobalVars::pool.enqueue(startWritingThread);
         }
         // Exit condition for the infinite loop: nothing to do
         if (!readInputRunning && GlobalVars::processTasks.size() == 0 && compressionTasksCount.load() == 0 && GlobalVars::intermediateBuffer.size() == 0 && !outputRunning)

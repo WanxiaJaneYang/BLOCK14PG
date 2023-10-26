@@ -17,4 +17,5 @@ namespace GlobalVars
 
     int nextExpectedBlockID = 0;
     std::map<int, char>  blockStatus;
+    ThreadPool pool(7);
 }

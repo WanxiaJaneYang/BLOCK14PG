@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "../multi-threads-handling/ThreadPool.h"
 
 #include "../cores/Block.h"
 #include "../cores/Cuboid.h"
@@ -25,5 +26,7 @@ namespace GlobalVars
     extern std::multimap<int, Cuboid> intermediateBuffer;
     extern int nextExpectedBlockID;
     extern std::map<int, char> blockStatus;
+    extern ThreadPool pool;
+
 }
 #endif

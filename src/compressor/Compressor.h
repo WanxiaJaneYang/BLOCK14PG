@@ -5,7 +5,8 @@
 #define COMPRESSOR_H
 
 void compress();
-std::deque<std::deque<std::deque<Cuboid>>> lineCompress(Block &block);
-std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines);
+void lineCompress(Block &block,int thread);
+void startLineCompressor2(Block &block);
+// std::deque<std::deque<Cuboid>> planeCompress(std::deque<std::deque<std::deque<Cuboid>>> &compressedLines);
 
 #endif
